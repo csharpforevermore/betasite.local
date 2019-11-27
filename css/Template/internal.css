@@ -1,0 +1,18 @@
+header #logo {
+    width: 128px; 
+    height: 30px;
+}
+
+header #logo a {
+    width: 128px;
+    height: 30px;
+    background-image: url('/media/1031/victorious-4x.png?width=128&amp;height=30');
+    background-repeat:no-repeat; background-position:center;
+}
+
+@media only screen and (-webkit-min-device-pixel-ratio : 1.5), only screen and (min-device-pixel-ratio : 1.5), only screen and (-webkit-min-device-pixel-ratio : 2), only screen and (min-device-pixel-ratio : 2) {
+    header #logo a {
+        background-image: url('/media/1031/victorious-4x.png');
+        background-size: 128px 30px;
+    }
+}
