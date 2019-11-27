@@ -1,0 +1,18 @@
+﻿{
+    propertyEditors:[
+        {
+            alias: "ESO.Label",
+            name: "ESO Label",
+            editor: {
+                view: "~/App_Plugins/ESO.Label/views/eso.label.html",
+				hideLabel: true
+            }
+        }
+    ],
+	javascript: [
+		"~/App_Plugins/ESO.Label/js/eso.label.js"
+	],
+	css: [
+        "~/App_Plugins/ESO.Label/css/eso.label.css"
+    ]
+}

@@ -1,0 +1,16 @@
+﻿{
+	propertyEditors:[
+        {
+            alias: "ESO.TwitterUsername",
+            name: "ESO Twitter Username",
+			icon: "icon-bird",
+			group: "social media",
+            editor: {
+                view: "~/App_Plugins/ESO.TwitterUsername/PropertyEditor/editor.html"
+            }
+        }
+    ],
+    css: [
+        "~/App_Plugins/ESO.TwitterUsername/css/style.css"
+    ]
+}

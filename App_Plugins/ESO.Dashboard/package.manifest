@@ -1,0 +1,9 @@
+﻿{
+    "javascript" : [
+        "~/App_Plugins/ESO.Dashboard/js/dashboard.controller.js",
+    ],
+    "css" : [ 
+        "~/App_Plugins/ESO.Dashboard/css/style.css?v=11"
+    ]
+
+}
