@@ -44,5 +44,12 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Homepage{i class="icon umb-tree-icon sprTree icon-home pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}To add content to this page you are required to add components to the "Components" folder directly below this page.{/p}{p}By adding new components you will be able to organise the layout and content of this page.{/p}{/div}
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("instructions")]
+		public string Instructions => this.Value<string>("instructions");
 	}
 }

@@ -20,33 +20,33 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedModels
 {
-	/// <summary>Advanced Page</summary>
-	[PublishedModel("advancedPage")]
-	public partial class AdvancedPage : PublishedContentModel
+	/// <summary>Standard Page</summary>
+	[PublishedModel("standardPage")]
+	public partial class StandardPage : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public new const string ModelTypeAlias = "advancedPage";
+		public new const string ModelTypeAlias = "standardPage";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new static IPublishedContentType GetModelContentType()
 			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<AdvancedPage, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<StandardPage, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
 
 		// ctor
-		public AdvancedPage(IPublishedContent content)
+		public StandardPage(IPublishedContent content)
 			: base(content)
 		{ }
 
 		// properties
 
 		///<summary>
-		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Advanced Page{i class="icon umb-tree-icon sprTree icon-layout pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}To add content to this page you are required to add components to the "Components" folder directly below this page.{/p}{p}By adding new components you will be able to organise the layout and content of this page.{/p}{/div}
+		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Standard Page{i class="icon umb-tree-icon sprTree icon-article pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}The majority of your content will be added to this page via the "Content" tab.{p}Additional layout options are available which can be added via  the "Components" folder directly below this page.{/p}{p}By adding new components you will be able to add more advanced layout options to this page.{/p}{/div}
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("instructions")]
