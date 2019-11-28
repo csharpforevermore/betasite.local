@@ -4,6 +4,7 @@ using Umbraco.Web.Models;
 using USN.USNModels;
 using Umbraco.Web;
 using Umbraco.Core.Models;
+using Umbraco.Core.Models.PublishedContent;
 
 namespace USN.USNControllers
 {
@@ -14,12 +15,13 @@ namespace USN.USNControllers
     {
         public override ActionResult Index(ContentModel model)
         {
-            IPublishedContent homeNode = model.Content.Site();
+            // IPublishedContent homeNode = model.Content.Site();
+            IPublishedContent homeNode = Umbraco.ContentAtRoot().FirstOrDefault();
 
             if (homeNode.IsDocumentType("USNHomepage"))
             {
-                IPublishedContent globalSettings = homeNode.GetPropertyValue<IPublishedContent>("websiteConfigurationNode").Children.Where(x => x.IsDocumentType("USNGlobalSettings")).First();
-                IPublishedContent navigation = homeNode.GetPropertyValue<IPublishedContent>("websiteConfigurationNode").Children.Where(x => x.IsDocumentType("USNNavigation")).First();
+                IPublishedContent globalSettings = homeNode.Value<IPublishedContent>("websiteConfigurationNode").Children.Where(x => x.IsDocumentType("USNGlobalSettings")).First();
+                IPublishedContent navigation = homeNode.Value<IPublishedContent>("websiteConfigurationNode").Children.Where(x => x.IsDocumentType("USNNavigation")).First();
 
                 USNBaseViewModel customModel = new USNBaseViewModel(model.Content);
                 customModel.GlobalSettings = globalSettings;

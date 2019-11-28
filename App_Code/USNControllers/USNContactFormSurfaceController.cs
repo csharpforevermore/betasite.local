@@ -40,21 +40,21 @@ namespace USN.USNControllers
             System.Threading.Thread.Sleep(1000);
 
             //Need to get NodeID from hidden field. CurrentPage does not work with Ajax.BeginForm
-            var contactFormNode = Umbraco.TypedContent(model.CurrentNodeID);
-            var globalSettings = Umbraco.TypedContent(model.GlobalSettingsID);
+            var contactFormNode = Umbraco.ContentQuery.Content(model.CurrentNodeID);            
+            var globalSettings = Umbraco.ContentQuery.Content(model.GlobalSettingsID);
 
             string returnValue = String.Empty;
             string recaptchaReset = globalSettings.HasValue("googleReCAPTCHASiteKey") && globalSettings.HasValue("googleReCAPTCHASecretKey") ? "grecaptcha.reset();" : String.Empty;
 
             if (!ModelState.IsValid)
             {
-                return JavaScript(String.Format("{0}$(ContactError{1}).show();$(ContactError{1}).html('{2}');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(umbraco.library.GetDictionaryItem("USN Contact Form General Error"))));
+                return JavaScript(String.Format("{0}$(ContactError{1}).show();$(ContactError{1}).html('{2}');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(Umbraco.GetDictionaryValue("USN Contact Form General Error"))));
             }
 
             if (globalSettings.HasValue("googleReCAPTCHASiteKey") && globalSettings.HasValue("googleReCAPTCHASecretKey"))
             {
                 var response = Request["g-recaptcha-response"];
-                string secretKey = globalSettings.GetPropertyValue<string>("googleReCAPTCHASecretKey");
+                string secretKey = globalSettings.Value<string>("googleReCAPTCHASecretKey");
                 var client = new WebClient();
                 var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey, response));
                 var obj = JObject.Parse(result);
@@ -62,19 +62,19 @@ namespace USN.USNControllers
 
                 if(!status)
                 {
-                    return JavaScript(String.Format("{0}$(ContactError{1}).show();$(ContactError{1}).html('{2}');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(umbraco.library.GetDictionaryItem("USN Form reCAPTCHA Error"))));
+                    return JavaScript(String.Format("{0}$(ContactError{1}).show();$(ContactError{1}).html('{2}');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(Umbraco.GetDictionaryValue("USN Form reCAPTCHA Error"))));
                 }
             }
 
-            string mailTo = contactFormNode.GetPropertyValue<string>("contactRecipientEmailAddress");
-            string websiteName = globalSettings.GetPropertyValue<string>("websiteName");
+            string mailTo = contactFormNode.Value<string>("contactRecipientEmailAddress");
+            string websiteName = globalSettings.Value<string>("websiteName");
             string pageName = contactFormNode.Parent.Parent.Name;
 
             string errorMessage = String.Empty;
 
             if (!SendContactFormMail(model, mailTo, websiteName, pageName, out errorMessage))
             {
-                return JavaScript(String.Format("{0}$(ContactError{1}).show();$(ContactError{1}).html('<div class=\"info\"><p>{2}</p><p>{3}</p></div>');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(umbraco.library.GetDictionaryItem("USN Contact Form Mail Send Error")), HttpUtility.JavaScriptStringEncode(errorMessage)));
+                return JavaScript(String.Format("{0}$(ContactError{1}).show();$(ContactError{1}).html('<div class=\"info\"><p>{2}</p><p>{3}</p></div>');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(Umbraco.GetDictionaryValue("USN Contact Form Mail Send Error")), HttpUtility.JavaScriptStringEncode(errorMessage)));
             }
 
             try
@@ -82,16 +82,16 @@ namespace USN.USNControllers
                 if (model.NewsletterSignup && globalSettings.HasValue("newsletterAPIKey") &&
                     (globalSettings.HasValue("defaultNewsletterSubscriberListID") || contactFormNode.HasValue("contactSubscriberListID")))
                 {
-                    if (globalSettings.GetPropertyValue<USNOptions>("emailMarketingPlatform") == USNOptions.Newsletter_CM)
+                    if (globalSettings.Value<USNOptions>("emailMarketingPlatform") == USNOptions.Newsletter_CM)
                     {
-                        AuthenticationDetails auth = new ApiKeyAuthenticationDetails(globalSettings.GetPropertyValue<string>("newsletterAPIKey"));
+                        AuthenticationDetails auth = new ApiKeyAuthenticationDetails(globalSettings.Value<string>("newsletterAPIKey"));
 
                         string subsciberListID = String.Empty;
 
                         if (contactFormNode.HasValue("contactSubscriberListID"))
-                            subsciberListID = contactFormNode.GetPropertyValue<string>("contactSubscriberListID");
+                            subsciberListID = contactFormNode.Value<string>("contactSubscriberListID");
                         else
-                            subsciberListID = globalSettings.GetPropertyValue<string>("defaultNewsletterSubscriberListID");
+                            subsciberListID = globalSettings.Value<string>("defaultNewsletterSubscriberListID");
 
                         Subscriber loSubscriber = new Subscriber(auth, subsciberListID);
 
@@ -99,17 +99,17 @@ namespace USN.USNControllers
 
                         string subscriberID = loSubscriber.Add(model.Email, model.FirstName + " " + model.LastName, customFields, false);
                     }
-                    else if (globalSettings.GetPropertyValue<USNOptions>("emailMarketingPlatform") == USNOptions.Newsletter_Mailchimp)
+                    else if (globalSettings.Value<USNOptions>("emailMarketingPlatform") == USNOptions.Newsletter_Mailchimp)
                     {
 
-                        var mc = new MailChimpManager(globalSettings.GetPropertyValue<string>("newsletterAPIKey"));
+                        var mc = new MailChimpManager(globalSettings.Value<string>("newsletterAPIKey"));
 
                         string subsciberListID = String.Empty;
 
                         if (contactFormNode.HasValue("contactSubscriberListID"))
-                            subsciberListID = contactFormNode.GetPropertyValue<string>("contactSubscriberListID");
+                            subsciberListID = contactFormNode.Value<string>("contactSubscriberListID");
                         else
-                            subsciberListID = globalSettings.GetPropertyValue<string>("defaultNewsletterSubscriberListID");
+                            subsciberListID = globalSettings.Value<string>("defaultNewsletterSubscriberListID");
 
                         var email = new EmailParameter()
                         {
@@ -126,10 +126,10 @@ namespace USN.USNControllers
             }
             catch (Exception ex)
             {
-                return JavaScript(String.Format("{0}$(ContactError{1}).show();$(ContactError{1}).html('<div class=\"info\"><p>{2}</p><p>{3}</p></div>');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(umbraco.library.GetDictionaryItem("USN Contact Form Signup Error")), HttpUtility.JavaScriptStringEncode(ex.Message)));
+                return JavaScript(String.Format("{0}$(ContactError{1}).show();$(ContactError{1}).html('<div class=\"info\"><p>{2}</p><p>{3}</p></div>');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(Umbraco.GetDictionaryValue("USN Contact Form Signup Error")), HttpUtility.JavaScriptStringEncode(ex.Message)));
             }
 
-            returnValue = String.Format("<div class=\"spc alert alert-success alert-dismissible fade in\" role=\"alert\"><div class=\"info\">{0}</div></div>", contactFormNode.GetPropertyValue<string>("contactSubmissionMessage"));
+            returnValue = String.Format("<div class=\"spc alert alert-success alert-dismissible fade in\" role=\"alert\"><div class=\"info\">{0}</div></div>", contactFormNode.Value<string>("contactSubmissionMessage"));
 
             return Content(returnValue);
         }
@@ -154,7 +154,7 @@ namespace USN.USNControllers
                 replacements.Add("<% formLastName %>", model.LastName == null ? "" : model.LastName);
                 replacements.Add("<% formEmail %>", model.Email == null ? "" : model.Email);
                 replacements.Add("<% formPhone %>", model.Telephone == null ? "" : model.Telephone);
-                replacements.Add("<% formMessage %>", model.Message == null ? "" : umbraco.library.ReplaceLineBreaks(model.Message));
+                replacements.Add("<% formMessage %>", model.Message == null ? "" : Umbraco.ReplaceLineBreaks(model.Message));
                 replacements.Add("<% WebsitePage %>", pageName);
                 replacements.Add("<% WebsiteName %>", websiteName);
 

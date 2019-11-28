@@ -3,6 +3,7 @@ using Umbraco.Core.Models;
 using System.Web.Security;
 using USN.USNModels;
 using Umbraco.Web;
+using Umbraco.Core.Models.PublishedContent;
 
 namespace USN.USNControllers
 {
@@ -19,9 +20,9 @@ namespace USN.USNControllers
             if (CurrentPage.Url != Request.Url.PathAndQuery)
                 model.ReturnUrl = Request.Url.PathAndQuery;
             else
-                model.ReturnUrl = CurrentPage.GetPropertyValue<IPublishedContent>("loginSuccessPage").Url;
+                model.ReturnUrl = CurrentPage.Value<IPublishedContent>("loginSuccessPage").Url;
 
-            model.LoginFormButtonText = CurrentPage.GetPropertyValue<string>("loginFormButtonText");
+            model.LoginFormButtonText = CurrentPage.Value<string>("loginFormButtonText");
 
             return PartialView("USNForms/USN_LoginForm", model);
         }
@@ -44,7 +45,7 @@ namespace USN.USNControllers
             }
             else
             {
-                TempData.Add("LoginFailure", umbraco.library.GetDictionaryItem("USN Login Form Login Error"));
+                TempData.Add("LoginFailure", Umbraco.GetDictionaryValue("USN Login Form Login Error"));
                 return RedirectToCurrentUmbracoPage();
             }
         }

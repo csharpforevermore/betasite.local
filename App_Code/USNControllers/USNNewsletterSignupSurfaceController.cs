@@ -34,8 +34,8 @@ namespace USN.USNControllers
         {
             System.Threading.Thread.Sleep(1000);
 
-            var currentNode = Umbraco.TypedContent(model.CurrentNodeID);
-            var globalSettings = Umbraco.TypedContent(model.GlobalSettingsID);
+            var currentNode = Umbraco.ContentQuery.Content(model.CurrentNodeID);
+            var globalSettings = Umbraco.ContentQuery.Content(model.GlobalSettingsID);
 
             string recaptchaReset = globalSettings.HasValue("googleReCAPTCHASiteKey") && globalSettings.HasValue("googleReCAPTCHASecretKey") ? "grecaptcha.reset();" : String.Empty;
 
@@ -43,14 +43,14 @@ namespace USN.USNControllers
 
             if (!ModelState.IsValid)
             {
-                return JavaScript(String.Format("{0}$(NewsletterError{1}).show();$(NewsletterError{1}).html('<div class=\"info\"><p>{2}</p></div>');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(umbraco.library.GetDictionaryItem("USN Newsletter Form General Error"))));
+                return JavaScript(String.Format("{0}$(NewsletterError{1}).show();$(NewsletterError{1}).html('<div class=\"info\"><p>{2}</p></div>');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(Umbraco.GetDictionaryValue("USN Newsletter Form General Error"))));
             }
             try
             {
                 if (globalSettings.HasValue("googleReCAPTCHASiteKey") && globalSettings.HasValue("googleReCAPTCHASecretKey"))
                 {
                     var response = Request["g-recaptcha-response"];
-                    string secretKey = globalSettings.GetPropertyValue<string>("googleReCAPTCHASecretKey");
+                    string secretKey = globalSettings.Value<string>("googleReCAPTCHASecretKey");
                     var client = new WebClient();
                     var result = client.DownloadString(string.Format("https://www.google.com/recaptcha/api/siteverify?secret={0}&response={1}", secretKey, response));
                     var obj = JObject.Parse(result);
@@ -58,20 +58,20 @@ namespace USN.USNControllers
 
                     if (!status)
                     {
-                        return JavaScript(String.Format("{0}$(NewsletterError{1}).show();$(NewsletterError{1}).html('{2}');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(umbraco.library.GetDictionaryItem("USN Form reCAPTCHA Error"))));
+                        return JavaScript(String.Format("{0}$(NewsletterError{1}).show();$(NewsletterError{1}).html('{2}');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(Umbraco.GetDictionaryValue("USN Form reCAPTCHA Error"))));
                     }
                 }
 
-                if (globalSettings.GetPropertyValue<USNOptions>("emailMarketingPlatform") == USNOptions.Newsletter_CM)
+                if (globalSettings.Value<USNOptions>("emailMarketingPlatform") == USNOptions.Newsletter_CM)
                 {
-                    AuthenticationDetails auth = new ApiKeyAuthenticationDetails(globalSettings.GetPropertyValue<string>("newsletterAPIKey"));
+                    AuthenticationDetails auth = new ApiKeyAuthenticationDetails(globalSettings.Value<string>("newsletterAPIKey"));
 
                     string subsciberListID = String.Empty;
 
-                    if (currentNode.GetPropertyValue<string>("newsletterSubscriberListID") != String.Empty)
-                        subsciberListID = currentNode.GetPropertyValue<string>("newsletterSubscriberListID");
+                    if (currentNode.Value<string>("newsletterSubscriberListID") != String.Empty)
+                        subsciberListID = currentNode.Value<string>("newsletterSubscriberListID");
                     else
-                        subsciberListID = globalSettings.GetPropertyValue<string>("defaultNewsletterSubscriberListID");
+                        subsciberListID = globalSettings.Value<string>("defaultNewsletterSubscriberListID");
 
                     Subscriber loSubscriber = new Subscriber(auth, subsciberListID);
 
@@ -79,17 +79,17 @@ namespace USN.USNControllers
 
                     string subscriberID = loSubscriber.Add(model.Email, model.FirstName + " " + model.LastName, customFields, false);
                 }
-                else if (globalSettings.GetPropertyValue<USNOptions>("emailMarketingPlatform") == USNOptions.Newsletter_Mailchimp)
+                else if (globalSettings.Value<USNOptions>("emailMarketingPlatform") == USNOptions.Newsletter_Mailchimp)
                 {
 
-                    var mc = new MailChimpManager(globalSettings.GetPropertyValue<string>("newsletterAPIKey"));
+                    var mc = new MailChimpManager(globalSettings.Value<string>("newsletterAPIKey"));
 
                     string subsciberListID = String.Empty;
 
                     if (currentNode.HasValue("newsletterSubscriberListID"))
-                        subsciberListID = currentNode.GetPropertyValue<string>("newsletterSubscriberListID");
+                        subsciberListID = currentNode.Value<string>("newsletterSubscriberListID");
                     else
-                        subsciberListID = globalSettings.GetPropertyValue<string>("defaultNewsletterSubscriberListID");
+                        subsciberListID = globalSettings.Value<string>("defaultNewsletterSubscriberListID");
 
 
                     var email = new EmailParameter()
@@ -104,12 +104,12 @@ namespace USN.USNControllers
                     EmailParameter results = mc.Subscribe(subsciberListID,email, myMergeVars, "html", false, true, false, false);
                 }
 
-                lsReturnValue = String.Format("<div class=\"spc alert alert-success alert-dismissible fade in\" role=\"alert\"><div class=\"info\">{0}</div></div>", currentNode.GetPropertyValue<string>("newsletterSubmissionMessage"));
+                lsReturnValue = String.Format("<div class=\"spc alert alert-success alert-dismissible fade in\" role=\"alert\"><div class=\"info\">{0}</div></div>", currentNode.Value<string>("newsletterSubmissionMessage"));
                 return Content(lsReturnValue);
             }
             catch (Exception ex)
             {
-                return JavaScript(String.Format("{0}$(NewsletterError{1}).show();$(NewsletterError{1}).html('<div class=\"info\"><p>{2}</p><p>{3}</p></div>');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(umbraco.library.GetDictionaryItem("USN Newsletter Form Signup Error")), HttpUtility.JavaScriptStringEncode(ex.Message)));
+                return JavaScript(String.Format("{0}$(NewsletterError{1}).show();$(NewsletterError{1}).html('<div class=\"info\"><p>{2}</p><p>{3}</p></div>');", recaptchaReset, model.CurrentNodeID, HttpUtility.JavaScriptStringEncode(Umbraco.GetDictionaryValue("ESO Newsletter Form Signup Error")), HttpUtility.JavaScriptStringEncode(ex.Message)));
             }
         }
     }
