@@ -1,4 +1,4 @@
-﻿@inherits UmbracoViewPage<USN.USNModels.USNBaseViewModel>
+﻿@inherits UmbracoViewPage
 
 @{
     Layout = null;
@@ -14,7 +14,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    @Html.Partial("USNWebsiteHeadSection/USN_SEOPageHead", Model)
+    @Html.Partial("WebsiteHeadSection/_SEOPageHead", Model)
 
     <!-- WEB FONT -->
     <link href='//fonts.googleapis.com/css?family=Muli:300,400,600,600italic,400italic,300italic|Oswald:400,300,700' rel='stylesheet' type='text/css'>
@@ -28,7 +28,7 @@
     <link rel="stylesheet" href="~/css/usn-global.min.css" />
 
     <!-- INTERNAL STYLES -->
-    @Html.Partial("USNWebsiteHeadSection/USN_InternalStyles", Model)
+    @Html.Partial("WebsiteHeadSection/_InternalStyles", Model)
 
     <!--[if IE]>
     <link rel="stylesheet" href="~/css/ie.css">
@@ -46,21 +46,21 @@
     <script src="~/scripts/jquery.unobtrusive-ajax.min.js"></script>
 
     <!-- ICONS -->
-    @Html.Partial("USNWebsiteHeadSection/USN_Icons", Model)
+    @Html.Partial("WebsiteHeadSection/_Icons", Model)
 
     @RenderSection("Head", false)
     
-    @Html.Partial("USNMiscPageElements/USN_NotificationDurationVariable", Model)
+    @Html.Partial("MiscPageElements/_NotificationDurationVariable", Model)
 
-    @Html.Partial("USNWebsiteHeadSection/USN_HeaderScripts", Model)
+    @Html.Partial("WebsiteHeadSection/_HeaderScripts", Model)
 
 </head>
 <body @RenderSection("BodyTag", false)>
-    @Html.Partial("USNMiscPageElements/USN_AfterOpeningBodyScripts", Model)
+    @Html.Partial("MiscPageElements/_AfterOpeningBodyScripts", Model)
     <a class="skip-to-content sr-only" href="#content">Skip to the content</a>
     <!-- SITE -->
     <div id="site">
-        @if(!Model.Content.GetPropertyValue<bool>("hideWebsiteHeaderSection"))
+        @if(!Model.Value<bool>("hideWebsiteHeaderSection"))
         {
         <!-- HEADER -->
         <header>
@@ -68,7 +68,7 @@
 				<!-- ROW -->
                 <div class="row">
                     <!-- LOGO -->
-                    @Html.Partial("USNWebsiteHeadSection/USN_WebsiteLogo", Model)
+                    @Html.Partial("WebsiteHeadSection/_WebsiteLogo", Model)
                     <!--// LOGO -->
                     <!-- EXPAND -->
                     <a class="expand"><span>Menu</span></a>
@@ -79,9 +79,9 @@
                         <!-- REVEAL -->
                         <div class="reveal">
 	
-                            @Html.Partial("USNNavigation/USN_CTA", Model)
+                            @Html.Partial("Navigation/_CTA", Model)
 
-                            @Html.Partial("USNNavigation/USN_MainNavigation", Model)
+                            @Html.Partial("Navigation/_MainNavigation", Model)
 
                         </div>
                         <!--// REVEAL -->
@@ -96,19 +96,19 @@
         
         <div id="content">
 
-            @Html.Partial("USNAdvancedPageComponents/USN_TopComponents", Model)
+            @Html.Partial("AdvancedPageComponents/_TopComponents", Model)
 
             @RenderBody()
  
-            @Html.Partial("USNAdvancedPageComponents/USN_BottomComponents", Model)
+            @Html.Partial("AdvancedPageComponents/_BottomComponents", Model)
             
         </div>    
 
         <!-- BREADCRUMB -->
-        @Html.Partial("USNNavigation/USN_Breadcrumb", Model)
+        @Html.Partial("Navigation/_Breadcrumb", Model)
         <!--// BREADCRUMB -->
 
-        @if(!Model.Content.GetPropertyValue<bool>("hideWebsiteFooterSection"))
+        @if(!Model.Value<bool>("hideWebsiteFooterSection"))
         {
         <!-- FOOTER -->
         <footer>
@@ -116,16 +116,16 @@
                 <!-- ROW -->
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
-                        @Html.Partial("USNNavigation/USN_FooterQuickLinks", Model)
-                        @Html.Partial("USNNavigation/USN_MembersNavigation", Model)
+                        @Html.Partial("Navigation/_FooterQuickLinks", Model)
+                        @Html.Partial("Navigation/_MembersNavigation", Model)
                     </div>
                     <div class="col-md-4 col-xs-12">
                         <!-- COMPANY DETAILS -->
-                        @Html.Partial("USNMiscPageElements/USN_ContactInformation")
+                        @Html.Partial("MiscPageElements/_ContactInformation")
                         <!--// COMPANY DETAILS -->
                     </div>
                     <div class="col-md-4 col-xs-12">
-                        @Html.Partial("USNNavigation/USN_SocialLinks", Model)
+                        @Html.Partial("Navigation/_SocialLinks", Model)
                     </div>
                 </div>
                 <!--// ROW -->
@@ -135,7 +135,7 @@
                         <nav class="footer">
                             <ul>
                                 <li class="copyright"><div>&copy; @DateTime.Now.ToString("yyyy")</div></li>
-                                @Html.Partial("USNNavigation/USN_FooterNavigation", Model)
+                                @Html.Partial("Navigation/_FooterNavigation", Model)
                                 <li class="site-credit">
                                     <div>Umbraco CMS theme from </div>
                                     <a target="_blank" title="Link will open in a new window/tab" href="http://www.uskinned.net"><span>uSkinned</span></a>
@@ -159,10 +159,10 @@
     </div>
     <!--// SITE -->
     
-    @Html.Partial("USNMiscPageElements/USN_Notification", Model)
-    @Html.Partial("USNBlog/USN_BlogDisqusCommentCountScript", Model)
+    @Html.Partial("MiscPageElements/_Notification", Model)
+    @Html.Partial("Blog/_BlogDisqusCommentCountScript", Model)
     @RenderSection("FooterScripts", false)
-    @Html.Partial("USNMiscPageElements/USN_BeforeClosingBodyScripts", Model)
+    @Html.Partial("MiscPageElements/_BeforeClosingBodyScripts", Model)
     
 </body>
 </html>

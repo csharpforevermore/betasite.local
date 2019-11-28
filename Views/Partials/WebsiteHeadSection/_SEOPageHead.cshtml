@@ -1,9 +1,10 @@
-﻿@inherits UmbracoViewPage<USN.USNModels.USNBaseViewModel>
+﻿@inherits UmbracoViewPage<BaseViewModel>
 
 @using System.Globalization;
-@using USNStarterKit.USNHelpers;
+@using ESO.Models;
 
 @{
+/*
     UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
 
     string metaTitle;
@@ -48,6 +49,13 @@
         }
 
     }
+    */
+    
+    string canonical = "/";
+    string metaTitle = "meta title";
+    string metaDescription = "meta description";
+    string openGraphImage = "open graph image";
+    string siteName = Model.GlobalSettings.WebsiteName;
     
     <link rel="canonical" href="@canonical"/>
     <title>@metaTitle</title>

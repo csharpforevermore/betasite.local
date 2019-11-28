@@ -2,15 +2,15 @@
 using Umbraco.Web.Models;
 using Umbraco.Core.Models.PublishedContent;
 
-namespace USN.USNModels
+namespace ESO.Models
 {
     /// <summary>
     /// Not using strongly typed models here so that PureLive mode can be used
     /// </summary>
-    public class USNBaseViewModel : ContentModel
+    public class BaseViewModel : ContentModel
     {
         //Standard Model Pass Through
-        public USNBaseViewModel(IPublishedContent content) : base(content) { }
+        public BaseViewModel(IPublishedContent content) : base(content) { }
 
         public IPublishedContent GlobalSettings { get; set; }
 
