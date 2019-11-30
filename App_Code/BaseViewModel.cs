@@ -2,7 +2,7 @@
 using Umbraco.Web.Models;
 using Umbraco.Core.Models.PublishedContent;
 
-namespace ESO.Models
+namespace ESO.Models 
 {
     /// <summary>
     /// Not using strongly typed models here so that PureLive mode can be used

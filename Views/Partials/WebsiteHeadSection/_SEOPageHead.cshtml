@@ -3,38 +3,38 @@
 @using System.Globalization;
 @using ESO.Models;
 
+
 @{
-/*
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Umbraco.GlobalSettings();
 
     string metaTitle;
     string openGraphImage = String.Empty;
 
     var siteName = globalSettings.WebsiteName;
 
-    var canonical = Request.Url.Scheme + "://" + Request.Url.Host + Model.Content.Url;
+    var canonical = Request.Url.Scheme + "://" + Request.Url.Host + Model.Url;
 
-    if (Model.Content.HasValue("pageTitle"))
+    if (Model.HasValue("pageTitle"))
     {
-        metaTitle = Model.Content.GetPropertyValue<string>("pageTitle");
+        metaTitle = Model.Value<string>("pageTitle");
     }
     else
     {
-        metaTitle = Model.Content.Name + " | " + siteName;
+        metaTitle = Model.Name + " | " + siteName;
     }
 
-    var metaDescription = Model.Content.GetPropertyValue<string>("metaDescription");
+    var metaDescription = Model.Value<string>("metaDescription");
 
-    if (Model.Content.HasValue("openGraphImage") && Model.Content.GetPropertyValue<IPublishedContent>("openGraphImage") != null)
+    if (Model.HasValue("openGraphImage") && Model.Value<IPublishedContent>("openGraphImage") != null)
     {
-        openGraphImage = Request.Url.Scheme + "://" + Request.Url.Host + Model.Content.GetPropertyValue<IPublishedContent>("openGraphImage").Url;
+        openGraphImage = Request.Url.Scheme + "://" + Request.Url.Host + Model.Value<IPublishedContent>("openGraphImage").Url;
     }
     else if (globalSettings.OpenGraphDefaultImage != null)
     {
         openGraphImage = Request.Url.Scheme + "://" + Request.Url.Host + globalSettings.OpenGraphDefaultImage.Url;
     }
 
-    if (Model.Content.IsDocumentType(UsnblogLandingPage.ModelTypeAlias))
+    if (Model.IsDocumentType(BlogLandingPage.ModelTypeAlias))
     {
         int year = int.TryParse(Request.QueryString["year"], out year) ? year : 0;
         int month = int.TryParse(Request.QueryString["month"], out month) ? month : 0;
@@ -49,13 +49,6 @@
         }
 
     }
-    */
-    
-    string canonical = "/";
-    string metaTitle = "meta title";
-    string metaDescription = "meta description";
-    string openGraphImage = "open graph image";
-    string siteName = Model.GlobalSettings.WebsiteName;
     
     <link rel="canonical" href="@canonical"/>
     <title>@metaTitle</title>
@@ -67,22 +60,22 @@
     <meta property="og:description" content="@metaDescription" />
     <meta property="og:site_name" content="@siteName" />
 
-    if (globalSettings.HasValue("twitterSiteUsername") || Model.Content.HasValue("twitterCreatorUsername") )
+    if (globalSettings.HasValue("twitterSiteUsername") || Model.HasValue("twitterCreatorUsername") )
     {
         <meta name="twitter:card" content="summary" />
     }
 
     if (globalSettings.HasValue("twitterSiteUsername"))
     {
-        <meta name="twitter:site" content="@("@" + globalSettings.GetPropertyValue<string>("twitterSiteUsername"))" />
+        <meta name="twitter:site" content="@("@" + globalSettings.Value<string>("twitterSiteUsername"))" />
     }
 
-    if (Model.Content.HasValue("twitterCreatorUsername"))
+    if (Model.HasValue("twitterCreatorUsername"))
     {
-        <meta name="twitter:creator" content="@("@" + Model.Content.GetPropertyValue<string>("twitterCreatorUsername"))" />
+        <meta name="twitter:creator" content="@("@" + Model.Value<string>("twitterCreatorUsername"))" />
     }
 
-    if (Model.Content.GetPropertyValue<bool>("hideFromSearchEngines"))
+    if (Model.Value<bool>("hideFromSearchEngines"))
     {
         <meta name="robots" content="noindex">
     }

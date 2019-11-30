@@ -13,11 +13,11 @@ using Umbraco.Core.Services.Implement;
 using Umbraco.Web;
 using Umbraco.Web.Mvc;
 
-using ESO.ESOControllers;
+using ESO.Controllers;
 using ESO.Models;
 
 
-namespace USN.USNBusinessLogic
+namespace ESO.BusinessLogic
 {
     [RuntimeLevel(MinLevel = RuntimeLevel.Run)]
     public class MyComposer : IUserComposer
@@ -27,7 +27,7 @@ namespace USN.USNBusinessLogic
             // composition.SetContentLastChanceFinder<My404ContentFinder>();
 
             composition.Components().Append<MyComponent>();
-            composition.SetDefaultRenderMvcController(typeof(BaseController));
+            // composition.SetDefaultRenderMvcController(typeof(BaseController));
         }
     }
 
@@ -35,8 +35,6 @@ namespace USN.USNBusinessLogic
     {
         public void Initialize()
         {
-            ContentService.Saving += this.ContentService_Saving;
-            ContentService.Published += this.ContentService_Published;
         }
 
         public void Terminate()
@@ -54,30 +52,29 @@ namespace USN.USNBusinessLogic
         
         private void ContentService_Published(Umbraco.Core.Services.IContentService sender, Umbraco.Core.Events.ContentPublishedEventArgs e)
         {
-            {
-                foreach (IContent node in e.PublishedEntities)
-                {
-                    var publishedContent = new UmbracoHelper().Content(node.Id.ToString());
+            // foreach (IContent node in e.PublishedEntities)
+            // {
+            //     var publishedContent = sender.GetById(node.Id);
 
-                    if ((publishedContent.ContentType.Alias == "USNStandardPage" || publishedContent.ContentType.Alias == "USNStandardPageBlogPost") &&
-                        publishedContent.Children().Where(x => x.ContentType.Alias == "USNStandardPageComponents").FirstOrDefault() == null)
-                    {
-                        var contentService = ApplicationContext.Current.Services.ContentService;
-                        var pageComponentsFolder = contentService.CreateContent("Components", publishedContent.Id, "USNStandardPageComponents");
-                        pageComponentsFolder.SetValue("disableDelete", true);
-                        contentService.SaveAndPublishWithStatus(pageComponentsFolder);
-                    }
-                    else if ((publishedContent.ContentType.Alias == "USNHomepage" || publishedContent.ContentType.Alias == "USNAdvancedPage" || publishedContent.ContentType.Alias == "USNAdvancedPageBlogPost") &&
-                             publishedContent.Children().Where(x => x.ContentType.Alias == "USNAdvancedPageComponents").FirstOrDefault() == null)
-                    {
-                        var contentService = ApplicationContext.Current.Services.ContentService;
-                        var pageComponentsFolder = contentService.CreateContent("Components", publishedContent.Id, "USNAdvancedPageComponents");
-                        pageComponentsFolder.SetValue("disableDelete", true);
-                        contentService.SaveAndPublishWithStatus(pageComponentsFolder);
-                    }
-                }
-            }
+            //     if ((publishedContent.ContentType.Alias == "USNStandardPage" || publishedContent.ContentType.Alias == "USNStandardPageBlogPost") &&
+            //         publishedContent.Children().Where(x => x.ContentType.Alias == "USNStandardPageComponents").FirstOrDefault() == null)
+            //     {
+            //         var contentService = ApplicationContext.Current.Services.ContentService;
+            //         var pageComponentsFolder = contentService.CreateContent("Components", publishedContent.Id, "USNStandardPageComponents");
+            //         pageComponentsFolder.SetValue("disableDelete", true);
+            //         contentService.SaveAndPublishWithStatus(pageComponentsFolder);
+            //     }
+            //     else if ((publishedContent.ContentType.Alias == "USNHomepage" || publishedContent.ContentType.Alias == "USNAdvancedPage" || publishedContent.ContentType.Alias == "USNAdvancedPageBlogPost") &&
+            //                 publishedContent.Children().Where(x => x.ContentType.Alias == "USNAdvancedPageComponents").FirstOrDefault() == null)
+            //     {
+            //         var contentService = ApplicationContext.Current.Services.ContentService;
+            //         var pageComponentsFolder = contentService.CreateContent("Components", publishedContent.Id, "USNAdvancedPageComponents");
+            //         pageComponentsFolder.SetValue("disableDelete", true);
+            //         contentService.SaveAndPublishWithStatus(pageComponentsFolder);
+            //     }
+            // }
         }
+        
     }
     /*
         public class USNRegisterEvents : ApplicationEventHandler

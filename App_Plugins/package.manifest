@@ -1,16 +1,16 @@
 {
     // you can define multiple editors
-    "propertyEditors": [    
+    "propertyEditors": [
         {
             "alias": "ESO.BackgroundOptions",
             "name": "ESO Background Options",
             "icon": "",
             "group": "",
             "editor": {
-                "view": "~/App_Plugins/USN.BackgroundOptions/views/usn.backgroundoptions.html",
-				"valueType": "JSON"
+                "view": "~/App_Plugins/ESO.BackgroundOptions/views/eso.backgroundoptions.html",
+                "valueType": "JSON"
             }
-        },        
+        },
         {
             "alias": "ESO.Dashboard",
             "name": "ESO Dashboard",
@@ -19,7 +19,7 @@
             "editor": {
                 "view": "~/App_Plugins/.html"
             }
-        },        
+        },
         {
             "alias": "ESO.Grid.Code",
             "name": "ESO Grid Code",
@@ -28,7 +28,7 @@
             "editor": {
                 "view": "~/App_Plugins/.html"
             }
-        },        
+        },
         {
             "alias": "ESO.Heading",
             "name": "ESO Heading",
@@ -36,27 +36,27 @@
             "group": "Rich Content",
             "editor": {
                 "view": "~/App_Plugins/ESO.Heading/views/eso.heading.html",
-				"valueType": "JSON"
+                "valueType": "JSON"
             }
-        },        
+        },
         {
             "alias": "ESO.Label",
             "name": "ESO Label",
             "editor": {
                 "view": "~/App_Plugins/ESO.Label/views/eso.label.html",
-				"hideLabel": true
+                "hideLabel": true
             }
         },
         {
-            "alias": "ESO.MultiNodeTreePicker",
-            "name": "ESO MultiNode TreePicker",
+            "alias": "ESO.MultiNodeTreePicker2",
+            "name": "ESO MultiNode TreePicker2",
 			"icon": "icon-page-add",
 			"group": "pickers",
             "editor": {
 				"valueType": "TEXT",
                 "view": "~/App_Plugins/ESO.MultiNodeTreePicker/PropertyEditor/editor.html"
             },
-			"prevalues": {
+			"prevalues" : {
 				"fields": [
 					{
 					    "label": "Picker location",
@@ -95,35 +95,35 @@
         {
             "alias": "ESO.TrueFalse",
             "name": "ESO True/False",
-            "editor":{
+            "editor": {
                 "view": "~/App_Plugins/ESO.TrueFalse/views/eso.truefalse.html",
                 "valueType": "INT"
             }
         },
         {
-			"alias": "ESO.ShowHideTabs.OptionsController",
-			"name": "ESO Show/Hide Tabs",
-			"editor":{
-				"valueType": "STRING",
-				"view": "~/App_Plugins/ESO.ShowHideTabs/PropertyEditors/Options/options.html",
-				"hideLabel": false
-			},
-			"prevalues" : {
-				"fields": [
-					{
-					    "label": "Hide tabs",
-					    "description": "Enter the tabs you would like hidden if nothing is selected.",
-					    "key": "hideTabs",
-						"view": "textstring"
-					},
-					{
-					    "label": "Option values",
-					    "description": "Add and remove values for the list.",
-					    "key": "items",
-					    "view": "~/App_Plugins/ESO.ShowHideTabs/Prevalues/prevalues.html"
-					}         
-				]
-			}
+            "alias": "ESO.ShowHideTabs.OptionsController",
+            "name": "ESO Show/Hide Tabs",
+            "editor": {
+                "valueType": "STRING",
+                "view": "~/App_Plugins/ESO.ShowHideTabs/PropertyEditors/Options/options.html",
+                "hideLabel": false
+            },
+            "prevalues": {
+                "fields": [
+                    {
+                        "label": "Hide tabs",
+                        "description": "Enter the tabs you would like hidden if nothing is selected.",
+                        "key": "hideTabs",
+                        "view": "textstring"
+                    },
+                    {
+                        "label": "Option values",
+                        "description": "Add and remove values for the list.",
+                        "key": "items",
+                        "view": "~/App_Plugins/ESO.ShowHideTabs/Prevalues/prevalues.html"
+                    }
+                ]
+            }
         },
         {
             "alias": "ESO.ReadOnly",
@@ -135,31 +135,31 @@
         {
             "alias": "ESO.Options",
             "name": "ESO Options",
-			"icon": "icon-list",
-			"group": "lists",
+            "icon": "icon-list",
+            "group": "lists",
             "editor": {
                 "view": "~/App_Plugins/ESO.Options/PropertyEditor/editor.html"
             },
-			"prevalues" : {
-				"fields": [
-					{
-					    "label": "Select option type",
-					    "key": "optionType",
-						"view": "~/App_Plugins/ESO.Options/Prevalues/prevalues.html",
-						"validation": [
-							{
-								"type": "Required" 
-							}                        
-						]
-					}     
-				]
-			}
+            "prevalues": {
+                "fields": [
+                    {
+                        "label": "Select option type",
+                        "key": "optionType",
+                        "view": "~/App_Plugins/ESO.Options/Prevalues/prevalues.html",
+                        "validation": [
+                            {
+                                "type": "Required"
+                            }
+                        ]
+                    }
+                ]
+            }
         },
         {
             "alias": "ESO.TwitterUsername",
             "name": "ESO Twitter Username",
-			"icon": "icon-bird",
-			"group": "social media",
+            "icon": "icon-bird",
+            "group": "social media",
             "editor": {
                 "view": "~/App_Plugins/ESO.TwitterUsername/PropertyEditor/editor.html"
             }
@@ -170,16 +170,15 @@
             "group": "Pickers",
             "icon": "icon-umb-contour",
             "editor": {
-            "view": "~/App_Plugins/UmbracoForms/Backoffice/PropertyEditors/formpicker.html"
+                "view": "~/App_Plugins/UmbracoForms/Backoffice/PropertyEditors/formpicker.html"
             }
         }
-    ]
-    ,
+    ],
     "javascript": [
         "~/App_Plugins/MarkDownEditor/markdowneditor.controller.js",
-		"~/App_Plugins/ESO.BackgroundOptions/js/eso.backgroundoptions.js",
+        "~/App_Plugins/ESO.BackgroundOptions/js/eso.backgroundoptions.js",
         "~/App_Plugins/ESO.Dashboard/js/dashboard.controller.js",
-		"~/App_Plugins/ESO.Heading/js/eso.heading.js",
+        "~/App_Plugins/ESO.Heading/js/eso.heading.js",
         "~/App_Plugins/ESO.Label/js/eso.label.js",
         "~/App_Plugins/ESO.LicenseDashboard/js/dashboard.controller.js",
         "~/App_Plugins/ESO.LicenseDashboard/js/file.upload.api.service.js",
@@ -189,7 +188,7 @@
         "~/App_Plugins/ESO.ShowHideTabs/Prevalues/prevaluescontroller.js",
         "~/App_Plugins/ESO.ReadOnly/js/eso.readonly.js",
         "~/App_Plugins/ESO.Options/js/eso.options.js",
-		"~/App_Plugins/ESO.Options/Prevalues/prevaluescontroller.js"
+        "~/App_Plugins/ESO.Options/Prevalues/prevaluescontroller.js"
     ],
     "css": [
         "~/App_Plugins/ESO.BackgroundOptions/css/style.css",
@@ -202,18 +201,17 @@
         "~/App_Plugins/ESO.Options/css/style.css?v=5.4",
         "~/App_Plugins/ESO.TwitterUsername/css/style.css"
     ],
-    "gridEditors": 
-    [
-      {
-        "name": "Code",
-        "alias": "code",
-        "view": "textstring",
-        "render": "/app_plugins/ESO.Grid.Code/editor.cshtml",
-        "icon": "icon-code",
-        "config": {
-          "style": "border-left: 3px solid #ccc; padding: 10px; color: #fff; background-color: #000; font-size: 14px; font-family:monospace;",
-          "markup": "#value#"
+    "gridEditors": [
+        {
+            "name": "Code",
+            "alias": "code",
+            "view": "textstring",
+            "render": "/app_plugins/ESO.Grid.Code/editor.cshtml",
+            "icon": "icon-code",
+            "config": {
+                "style": "border-left: 3px solid #ccc; padding: 10px; color: #fff; background-color: #000; font-size: 14px; font-family:monospace;",
+                "markup": "#value#"
+            }
         }
-      }
     ]
 }
