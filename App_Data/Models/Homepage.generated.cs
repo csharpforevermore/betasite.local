@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Homepage</summary>
 	[PublishedModel("homepage")]
-	public partial class Homepage : PublishedContentModel
+	public partial class Homepage : PublishedContentModel, IDisableDeleteFunction, IPageGenericProperties, IPageNavigationSettings, IReusableContent, IScripts, ISEO
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -51,5 +51,131 @@ namespace Umbraco.Web.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("instructions")]
 		public string Instructions => this.Value<string>("instructions");
+
+		///<summary>
+		/// Disable delete: If "Yes" is selected, when a user attempts to delete this node they will be presented with a warning message indicating that this node cannot be deleted.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("disableDelete")]
+		public object DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
+
+		///<summary>
+		/// Custom body classes: Override the default styles of this page by adding page specific classes. Leave a space between each class e.g. custom-class another-class
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("customBodyClasses")]
+		public string CustomBodyClasses => PageGenericProperties.GetCustomBodyClasses(this);
+
+		///<summary>
+		/// Hide website footer section: Remove the global footer content at the end of this page. For example, contact information and navigation.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("hideWebsiteFooterSection")]
+		public object HideWebsiteFooterSection => PageGenericProperties.GetHideWebsiteFooterSection(this);
+
+		///<summary>
+		/// Hide website header section: Remove the global header content at the start of this page. For example, logo and navigation.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("hideWebsiteHeaderSection")]
+		public object HideWebsiteHeaderSection => PageGenericProperties.GetHideWebsiteHeaderSection(this);
+
+		///<summary>
+		/// Breadcrumb link text: Node name will be used by default if nothing is entered.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("breadcrumbLinkText")]
+		public string BreadcrumbLinkText => PageNavigationSettings.GetBreadcrumbLinkText(this);
+
+		///<summary>
+		/// Hide breadcrumb
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("hideBreadcrumb")]
+		public object HideBreadcrumb => PageNavigationSettings.GetHideBreadcrumb(this);
+
+		///<summary>
+		/// Hide from all navigation: Prevents this page from being shown in most menus
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("umbracoNaviHide")]
+		public object UmbracoNaviHide => PageNavigationSettings.GetUmbracoNaviHide(this);
+
+		///<summary>
+		/// After opening body scripts
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("pageAfterOpeningBodyScripts")]
+		public string PageAfterOpeningBodyScripts => Scripts.GetPageAfterOpeningBodyScripts(this);
+
+		///<summary>
+		/// Before closing body scripts: Anything you enter here will be placed before the closing &lt;/body&gt; tag on this page of your website.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("pageBeforeClosingBodyScripts")]
+		public string PageBeforeClosingBodyScripts => Scripts.GetPageBeforeClosingBodyScripts(this);
+
+		///<summary>
+		/// Header scripts: Anything you enter here will be placed before the closing &lt;/head&gt; tag on this page of your website.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("pageHeaderScripts")]
+		public string PageHeaderScripts => Scripts.GetPageHeaderScripts(this);
+
+		///<summary>
+		/// Hide from search engines: This will add a noindex meta tag to your page and exclude this page from your sitemap.xml
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("hideFromSearchEngines")]
+		public object HideFromSearchEngines => SEO.GetHideFromSearchEngines(this);
+
+		///<summary>
+		/// Meta description: This is shown in search engines, when the page is shared via social media and in your sites own search results. Try to keep this below 155 characters.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("metaDescription")]
+		public string MetaDescription => SEO.GetMetaDescription(this);
+
+		///<summary>
+		/// Open Graph image: The image used when someone shares the page on social media, such as, Twitter or Facebook.  We suggest that you use an image of at least 1200x630 pixels.  If nothing is uploaded here the "Default Open Graph image" from your "Global Settings" will be used.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("openGraphImage")]
+		public IPublishedContent OpenGraphImage => SEO.GetOpenGraphImage(this);
+
+		///<summary>
+		/// Web page title: This is shown in search engines, web browsers and when the page is shared via social media. If left empty the default page title will be used.  The default page title will be a combination of the current page node name and the website name defined in "Global Settings".
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("pageTitle")]
+		public string PageTitle => SEO.GetPageTitle(this);
+
+		///<summary>
+		/// Sitemap XML change frequency
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("sitemapXMLChangeFrequency")]
+		public object SitemapXmlchangeFrequency => SEO.GetSitemapXmlchangeFrequency(this);
+
+		///<summary>
+		/// Sitemap XML priority
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("sitemapXMLPriority")]
+		public decimal SitemapXmlpriority => SEO.GetSitemapXmlpriority(this);
+
+		///<summary>
+		/// Twitter creator username: Username for the content creator/author used in the twitter card.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("twitterCreatorUsername")]
+		public object TwitterCreatorUsername => SEO.GetTwitterCreatorUsername(this);
+
+		///<summary>
+		/// Alternative URL: Use this field to provide multiple URLs for a content node.  For example if you were to enter "examplepage1,examplepage2/this-is-a-test", this would resolve the following URLs to the same page.  /examplepage1/ /examplepage2/this-is-a-test/  Please note that the values you use must be lowercase, not use a leading slash and not use a file extension.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("umbracoUrlAlias")]
+		public string UmbracoUrlAlias => SEO.GetUmbracoUrlAlias(this);
 	}
 }

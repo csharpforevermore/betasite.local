@@ -68,7 +68,7 @@
 				<!-- ROW -->
                 <div class="row">
                     <!-- LOGO -->
-                    @*Html.Partial("WebsiteHeadSection/_WebsiteLogo", Model)*@
+                    @Html.Partial("WebsiteHeadSection/WebsiteLogo", Model)
                     <!--// LOGO -->
                     <!-- EXPAND -->
                     <a class="expand"><span>Menu</span></a>
@@ -137,8 +137,8 @@
                                 <li class="copyright"><div>&copy; @DateTime.Now.ToString("yyyy")</div></li>
                                 @*Html.Partial("Navigation/_FooterNavigation", Model)*@
                                 <li class="site-credit">
-                                    <div>Umbraco CMS theme from </div>
-                                    <a target="_blank" title="Link will open in a new window/tab" href="http://www.uskinned.net"><span>uSkinned</span></a>
+                                    <div>Built using Umbraco CMS version 8 by</div>
+                                    <a target="_blank" title="eSolutions link will open in a new window/tab" href="http://www.esolutionsgroup.ca"><span>eSolutions Group of Canada</span></a>
                                 </li>
                             </ul>
                         </nav>

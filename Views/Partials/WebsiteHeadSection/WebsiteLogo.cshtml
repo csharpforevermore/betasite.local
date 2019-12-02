@@ -1,0 +1,16 @@
+﻿@using ContentModels = Umbraco.Web.PublishedModels;
+@inherits UmbracoViewPage
+
+@{
+    var content = Model.GlobalSettings();
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)content;
+
+    string logoClass = String.Empty;
+
+    if(globalSettings.WebsiteLogo == null)
+    {
+        logoClass = "class=\"no-image\"";
+    }
+
+    <div id="logo" @Html.Raw(logoClass)><a href="@HttpContext.Current.Request.Url.Host">@globalSettings.WebsiteName</a></div>
+}
