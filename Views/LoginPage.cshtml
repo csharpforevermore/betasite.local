@@ -1,4 +1,4 @@
-﻿@inherits UmbracoViewPage<USN.USNModels.USNBaseViewModel>
+﻿@inherits UmbracoViewPage
 
 @using USNStarterKit.USNHelpers;
 
@@ -12,7 +12,7 @@
     }
 }
 
-@Html.Partial("USNMiscPageElements/USN_StandardPageBannerSection", Model)
+@Html.Partial("MiscPageElements/StandardPageBannerSection", Model)
 
 <!-- CONTENT -->
 <section class="content">
@@ -20,28 +20,28 @@
     <!-- CONTAINER -->
     <div class="container">
 				
-                @Html.Partial("USNMiscPageElements/USN_StandardPageTitle", Model)
+                @Html.Partial("MiscPageElements/StandardPageTitle", Model)
 	
 	    <!-- ROW -->
 	    <div class="row">
 			
 		    <!-- CONTENT COL -->
-		    <div @Html.Partial("USNLayout/USN_ContentColumnStyle", Model)>
+		    <div @Html.Partial("Layout/ContentColumnStyle", Model)>
 		
 			    <!-- IMAGE -->
-			    @Html.Partial("USNMiscPageElements/USN_MainImage",Model)
+			    @Html.Partial("MiscPageElements/MainImage",Model)
 			    <!--// IMAGE -->
 	       
 			    @Umbraco.Field("bodyText")
 
                 <!-- FORM -->
-                @Html.Action("Index", "USNLoginFormSurface", new { LoginPage = Model })
+                @Html.Action("Index", "LoginFormSurface", new { LoginPage = Model })
 			    <!--// FORM -->
 				
 		    </div>
 		    <!--// CONTENT COL -->
 			
-		    @Html.Partial("USNLayout/USN_PodAndNavColumn", Model)
+		    @Html.Partial("Layout/PodAndNavColumn", Model)
 		
 	    </div>
 	    <!--// ROW -->
@@ -69,7 +69,7 @@
             headerClass = headerClass + " no-footer";
         }
 
-        UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+        var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
         string fixedWidth = String.Empty;
 

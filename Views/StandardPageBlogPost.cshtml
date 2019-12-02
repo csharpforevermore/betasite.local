@@ -1,14 +1,14 @@
-﻿@inherits UmbracoViewPage<USN.USNModels.USNBaseViewModel>
+﻿@inherits UmbracoViewPage
 
 @using USNStarterKit.USNHelpers;
 
 @{
     Layout = "USNMaster.cshtml";
 
-    UsnstandardPageBlogPost standardPageBlogPost = (UsnstandardPageBlogPost)Model.Content;
+    var standardPageBlogPost = (StandardPageBlogPost)Model.Content;
 }
 
-@Html.Partial("USNMiscPageElements/USN_StandardPageBannerSection", Model)
+@Html.Partial("MiscPageElements/StandardPageBannerSection", Model)
 
 <!-- CONTENT -->
 <section class="content">
@@ -16,13 +16,13 @@
     <!-- CONTAINER -->
     <div class="container">
 				
-                @Html.Partial("USNMiscPageElements/USN_StandardPageTitle", Model)
+                @Html.Partial("MiscPageElements/StandardPageTitle", Model)
 		
 	    <!-- ROW -->
 	    <div class="row">
 			
 		    <!-- CONTENT COL -->
-		    <div @Html.Partial("USNLayout/USN_ContentColumnStyle", Model)>
+		    <div @Html.Partial("Layout/ContentColumnStyle", Model)>
 		    
 			    <!-- IMAGE -->
 			    @Html.Partial("USNMiscPageElements/USN_MainImage",Model)

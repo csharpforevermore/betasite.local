@@ -9,6 +9,8 @@ using System;
 using System.Linq;
 using System.Net;
 
+using ESO.Models;
+
 namespace ESO.Extensions
 {
     public static class Extensions
@@ -20,6 +22,11 @@ namespace ESO.Extensions
             var node = Umbraco.Web.Composing.Current.UmbracoHelper.Content(id);
 
             return node;
+        }
+
+        public static IPublishedContent GlobalSettings(this BaseViewModel content)
+        {
+            return content.Content.GlobalSettings();
         }
 
         // public static IPublishedContent GlobalSettings(this IPublishedContent node)

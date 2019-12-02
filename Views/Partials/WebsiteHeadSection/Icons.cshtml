@@ -1,7 +1,7 @@
-﻿@inherits UmbracoViewPage<USN.USNModels.USNBaseViewModel>
+﻿@inherits UmbracoViewPage
 
 @{	
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    var globalSettings = (Umbraco.ModelsBuilder.PublishedContent.GlobalSettings)Model.GlobalSettings;
     
     Image faviconAndTouchIcon = (Image)globalSettings.FaviconAndTouchIcons;
 
