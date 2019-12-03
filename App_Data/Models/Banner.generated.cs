@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Banners</summary>
 	[PublishedModel("banner")]
-	public partial class Banner : PublishedContentModel
+	public partial class Banner : PublishedContentModel, ICustomComponentClassesComponent, IDisableDeleteFunction
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -46,10 +46,52 @@ namespace Umbraco.Web.PublishedModels
 		// properties
 
 		///<summary>
+		/// Auto rotate speed: A value of 0 will stop auto rotation.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("autoRotateSpeed")]
+		public decimal AutoRotateSpeed => this.Value<decimal>("autoRotateSpeed");
+
+		///<summary>
+		/// Banners
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("banners")]
+		public string Banners => this.Value<string>("banners");
+
+		///<summary>
 		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Banners{i class="icon sprTree icon-pictures-alt-2 color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}The node name you enter above is for your reference only and will not appear on the website.{/p}{/div}
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("instructions")]
 		public string Instructions => this.Value<string>("instructions");
+
+		///<summary>
+		/// Show arrows
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("showArrows")]
+		public object ShowArrows => this.Value("showArrows");
+
+		///<summary>
+		/// Show dots
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("showDots")]
+		public object ShowDots => this.Value("showDots");
+
+		///<summary>
+		/// Custom component classes: Add your own touch with specific classes. Leave a space between each class e.g. custom-class another-class
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("customComponentClasses_")]
+		public string CustomComponentClasses_ => CustomComponentClassesComponent.GetCustomComponentClasses_(this);
+
+		///<summary>
+		/// Disable delete: If "Yes" is selected, when a user attempts to delete this node they will be presented with a warning message indicating that this node cannot be deleted.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("disableDelete")]
+		public object DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
 	}
 }

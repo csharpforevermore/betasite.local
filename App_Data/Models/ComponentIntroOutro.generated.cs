@@ -20,9 +20,54 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedModels
 {
+	// Mixin Content Type with alias "componentIntroOutro"
+	/// <summary>Component Intro/Outro</summary>
+	public partial interface IComponentIntroOutro : IPublishedContent
+	{
+		/// <summary>Heading</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		string IntroductionHeading { get; }
+
+		/// <summary>Links</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		IEnumerable<Umbraco.Web.Models.Link> IntroductionLinks { get; }
+
+		/// <summary>Secondary heading</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		string IntroductionSecondaryHeading { get; }
+
+		/// <summary>Text</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		IHtmlString IntroductionText { get; }
+
+		/// <summary>Text alignment</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		object IntroductionTextAlignment { get; }
+
+		/// <summary>Heading</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		Newtonsoft.Json.Linq.JToken OutroHeading { get; }
+
+		/// <summary>Links</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		IEnumerable<Umbraco.Web.Models.Link> OutroLinks { get; }
+
+		/// <summary>Secondary heading</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		string OutroSecondaryHeading { get; }
+
+		/// <summary>Text</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		IHtmlString OutroText { get; }
+
+		/// <summary>Text alignment</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		object OutroTextAlignment { get; }
+	}
+
 	/// <summary>Component Intro/Outro</summary>
 	[PublishedModel("componentIntroOutro")]
-	public partial class ComponentIntroOutro : PublishedContentModel
+	public partial class ComponentIntroOutro : PublishedContentModel, IComponentIntroOutro
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -50,69 +95,109 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("introductionHeading")]
-		public Newtonsoft.Json.Linq.JToken IntroductionHeading => this.Value<Newtonsoft.Json.Linq.JToken>("introductionHeading");
+		public string IntroductionHeading => GetIntroductionHeading(this);
+
+		/// <summary>Static getter for Heading</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static string GetIntroductionHeading(IComponentIntroOutro that) => that.Value<string>("introductionHeading");
 
 		///<summary>
 		/// Links: The "Caption" field will be used for your link text.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("introductionLinks")]
-		public IEnumerable<Umbraco.Web.Models.Link> IntroductionLinks => this.Value<IEnumerable<Umbraco.Web.Models.Link>>("introductionLinks");
+		public IEnumerable<Umbraco.Web.Models.Link> IntroductionLinks => GetIntroductionLinks(this);
+
+		/// <summary>Static getter for Links</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static IEnumerable<Umbraco.Web.Models.Link> GetIntroductionLinks(IComponentIntroOutro that) => that.Value<IEnumerable<Umbraco.Web.Models.Link>>("introductionLinks");
 
 		///<summary>
 		/// Secondary heading
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("introductionSecondaryHeading")]
-		public string IntroductionSecondaryHeading => this.Value<string>("introductionSecondaryHeading");
+		public string IntroductionSecondaryHeading => GetIntroductionSecondaryHeading(this);
+
+		/// <summary>Static getter for Secondary heading</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static string GetIntroductionSecondaryHeading(IComponentIntroOutro that) => that.Value<string>("introductionSecondaryHeading");
 
 		///<summary>
 		/// Text
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("introductionText")]
-		public IHtmlString IntroductionText => this.Value<IHtmlString>("introductionText");
+		public IHtmlString IntroductionText => GetIntroductionText(this);
+
+		/// <summary>Static getter for Text</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static IHtmlString GetIntroductionText(IComponentIntroOutro that) => that.Value<IHtmlString>("introductionText");
 
 		///<summary>
 		/// Text alignment
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("introductionTextAlignment")]
-		public object IntroductionTextAlignment => this.Value("introductionTextAlignment");
+		public object IntroductionTextAlignment => GetIntroductionTextAlignment(this);
+
+		/// <summary>Static getter for Text alignment</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static object GetIntroductionTextAlignment(IComponentIntroOutro that) => that.Value("introductionTextAlignment");
 
 		///<summary>
 		/// Heading: Your heading hierarchy is important for SEO. This will not affect font size.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("outroHeading")]
-		public Newtonsoft.Json.Linq.JToken OutroHeading => this.Value<Newtonsoft.Json.Linq.JToken>("outroHeading");
+		public Newtonsoft.Json.Linq.JToken OutroHeading => GetOutroHeading(this);
+
+		/// <summary>Static getter for Heading</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static Newtonsoft.Json.Linq.JToken GetOutroHeading(IComponentIntroOutro that) => that.Value<Newtonsoft.Json.Linq.JToken>("outroHeading");
 
 		///<summary>
 		/// Links: The "Caption" field will be used for your link text.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("outroLinks")]
-		public IEnumerable<Umbraco.Web.Models.Link> OutroLinks => this.Value<IEnumerable<Umbraco.Web.Models.Link>>("outroLinks");
+		public IEnumerable<Umbraco.Web.Models.Link> OutroLinks => GetOutroLinks(this);
+
+		/// <summary>Static getter for Links</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static IEnumerable<Umbraco.Web.Models.Link> GetOutroLinks(IComponentIntroOutro that) => that.Value<IEnumerable<Umbraco.Web.Models.Link>>("outroLinks");
 
 		///<summary>
 		/// Secondary heading
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("outroSecondaryHeading")]
-		public string OutroSecondaryHeading => this.Value<string>("outroSecondaryHeading");
+		public string OutroSecondaryHeading => GetOutroSecondaryHeading(this);
+
+		/// <summary>Static getter for Secondary heading</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static string GetOutroSecondaryHeading(IComponentIntroOutro that) => that.Value<string>("outroSecondaryHeading");
 
 		///<summary>
 		/// Text
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("outroText")]
-		public IHtmlString OutroText => this.Value<IHtmlString>("outroText");
+		public IHtmlString OutroText => GetOutroText(this);
+
+		/// <summary>Static getter for Text</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static IHtmlString GetOutroText(IComponentIntroOutro that) => that.Value<IHtmlString>("outroText");
 
 		///<summary>
 		/// Text alignment
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("outroTextAlignment")]
-		public object OutroTextAlignment => this.Value("outroTextAlignment");
+		public object OutroTextAlignment => GetOutroTextAlignment(this);
+
+		/// <summary>Static getter for Text alignment</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static object GetOutroTextAlignment(IComponentIntroOutro that) => that.Value("outroTextAlignment");
 	}
 }

@@ -20,9 +20,15 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedModels
 {
+	// Mixin Content Type with alias "standardPageBannerSection"
+	/// <summary>Standard Page Banner Section</summary>
+	public partial interface IStandardPageBannerSection : IPublishedContent
+	{
+	}
+
 	/// <summary>Standard Page Banner Section</summary>
 	[PublishedModel("standardPageBannerSection")]
-	public partial class StandardPageBannerSection : PublishedContentModel
+	public partial class StandardPageBannerSection : PublishedContentModel, IStandardPageBannerSection
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant

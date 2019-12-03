@@ -20,49 +20,36 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedModels
 {
-	// Mixin Content Type with alias "customComponentClassesComponent"
-	/// <summary>Custom Component Classes component</summary>
-	public partial interface ICustomComponentClassesComponent : IPublishedContent
-	{
-		/// <summary>Custom component classes</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		string CustomComponentClasses_ { get; }
-	}
-
-	/// <summary>Custom Component Classes component</summary>
-	[PublishedModel("customComponentClassesComponent")]
-	public partial class CustomComponentClassesComponent : PublishedContentModel, ICustomComponentClassesComponent
+	/// <summary>Blog Authors Folder</summary>
+	[PublishedModel("blogAuthorsFolder")]
+	public partial class BlogAuthorsFolder : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public new const string ModelTypeAlias = "customComponentClassesComponent";
+		public new const string ModelTypeAlias = "blogAuthorsFolder";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new static IPublishedContentType GetModelContentType()
 			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<CustomComponentClassesComponent, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<BlogAuthorsFolder, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
 
 		// ctor
-		public CustomComponentClassesComponent(IPublishedContent content)
+		public BlogAuthorsFolder(IPublishedContent content)
 			: base(content)
 		{ }
 
 		// properties
 
 		///<summary>
-		/// Custom component classes: Add your own touch with specific classes. Leave a space between each class e.g. custom-class another-class
+		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Blog Authors{i class="icon sprTree icon-folder-outline color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}Create items below this folder to add new "Blog Authors".{/p} {p}{strong}DO NOT{/strong} delete or rename this folder.{/p}{/div}
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("customComponentClasses_")]
-		public string CustomComponentClasses_ => GetCustomComponentClasses_(this);
-
-		/// <summary>Static getter for Custom component classes</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static string GetCustomComponentClasses_(ICustomComponentClassesComponent that) => that.Value<string>("customComponentClasses_");
+		[ImplementPropertyType("instructions")]
+		public string Instructions => this.Value<string>("instructions");
 	}
 }

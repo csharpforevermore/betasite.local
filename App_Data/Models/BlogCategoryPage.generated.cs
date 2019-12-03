@@ -20,44 +20,37 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedModels
 {
-	/// <summary>Homepage</summary>
-	[PublishedModel("homepage")]
-	public partial class Homepage : PublishedContentModel, IDisableDeleteFunction, IPageGenericProperties, IPageNavigationSettings, IReusableContent, IScripts, ISEO
+	/// <summary>Blog Category Page</summary>
+	[PublishedModel("blogCategoryPage")]
+	public partial class BlogCategoryPage : PublishedContentModel, IDisableDeleteFunction, IPageGenericProperties, IPageNavigationSettings, IReusableContent, IScripts, ISEO, IStandardPageBannerSection, IStandardPageContent
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public new const string ModelTypeAlias = "homepage";
+		public new const string ModelTypeAlias = "blogCategoryPage";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new static IPublishedContentType GetModelContentType()
 			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Homepage, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<BlogCategoryPage, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
 
 		// ctor
-		public Homepage(IPublishedContent content)
+		public BlogCategoryPage(IPublishedContent content)
 			: base(content)
 		{ }
 
 		// properties
 
 		///<summary>
-		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Homepage{i class="icon umb-tree-icon sprTree icon-home pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}To add content to this page you are required to add components to the "Components" folder directly below this page.{/p}{p}By adding new components you will be able to organise the layout and content of this page.{/p}{/div}
+		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Blog Category{i class="icon sprTree icon-categories  pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}The node name you enter above will be used for the "Category Name" displayed on the website.{/p}{p} This page will list all blog posts that have been added to this category.{/p}{/p}{/div}
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("instructions")]
 		public string Instructions => this.Value<string>("instructions");
-
-		///<summary>
-		/// Sitemap link text: Node name will be used by default if nothing is entered.
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("sitemapLinkText")]
-		public string SitemapLinkText => this.Value<string>("sitemapLinkText");
 
 		///<summary>
 		/// Disable delete: If "Yes" is selected, when a user attempts to delete this node they will be presented with a warning message indicating that this node cannot be deleted.

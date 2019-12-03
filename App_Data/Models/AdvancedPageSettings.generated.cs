@@ -20,9 +20,38 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedModels
 {
+	// Mixin Content Type with alias "advancedPageSettings"
+	/// <summary>Advanced Page Settings</summary>
+	public partial interface IAdvancedPageSettings : IPublishedElement
+	{
+		/// <summary>Instructions</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		string ApsInstructions { get; }
+
+		/// <summary>Background Colour</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		string BackgroundColour { get; }
+
+		/// <summary>Background image</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		IPublishedContent BackgroundImage { get; }
+
+		/// <summary>Background image options</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		Newtonsoft.Json.Linq.JToken BackgroundImageOptions { get; }
+
+		/// <summary>Button color</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		string ButtonColor { get; }
+
+		/// <summary>Component width</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		object Width { get; }
+	}
+
 	/// <summary>Advanced Page Settings</summary>
 	[PublishedModel("advancedPageSettings")]
-	public partial class AdvancedPageSettings : PublishedContentModel
+	public partial class AdvancedPageSettings : PublishedElementModel, IAdvancedPageSettings
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -39,52 +68,76 @@ namespace Umbraco.Web.PublishedModels
 #pragma warning restore 0109
 
 		// ctor
-		public AdvancedPageSettings(IPublishedContent content)
+		public AdvancedPageSettings(IPublishedElement content)
 			: base(content)
 		{ }
 
 		// properties
 
 		///<summary>
+		/// Instructions: {div class="panel-body"}{p}These settings only apply if this component has been added to the "Homepage" or an "Advanced Page / Advanced Page Blog Post".{/p}{/div}
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("apsInstructions")]
+		public string ApsInstructions => GetApsInstructions(this);
+
+		/// <summary>Static getter for Instructions</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static string GetApsInstructions(IAdvancedPageSettings that) => that.Value<string>("apsInstructions");
+
+		///<summary>
 		/// Background Colour: Color selected will dictate the color to be used for any text.  If a background image is used, select the color that works best for the text over the image.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("backgroundColour")]
-		public string BackgroundColour => this.Value<string>("backgroundColour");
+		public string BackgroundColour => GetBackgroundColour(this);
+
+		/// <summary>Static getter for Background Colour</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static string GetBackgroundColour(IAdvancedPageSettings that) => that.Value<string>("backgroundColour");
 
 		///<summary>
 		/// Background image: No recommended image size. To cover the full area of the component use a large image. Use a small image to repeat.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("backgroundImage")]
-		public IPublishedContent BackgroundImage => this.Value<IPublishedContent>("backgroundImage");
+		public IPublishedContent BackgroundImage => GetBackgroundImage(this);
+
+		/// <summary>Static getter for Background image</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static IPublishedContent GetBackgroundImage(IAdvancedPageSettings that) => that.Value<IPublishedContent>("backgroundImage");
 
 		///<summary>
-		/// Background image options: TBC
+		/// Background image options
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("backgroundImageOptions")]
-		public string BackgroundImageOptions => this.Value<string>("backgroundImageOptions");
+		public Newtonsoft.Json.Linq.JToken BackgroundImageOptions => GetBackgroundImageOptions(this);
+
+		/// <summary>Static getter for Background image options</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static Newtonsoft.Json.Linq.JToken GetBackgroundImageOptions(IAdvancedPageSettings that) => that.Value<Newtonsoft.Json.Linq.JToken>("backgroundImageOptions");
 
 		///<summary>
 		/// Button color: Selects the colour of the button
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("buttonColor")]
-		public string ButtonColor => this.Value<string>("buttonColor");
+		public string ButtonColor => GetButtonColor(this);
 
-		///<summary>
-		/// Instructions: {div class="panel-body"}{p}These settings only apply if this component has been added to the "Homepage" or an "Advanced Page / Advanced Page Blog Post".{/p}{/div}
-		///</summary>
+		/// <summary>Static getter for Button color</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("instructions")]
-		public string Instructions => this.Value<string>("instructions");
+		public static string GetButtonColor(IAdvancedPageSettings that) => that.Value<string>("buttonColor");
 
 		///<summary>
-		/// Component width: TBC
+		/// Component width
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("width")]
-		public string Width => this.Value<string>("width");
+		public object Width => GetWidth(this);
+
+		/// <summary>Static getter for Component width</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static object GetWidth(IAdvancedPageSettings that) => that.Value("width");
 	}
 }

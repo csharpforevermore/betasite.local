@@ -24,6 +24,29 @@ namespace Umbraco.Web.PublishedModels
 	/// <summary>Reusable Content</summary>
 	public partial interface IReusableContent : IPublishedContent
 	{
+		/// <summary>Bottom components</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		string BottomComponents { get; }
+
+		/// <summary>Override default bottom components</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		object OverrideDefaultBottomComponents { get; }
+
+		/// <summary>Override default pods</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		object OverrideDefaultPods { get; }
+
+		/// <summary>Override default top components</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		object OverrideDefaultTopComponents { get; }
+
+		/// <summary>Pods</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		string PagePods { get; }
+
+		/// <summary>Top components</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		string TopComponents { get; }
 	}
 
 	/// <summary>Reusable Content</summary>
@@ -50,5 +73,71 @@ namespace Umbraco.Web.PublishedModels
 		{ }
 
 		// properties
+
+		///<summary>
+		/// Bottom components: Select the components you would like to appear on this page. The components selected will only be displayed if "Yes" is selected above.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("bottomComponents")]
+		public string BottomComponents => GetBottomComponents(this);
+
+		/// <summary>Static getter for Bottom components</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static string GetBottomComponents(IReusableContent that) => that.Value<string>("bottomComponents");
+
+		///<summary>
+		/// Override default bottom components: Select "Yes" to override the default components selected within "Global Settings".
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("overrideDefaultBottomComponents")]
+		public object OverrideDefaultBottomComponents => GetOverrideDefaultBottomComponents(this);
+
+		/// <summary>Static getter for Override default bottom components</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static object GetOverrideDefaultBottomComponents(IReusableContent that) => that.Value("overrideDefaultBottomComponents");
+
+		///<summary>
+		/// Override default pods: Select "Yes" to override the default pods selected within "Global Settings".
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("overrideDefaultPods")]
+		public object OverrideDefaultPods => GetOverrideDefaultPods(this);
+
+		/// <summary>Static getter for Override default pods</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static object GetOverrideDefaultPods(IReusableContent that) => that.Value("overrideDefaultPods");
+
+		///<summary>
+		/// Override default top components: Select "Yes" to override the default components selected within "Global Settings".
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("overrideDefaultTopComponents")]
+		public object OverrideDefaultTopComponents => GetOverrideDefaultTopComponents(this);
+
+		/// <summary>Static getter for Override default top components</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static object GetOverrideDefaultTopComponents(IReusableContent that) => that.Value("overrideDefaultTopComponents");
+
+		///<summary>
+		/// Pods: Select the pods you would like to appear on this page. The pods selected will only be displayed if "Yes" is selected above.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("pagePods")]
+		public string PagePods => GetPagePods(this);
+
+		/// <summary>Static getter for Pods</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static string GetPagePods(IReusableContent that) => that.Value<string>("pagePods");
+
+		///<summary>
+		/// Top components: Select the components you would like to appear on this page. The components selected will only be displayed if "Yes" is selected above.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("topComponents")]
+		public string TopComponents => GetTopComponents(this);
+
+		/// <summary>Static getter for Top components</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		public static string GetTopComponents(IReusableContent that) => that.Value<string>("topComponents");
 	}
 }
