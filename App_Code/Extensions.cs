@@ -8,8 +8,8 @@ using Umbraco.Web.PublishedModels;
 using System;
 using System.Linq;
 using System.Net;
+using System.Configuration;
 
-using ESO.Models;
 
 namespace ESO.Extensions
 {
@@ -17,28 +17,34 @@ namespace ESO.Extensions
     {
         public static IPublishedContent GlobalSettings(this IPublishedContent content)
         {
-            int id = 1075;
+            return GetNode(content, "ESO.GlobalSettingsNodeId", 1075);
+        }
+
+        public static IPublishedContent Navigation(this IPublishedContent content)
+        {
+            return GetNode(content, "ESO.NavigationNodeId", 1076);
+        }
+
+        public static bool HasValue(this string text)
+        {
+            return !string.IsNullOrEmpty(text);
+        }
+
+
+        private static IPublishedContent GetNode(IPublishedContent currentPage, string keyValue, int defaultValue)
+        {
+            object obj =  ConfigurationManager.AppSettings[keyValue];
+            int id = defaultValue;
+
+            if(obj != null && obj is int){
+                id = int.Parse(obj as string);
+            } 
+
+
             IContentService contentService = Umbraco.Core.Composing.Current.Services.ContentService;
             var node = Umbraco.Web.Composing.Current.UmbracoHelper.Content(id);
 
             return node;
-        }
-
-        public static IPublishedContent GlobalSettings(this BaseViewModel content)
-        {
-            return content.Content.GlobalSettings();
-        }
-
-        // public static IPublishedContent GlobalSettings(this IPublishedContent node)
-        // {
-        //     throw new Exception();
-        //     return node.AncestorOrSelf().Descendants("globalSettings").FirstOrDefault();
-        // }
-
-        public static int WordCount(this String str)
-        {
-            return str.Split(new char[] { ' ', '.', '?' },
-                             StringSplitOptions.RemoveEmptyEntries).Length;
         }
     }
 }
