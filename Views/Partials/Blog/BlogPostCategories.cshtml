@@ -4,7 +4,7 @@
     if (Model.HasValue("postCategories"))
     {
 
-        IEnumerable<IPublishedContent> categories = Model.GetPropertyValue<IEnumerable<IPublishedContent>>("postCategories");
+        IEnumerable<IPublishedContent> categories = Model.Value<IEnumerable<IPublishedContent>>("postCategories");
 
         int currentCount = 1;
 

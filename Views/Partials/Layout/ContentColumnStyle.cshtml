@@ -1,19 +1,17 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNOptions = USNStarterKit.USNEnums.Options;
-
 @{
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
     USNOptions pageLayout;
 
     //If page is a blog category, need to get layout from blog landing page
-    if (Model.Content.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)){
-        IPublishedContent blogLandingPage = Model.Content.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
-        pageLayout = !blogLandingPage.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : blogLandingPage.GetPropertyValue<USNOptions>("pageLayout");
+    if (Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)){
+        IPublishedContent blogLandingPage = Model.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
+        pageLayout = !blogLandingPage.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : blogLandingPage.Value<USNOptions>("pageLayout");
     }
     else
     {
-        pageLayout = !Model.Content.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : Model.Content.GetPropertyValue<USNOptions>("pageLayout");
+        pageLayout = !Model.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : Model.Value<USNOptions>("pageLayout");
     }
 
     switch (pageLayout)

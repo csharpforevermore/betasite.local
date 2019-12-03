@@ -1,14 +1,11 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
-@using USNStarterKit.USNModels;
-
 @{
     // get landing node
-    UsnblogLandingPage landing = (UsnblogLandingPage)Model.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
+    var landing = (BlogLandingPage)Model.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
     int globalSettingsId = Convert.ToInt32(ViewData["globalSettingsID"]);
 
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Umbraco.TypedContent(globalSettingsId);
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
     string textStyle = ViewData["textStyle"] != null ? ViewData["textStyle"].ToString() : String.Empty;
 
@@ -19,7 +16,7 @@
 
                 if (Model.HasValue("postAuthor"))
                 {
-                    authorNode = (UsnblogAuthor)Model.GetPropertyValue<IEnumerable<IPublishedContent>>("postAuthor").FirstOrDefault();
+                    authorNode = (UsnblogAuthor)Model.Value<IEnumerable<IPublishedContent>>("postAuthor").FirstOrDefault();
                 }
                 else if (landing.DefaultAuthor != null)
                 {
@@ -45,10 +42,10 @@
                     </span>
                 }
             }
-            <time><span class="date">@(Model.GetPropertyValue<DateTime>("postDate").ToString("dd MMM yyyy"))</span></time>
+            <time><span class="date">@(Model.Value<DateTime>("postDate").ToString("dd MMM yyyy"))</span></time>
         </div>
         <div class="row">
-            @if (globalSettings.DisqusUsername.HasValue() && !Model.GetPropertyValue<bool>("disableComments"))
+            @if (globalSettings.DisqusUsername.HasValue() && !Model.Value<bool>("disableComments"))
             {
                 <span class="comments col-xs-12"><a href="@Model.Url#disqus_thread">0 @umbraco.library.GetDictionaryItem("USN Blog Meta Comments")</a></span>
             }

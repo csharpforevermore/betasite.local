@@ -1,7 +1,7 @@
 ﻿@inherits UmbracoViewPage
 
 @{	
-    var globalSettings = (Umbraco.ModelsBuilder.PublishedContent.GlobalSettings)Model.GlobalSettings;
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
     
     Image faviconAndTouchIcon = (Image)globalSettings.FaviconAndTouchIcons;
 

@@ -15700,7 +15700,7 @@
         <member name="M:Umbraco.Core.PropertyEditors.ValueConverters.ImageCropperValueConverter.IsConverter(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
             <inheritdoc />
         </member>
-        <member name="M:Umbraco.Core.PropertyEditors.ValueConverters.ImageCropperValueConverter.GetPropertyValueType(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
+        <member name="M:Umbraco.Core.PropertyEditors.ValueConverters.ImageCropperValueConverter.ValueType(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
             <inheritdoc />
         </member>
         <member name="M:Umbraco.Core.PropertyEditors.ValueConverters.ImageCropperValueConverter.GetPropertyCacheLevel(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
@@ -15987,7 +15987,7 @@
             a picker, it could be made on the object value (the actual picked object).</para>
             </remarks>
         </member>
-        <member name="M:Umbraco.Core.PropertyEditors.IPropertyValueConverter.GetPropertyValueType(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
+        <member name="M:Umbraco.Core.PropertyEditors.IPropertyValueConverter.ValueType(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
             <summary>
             Gets the type of values returned by the converter.
             </summary>

@@ -1,34 +1,31 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
-@using USNOptions = USNStarterKit.USNEnums.Options;
-
 @{
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    var globalSettings = (GlobalSettings)Model.GlobalSettings;
 
     string podStyle = ViewData["podstyle"].ToString();
     string pageType = ViewData["pagetype"] != null ? ViewData["pagetype"].ToString() : String.Empty;
 
     IEnumerable<IPublishedContent> pods = null;
-    USNOptions pageLayout;
+    Options pageLayout;
     Boolean addPodContainer = false;
 
-    if (!Model.Content.HasValue("pageLayout"))
+    if (!Model.HasValue("pageLayout"))
     {
         pageLayout = globalSettings.DefaultPageLayout.HasValue() ? (USNOptions)globalSettings.DefaultPageLayout : USNOptions.PageLayout_Left;
     }
     else
     {
-        pageLayout = Model.Content.GetPropertyValue<USNOptions>("pageLayout");
+        pageLayout = Model.Value<Options>("pageLayout");
     }
 
     if ((podStyle == "vertical" && pageLayout != USNOptions.PageLayout_Wide) || (podStyle == "horizontal" && pageLayout == USNOptions.PageLayout_Wide) || pageType == "advanced")
     {
-        if (Model.Content.GetPropertyValue<bool>("overrideDefaultPods"))
+        if (Model.Value<bool>("overrideDefaultPods"))
         {
-            if (Model.Content.HasValue("pagePods") && Model.Content.HasValue("pagePods"))
+            if (Model.HasValue("pagePods") && Model.HasValue("pagePods"))
             {
-                pods = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("pagePods");
+                pods = Model.Value<IEnumerable<IPublishedContent>>("pagePods");
             }
         }
         else
@@ -57,13 +54,13 @@
                     {
                         if (pod != null)
                         {
-                            @Html.Partial("USNSiteWidePods/USN_PodsSwitch", pod, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettings.Id }, { "addPodContainer", addPodContainer } })
+                            @Html.Partial("SiteWidePods/PodsSwitch", pod, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettings.Id }, { "addPodContainer", addPodContainer } })
                         }
 
                     }
                 </div>
 
-                if (pageLayout == USNOptions.PageLayout_Wide || pageType == "advanced")
+                if (pageLayout == Options.PageLayout_Wide || pageType == "advanced")
                 {
                     @:</div></div></section>
                 }

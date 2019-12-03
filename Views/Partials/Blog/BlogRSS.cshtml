@@ -1,17 +1,16 @@
-﻿@inherits UmbracoViewPage<UsnblogRss>
-@using USNStarterKit.USNBlog;
-@using USNStarterKit.USNHelpers;
+﻿@inherits UmbracoViewPage
+
 @{
 
     int pageSize = Model.BlogPostsToReturn.HasValue() ? Model.BlogPostsToReturn : -1;
 
     // get landing page
-    var landing = Model.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
+    var landing = Model.AncestorOrSelf(BlogLandingPage.ModelTypeAlias);
 
     // get all posts
-    var posts = USNBlogPostService.Instance.GetPostItems(landing, null,null, null, 1, pageSize);
+    var posts = BlogPostService.Instance.GetPostItems(landing, null,null, null, 1, pageSize);
 
-    DateTime lastPubDate = !posts.SearchResults.Any() ? DateTime.Now : posts.SearchResults.FirstOrDefault().GetPropertyValue<DateTime>("postDate");
+    DateTime lastPubDate = !posts.SearchResults.Any() ? DateTime.Now : posts.SearchResults.FirstOrDefault().Value<DateTime>("postDate");
 
     // get blog url
     string blogUrl = Request.Url.Scheme + "://" + Request.Url.Host;
@@ -45,7 +44,7 @@
 
                 if (p.HasValue("onPageTitle"))
                 {
-                    postName = p.GetPropertyValue<string>("onPageTitle");
+                    postName = p.Value<string>("onPageTitle");
                 }
                 else
                 {
@@ -56,7 +55,7 @@
 
                 if (p.HasValue("bodyText"))
                 {
-                    mainText = p.GetPropertyValue<string>("bodyText").StripHtml().Trim();
+                    mainText = p.Value<string>("bodyText").StripHtml().Trim();
 
                     if (mainText.Length >= 150)
                     {
@@ -74,7 +73,7 @@
                     @Html.Raw(blogUrl + p.Url)
                     @Html.Raw("</link>")
                     <guid>@blogUrl@p.Url</guid>
-                    <pubDate>@(p.GetPropertyValue<DateTime>("postDate").ToString("ddd, dd MMMM yyyy HH:mm:ss"))</pubDate>
+                    <pubDate>@(p.Value<DateTime>("postDate").ToString("ddd, dd MMMM yyyy HH:mm:ss"))</pubDate>
                 </item>
             }
         </channel>        

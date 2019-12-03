@@ -1,7 +1,7 @@
 ﻿@inherits UmbracoViewPage
 
 @{
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
     IPublishedContent searchResultsPage = globalSettings.SearchResultsPage;
 

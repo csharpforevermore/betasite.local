@@ -1,17 +1,16 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
 @using Examine.SearchCriteria;
 @using Examine.LuceneEngine.SearchCriteria;
 @using Umbraco.Web;
 @using System.Text.RegularExpressions;
 
 @{
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    var globalSettings = (GlobalSettings)Model.GlobalSettings;
 
     if (globalSettings.SearchResultsPage != null)
     {
-        UsnsearchResultsPage searchResultsPage = (UsnsearchResultsPage)Model.Content;
+        var searchResultsPage = (UsnsearchResultsPage)Model.
 
         int pageSize = searchResultsPage.SearchResultsPageSize; // How many items per page
         int page; // The page we are viewing
@@ -44,7 +43,7 @@
         if (!String.IsNullOrEmpty(searchTerm))
         {
             var criteria = baseSearchProvider.CreateSearchCriteria(IndexTypes.Content, BooleanOperation.And);
-            var siteRootId = Model.Content.Site();
+            var siteRootId = Model.Site();
 
             //Field added via USNRegisterEvents class.
             var examineQuery = criteria.Field("searchablePath", siteRootId.ToString());
@@ -138,7 +137,7 @@
                         <p class="heading"><a class="c3-text" href="@item.Url">@item.Name</a></p>
                         @if (item.HasValue("metaDescription"))
                         {
-                            <div class="text">@Html.Raw(umbraco.library.ReplaceLineBreaks(item.GetPropertyValue<string>("metaDescription")))</div>
+                            <div class="text">@Html.Raw(umbraco.library.ReplaceLineBreaks(item.Value<string>("metaDescription")))</div>
                         }
                         <p class="link">@umbraco.library.GetDictionaryItem("USN Search Results Link Label") <a href="@item.Url">@item.Url</a></p>
                     </div>

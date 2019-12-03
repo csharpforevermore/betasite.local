@@ -1,10 +1,4 @@
-﻿@inherits UmbracoViewPage<Usn_Ac_TextSlideshow_AN>
-
-@using USNStarterKit.USNModels;
-@using USN.USNTemplate;
-@using USNStarterKit.USNHelpers;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
+﻿@inherits UmbracoViewPage
 
 @{
     string firstDivClass = "col-md-5 col-xs-12 pull-right";
@@ -27,11 +21,11 @@
         wideClass = String.Empty;
     }
 
-    USNTemplateStyleSettings settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
+    var settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
 
-    string backgroundImageStyle = USNViewTemplateHelper.GetBackgroundImageStyle(Model.BackgroundImage, Model.BackgroundImageOptions);
+    string backgroundImageStyle = ViewTemplateHelper.GetBackgroundImageStyle(Model.BackgroundImage, Model.BackgroundImageOptions);
 
-    if (Model.TextPosition == USNOptions.TextPosition_After)
+    if (Model.TextPosition == Options.TextPosition_After)
     {
         firstDivClass = "col-md-5 col-xs-12 pull-left";
         secondDivClass = "col-md-6 col-xs-12 pull-right";
@@ -63,22 +57,22 @@
 
     switch (Model.ImageStyle)
     {
-        case USNOptions.ImageStyle_Square:
+        case Options.ImageStyle_Square:
             imageWidthSmall = 8;
             imageHeightSmall = 8;
             cropAlias = "Square/Circle";
             break;
-        case USNOptions.ImageStyle_Landscape:
+        case Options.ImageStyle_Landscape:
             imageWidthSmall = 8;
             imageHeightSmall = 6;
             cropAlias = "Landscape";
             break;
-        case USNOptions.ImageStyle_Portrait:
+        case Options.ImageStyle_Portrait:
             imageWidthSmall = 6;
             imageHeightSmall = 8;
             cropAlias = "Portrait";
             break;
-        case USNOptions.ImageStyle_Circle:
+        case Options.ImageStyle_Circle:
             imageWidthSmall = 8;
             imageHeightSmall = 8;
             cropAlias = "Square/Circle";
@@ -126,9 +120,9 @@
                         string title = String.Empty;
                         string footer = String.Empty;
 
-                        if (galleryItem.IsDocumentType(Usn_Sc_GalleryImage.ModelTypeAlias))
+                        if (galleryItem.IsDocumentType(Sc_GalleryImage.ModelTypeAlias))
                         {
-                            Usn_Sc_GalleryImage galleryImage = (Usn_Sc_GalleryImage)galleryItem;
+                            var galleryImage = (Sc_GalleryImage)galleryItem;
 
                             if (!galleryImage.DisableLightWindow)
                             {
@@ -154,7 +148,7 @@
                                 if (galleryImage.DisableLightWindow && galleryImage.ImageLink.HasValue())
                                 {
 
-                                    USNLink imageLink = USNUrlHelper.GetLinkFromRelatedLinks(galleryImage.ImageLink);
+                                    Link imageLink = UrlHelper.GetLinkFromRelatedLinks(galleryImage.ImageLink);
 
                                     if (imageLink != null)
                                     {

@@ -5,7 +5,7 @@
 
 @{
 
-    UsnadvancedPageComponents pageComponentsNode = Model.Content.Children<AdvancedPageComponents>().FirstOrDefault();
+    UsnadvancedPageComponents pageComponentsNode = Model.Children<AdvancedPageComponents>().FirstOrDefault();
 
     if (pageComponentsNode != null)
     {
@@ -13,13 +13,13 @@
         {
             if (component != null)
             {
-                USNTemplateStyleSettings settings = USNViewTemplateHelper.GetTemplateStyleSettings(component.GetPropertyValue<string>("backgroundColor"), component.GetPropertyValue<string>("buttonColor"));
+                USNTemplateStyleSettings settings = USNViewTemplateHelper.GetTemplateStyleSettings(component.Value<string>("backgroundColor"), component.Value<string>("buttonColor"));
 
-                string backgroundImageStyle = USNViewTemplateHelper.GetBackgroundImageStyle(component.GetPropertyValue<IPublishedContent>("backgroundImage"), component.GetPropertyValue<USNBackgroundOption>("backgroundImageOptions"));
+                string backgroundImageStyle = USNViewTemplateHelper.GetBackgroundImageStyle(component.Value<IPublishedContent>("backgroundImage"), component.Value<USNBackgroundOption>("backgroundImageOptions"));
 
                 string animateClass = String.Empty;
 
-                if (component.GetPropertyValue<bool>("animate"))
+                if (component.Value<bool>("animate"))
                 {
                     animateClass = "os-animation";
                 }

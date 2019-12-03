@@ -18,7 +18,7 @@
         animateClass = "os-animation";
     }
 
-    IPublishedContent startPage = Model.GetPropertyValue<IPublishedContent>("sitemapStartPage");
+    IPublishedContent startPage = Model.Value<IPublishedContent>("sitemapStartPage");
 
     if (pageType == "standard")
     {
@@ -66,7 +66,7 @@
                     <a href="@startPage.Url">
                         @if (startPage.HasValue("sitemapLinkText"))
                         {
-                            @Html.Raw(startPage.GetPropertyValue<string>("sitemapLinkText"))
+                            @Html.Raw(startPage.Value<string>("sitemapLinkText"))
                         }
                         else
                         {
@@ -103,7 +103,7 @@
     }
     else
     {
-        items = node.Children.Where(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || x.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnloginPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias)) && x.IsVisible() && !library.IsProtected(x.Id,x.Url));
+        items = node.Children.Where(x => (x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || x.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnloginPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias)) && x.IsVisible() && !library.IsProtected(x.Id,x.Url));
     }
 
     
@@ -117,7 +117,7 @@
                     <a href="@item.Url">
                         @if (item.HasValue("sitemapLinkText"))
                         {
-                            @Html.Raw(item.GetPropertyValue<string>("sitemapLinkText"))
+                            @Html.Raw(item.Value<string>("sitemapLinkText"))
                         }
                         else
                         {
@@ -130,7 +130,7 @@
         </ul>
     }
 
-    var catFolder = node.Children.FirstOrDefault(x => x.IsDocumentType(UsnblogCategories.ModelTypeAlias));
+    var catFolder = node.Children.FirstOrDefault(x => x.IsDocumentType(BlogCategories.ModelTypeAlias));
 
     if (catFolder != null)
     {
@@ -140,7 +140,7 @@
 
 @helper TraverseCategories(IPublishedContent catFolder)
 {
-    var items = catFolder.Children.Where(x => (x.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)) && x.IsVisible());
+    var items = catFolder.Children.Where(x => (x.IsDocumentType(BlogCategoryPage.ModelTypeAlias)) && x.IsVisible());
 
     if (items.Any())
     {
@@ -151,7 +151,7 @@
                     <a href="@item.Url">
                         @if (item.HasValue("sitemapLinkText"))
                         {
-                            @Html.Raw(item.GetPropertyValue<string>("sitemapLinkText"))
+                            @Html.Raw(item.Value<string>("sitemapLinkText"))
                         }
                         else
                         {

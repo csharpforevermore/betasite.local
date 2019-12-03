@@ -1,10 +1,4 @@
-﻿@inherits UmbracoViewPage<Usn_Swp_ListingPod>
-
-@using USNStarterKit.USNHelpers;
-@using USNStarterKit.USNBlog;
-@using USNStarterKit.USNModels;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
+﻿@inherits UmbracoViewPage
 
 @{
 
@@ -70,13 +64,13 @@
                         {
                             <div class="item">
                                 @{
-                                    string postName = node.HasValue("onPageTitle") ? node.GetPropertyValue<string>("onPageTitle") : node.Name;
+                                    string postName = node.HasValue("onPageTitle") ? node.Value<string>("onPageTitle") : node.Name;
                                 }
                                 <p class="heading c3-text"><a class="c3-text" href="@node.Url">@postName</a></p>
                                     
                                 <div class="meta base-text">
                                     <div>
-                                        <time><span class="date">@(node.GetPropertyValue<DateTime>("postDate").ToString("dd MMM yyyy"))</span></time>
+                                        <time><span class="date">@(node.Value<DateTime>("postDate").ToString("dd MMM yyyy"))</span></time>
                                     </div>
                                 </div>
                             </div>
@@ -120,7 +114,7 @@
                                         <a class="c3-text" href="@item.Url">
                                             @if (item.HasValue("subPageListingLinkText"))
                                             {
-                                                @(item.GetPropertyValue<string>("subPageListingLinkText"))
+                                                @(item.Value<string>("subPageListingLinkText"))
                                             }
                                             else
                                             {

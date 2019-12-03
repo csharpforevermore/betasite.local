@@ -1,12 +1,10 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
-
 @{
-    UsnblogLandingPage landing = (UsnblogLandingPage)Model.Content.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    var landing = (BlogLandingPage)Model.AncestorOrSelf(BlogLandingPage.ModelTypeAlias);
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
-    if (globalSettings.DisqusUsername.HasValue() && !Model.Content.GetPropertyValue<bool>("disableComments"))
+    if (globalSettings.DisqusUsername.HasValue() && !Model.Value<bool>("disableComments"))
     {
     <div id="comments" class="comments">
 	    <div id="disqus_thread"></div>

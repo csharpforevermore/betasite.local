@@ -50,13 +50,13 @@
 
     @RenderSection("Head", false)
     
-    @Html.Partial("MiscPageElements/_NotificationDurationVariable", Model)
+    @Html.Partial("MiscPageElements/NotificationDurationVariable", Model)
 
-    @Html.Partial("WebsiteHeadSection/_HeaderScripts", Model)
+    @Html.Partial("WebsiteHeadSection/HeaderScripts", Model)
 
 </head>
 <body @RenderSection("BodyTag", false)>
-    @Html.Partial("MiscPageElements/_AfterOpeningBodyScripts", Model)
+    @Html.Partial("MiscPageElements/AfterOpeningBodyScripts", Model)
     <a class="skip-to-content sr-only" href="#content">Skip to the content</a>
     <!-- SITE -->
     <div id="site">
@@ -79,9 +79,9 @@
                         <!-- REVEAL -->
                         <div class="reveal">
 	
-                            @Html.Partial("Navigation/_CTA", Model)
+                            @Html.Partial("Navigation/CTA", Model)
 
-                            @Html.Partial("Navigation/_MainNavigation", Model)
+                            @Html.Partial("Navigation/MainNavigation", Model)
 
                         </div>
                         <!--// REVEAL -->
@@ -96,16 +96,16 @@
         
         <div id="content">
 
-            @Html.Partial("AdvancedPageComponents/_TopComponents", Model)
+            @Html.Partial("AdvancedPageComponents/TopComponents", Model)
 
             @RenderBody()
  
-            @Html.Partial("AdvancedPageComponents/_BottomComponents", Model)
+            @Html.Partial("AdvancedPageComponents/BottomComponents", Model)
             
         </div>    
 
         <!-- BREADCRUMB -->
-        @Html.Partial("Navigation/_Breadcrumb", Model)
+        @Html.Partial("Navigation/Breadcrumb", Model)
         <!--// BREADCRUMB -->
 
         @if(!Model.Value<bool>("hideWebsiteFooterSection"))
@@ -116,16 +116,16 @@
                 <!-- ROW -->
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
-                        @Html.Partial("Navigation/_FooterQuickLinks", Model)
-                        @Html.Partial("Navigation/_MembersNavigation", Model)
+                        @Html.Partial("Navigation/FooterQuickLinks", Model)
+                        @Html.Partial("Navigation/MembersNavigation", Model)
                     </div>
                     <div class="col-md-4 col-xs-12">
                         <!-- COMPANY DETAILS -->
-                        @Html.Partial("MiscPageElements/_ContactInformation")
+                        @Html.Partial("MiscPageElements/ContactInformation")
                         <!--// COMPANY DETAILS -->
                     </div>
                     <div class="col-md-4 col-xs-12">
-                        @Html.Partial("Navigation/_SocialLinks", Model)
+                        @Html.Partial("Navigation/SocialLinks", Model)
                     </div>
                 </div>
                 <!--// ROW -->
@@ -135,7 +135,7 @@
                         <nav class="footer">
                             <ul>
                                 <li class="copyright"><div>&copy; @DateTime.Now.ToString("yyyy")</div></li>
-                                @Html.Partial("Navigation/_FooterNavigation", Model)
+                                @Html.Partial("Navigation/FooterNavigation", Model)
                                 <li class="site-credit">
                                     <div>Built using Umbraco CMS version 8 by</div>
                                     <a target="_blank" title="eSolutions link will open in a new window/tab" href="http://www.esolutionsgroup.ca"><span>eSolutions Group of Canada</span></a>
@@ -159,10 +159,10 @@
     </div>
     <!--// SITE -->
     
-    @Html.Partial("MiscPageElements/_Notification", Model)
-    @Html.Partial("Blog/_BlogDisqusCommentCountScript", Model)
+    @Html.Partial("MiscPageElements/Notification", Model)
+    @Html.Partial("Blog/BlogDisqusCommentCountScript", Model)
     @RenderSection("FooterScripts", false)
-    @Html.Partial("MiscPageElements/_BeforeClosingBodyScripts", Model)
+    @Html.Partial("MiscPageElements/BeforeClosingBodyScripts", Model)
     
 </body>
 </html>

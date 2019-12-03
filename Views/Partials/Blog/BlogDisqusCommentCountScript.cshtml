@@ -1,9 +1,7 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
-
 @{
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
     if (globalSettings.DisqusUsername.HasValue())
     {

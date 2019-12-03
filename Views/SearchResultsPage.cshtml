@@ -1,12 +1,10 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
-
 @{
-    Layout = "USNMaster.cshtml";
+    Layout = "master.cshtml";
 }
 
-@Html.Partial("USNMiscPageElements/USN_StandardPageBannerSection", Model)
+@Html.Partial("MiscPageElements/StandardPageBannerSection", Model)
 
 <!-- CONTENT -->
 <section class="content">
@@ -26,7 +24,7 @@
 			    @Html.Partial("USNMiscPageElements/USN_MainImage",Model)
 			    <!--// IMAGE -->
 	       
-			    @Html.Raw(Model.Content.GetPropertyValue<string>("bodyText"))
+			    @Html.Raw(Model.Value<string>("bodyText"))
 		
 			    @Html.Partial("USNMiscPageElements/USN_SearchResults",Model)
 				
@@ -51,17 +49,17 @@
     @{
         string headerClass = String.Empty;
 
-        if (Model.Content.GetPropertyValue<bool>("hideWebsiteHeaderSection"))
+        if (Model.Value<bool>("hideWebsiteHeaderSection"))
         {
             headerClass = "no-header";
         }
 
-        if (Model.Content.GetPropertyValue<bool>("hideWebsiteFooterSection"))
+        if (Model.Value<bool>("hideWebsiteFooterSection"))
         {
             headerClass = headerClass + " no-footer";
         }
 
-        UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+        var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
         string fixedWidth = String.Empty;
 
@@ -72,20 +70,20 @@
 
         string customBodyClass = String.Empty;
 
-        if (Model.Content.HasValue("customBodyClasses"))
+        if (Model.HasValue("customBodyClasses"))
         {
-            customBodyClass = Model.Content.GetPropertyValue<string>("customBodyClasses");
+            customBodyClass = Model.Value<string>("customBodyClasses");
         }
 
         string bannerClass = String.Empty;
 
         IEnumerable<IPublishedContent> components = null;
 
-        if (Model.Content.GetPropertyValue<bool>("overrideDefaultTopComponents"))
+        if (Model.Value<bool>("overrideDefaultTopComponents"))
         {
-            if (Model.Content.HasValue("topComponents"))
+            if (Model.HasValue("topComponents"))
             {
-                components = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("topComponents");
+                components = Model.Value<IEnumerable<IPublishedContent>>("topComponents");
             }
         }
         else
@@ -106,7 +104,7 @@
         //If no top components look at header image section
         else if (components == null || !components.Any())
         {
-            if (Model.Content.GetPropertyValue<bool>("displayHeaderImageSection"))
+            if (Model.Value<bool>("displayHeaderImageSection"))
             {
                 bannerClass = "banner-top";
             }

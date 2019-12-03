@@ -1,14 +1,12 @@
-﻿@inherits UmbracoViewPage<Usn_SitemapXml>
+﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
-@using USNOptions = USNStarterKit.USNEnums.Options;
 @{
     Layout = null;
 
     Response.AddHeader("Content-Type", "text/xml");
     const string DATE_TIME_FORMAT = "yyyy-MM-dd";
 
-    Usnhomepage homePage = (Usnhomepage)Model.AncestorOrSelf(1);
+    var homePage = (Homepage)Model.AncestorOrSelf(1);
 }
 
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
@@ -29,7 +27,7 @@
 
 @helper Traverse(IPublishedContent node, string DATE_TIME_FORMAT)
 {
-var items = node.Children.Where(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || x.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnloginPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias)) && !x.GetPropertyValue<bool>("hideFromSearchEngines") && !library.IsProtected(x.Id, x.Url));
+var items = node.Children.Where(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || x.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnloginPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias)) && !x.Value<bool>("hideFromSearchEngines") && !library.IsProtected(x.Id, x.Url));
 
 if (items.Any())
 {
@@ -40,15 +38,15 @@ if (items.Any())
                 <lastmod>@item.UpdateDate.ToString(DATE_TIME_FORMAT)</lastmod>
                 @if (item.HasValue("updateFrequency"))
                 {
-                    <changefreq>@item.GetPropertyValue("updateFrequency")</changefreq>
+                    <changefreq>@item.Value("updateFrequency")</changefreq>
                 }
-                @if (item.HasValue("sitemapXmlpriority") && item.GetPropertyValue<decimal>("sitemapXmlpriority") != 0)
+                @if (item.HasValue("sitemapXmlpriority") && item.Value<decimal>("sitemapXmlpriority") != 0)
                 {
-                    <priority>@(item.GetPropertyValue<decimal>("sitemapXmlpriority").ToString("0.0"))</priority>
+                    <priority>@(item.Value<decimal>("sitemapXmlpriority").ToString("0.0"))</priority>
                 }
-                @if (item.GetPropertyValue<USNOptions>("sitemapXmlchangeFrequency") != USNOptions.EMPTY)
+                @if (item.Value<USNOptions>("sitemapXmlchangeFrequency") != USNOptions.EMPTY)
                 {
-                    <changefreq>@(item.GetPropertyValue<string>("sitemapXmlchangeFrequency").Remove(0, 8).ToLower())</changefreq>
+                    <changefreq>@(item.Value<string>("sitemapXmlchangeFrequency").Remove(0, 8).ToLower())</changefreq>
                 }
             </url>
             @Traverse(item, DATE_TIME_FORMAT)
@@ -65,7 +63,7 @@ if (items.Any())
 
 @helper TraverseCategories(IPublishedContent catFolder, string DATE_TIME_FORMAT)
 {
-    var items = catFolder.Children.Where(x => x.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias) && !x.GetPropertyValue<bool>("hideFromSearchEngines"));
+    var items = catFolder.Children.Where(x => x.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias) && !x.Value<bool>("hideFromSearchEngines"));
 
     if (items.Any())
     {
@@ -76,15 +74,15 @@ if (items.Any())
                 <lastmod>@item.UpdateDate.ToString(DATE_TIME_FORMAT)</lastmod>
                 @if (item.HasValue("updateFrequency"))
                 {
-                    <changefreq>@item.GetPropertyValue("updateFrequency")</changefreq>
+                    <changefreq>@item.Value("updateFrequency")</changefreq>
                 }
-                @if (item.HasValue("sitemapXmlpriority") && item.GetPropertyValue<decimal>("sitemapXmlpriority") != 0)
+                @if (item.HasValue("sitemapXmlpriority") && item.Value<decimal>("sitemapXmlpriority") != 0)
                 {
-                    <priority>@(item.GetPropertyValue<decimal>("sitemapXmlpriority").ToString("0.0"))</priority>
+                    <priority>@(item.Value<decimal>("sitemapXmlpriority").ToString("0.0"))</priority>
                 }
-                @if (item.GetPropertyValue<USNOptions>("sitemapXmlchangeFrequency") != USNOptions.EMPTY)
+                @if (item.Value<USNOptions>("sitemapXmlchangeFrequency") != USNOptions.EMPTY)
                 {
-                    <changefreq>@(item.GetPropertyValue<string>("sitemapXmlchangeFrequency").Remove(0, 8).ToLower())</changefreq>
+                    <changefreq>@(item.Value<string>("sitemapXmlchangeFrequency").Remove(0, 8).ToLower())</changefreq>
                 }
             </url>
             @TraverseCategories(item, DATE_TIME_FORMAT)

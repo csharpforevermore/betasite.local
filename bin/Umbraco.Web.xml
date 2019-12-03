@@ -8298,7 +8298,7 @@
         <member name="M:Umbraco.Web.Mvc.EnsurePartialViewMacroViewContextFilterAttribute.OnActionExecuting(System.Web.Mvc.ActionExecutingContext)">
             <summary>
             Ensures the custom ViewContext datatoken is set before the RenderController action is invoked,
-            this ensures that any calls to GetPropertyValue with regards to RTE or Grid editors can still
+            this ensures that any calls to.Value with regards to RTE or Grid editors can still
             render any PartialViewMacro with a form and maintain ModelState
             </summary>
             <param name="filterContext"></param>
@@ -9724,7 +9724,7 @@
         <member name="M:Umbraco.Web.PropertyEditors.ValueConverters.NestedContentManyValueConverter.IsConverter(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
             <inheritdoc />
         </member>
-        <member name="M:Umbraco.Web.PropertyEditors.ValueConverters.NestedContentManyValueConverter.GetPropertyValueType(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
+        <member name="M:Umbraco.Web.PropertyEditors.ValueConverters.NestedContentManyValueConverter.ValueType(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
             <inheritdoc />
         </member>
         <member name="M:Umbraco.Web.PropertyEditors.ValueConverters.NestedContentManyValueConverter.GetPropertyCacheLevel(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
@@ -9750,7 +9750,7 @@
         <member name="M:Umbraco.Web.PropertyEditors.ValueConverters.NestedContentSingleValueConverter.IsConverter(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
             <inheritdoc />
         </member>
-        <member name="M:Umbraco.Web.PropertyEditors.ValueConverters.NestedContentSingleValueConverter.GetPropertyValueType(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
+        <member name="M:Umbraco.Web.PropertyEditors.ValueConverters.NestedContentSingleValueConverter.ValueType(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
             <inheritdoc />
         </member>
         <member name="M:Umbraco.Web.PropertyEditors.ValueConverters.NestedContentSingleValueConverter.GetPropertyCacheLevel(Umbraco.Core.Models.PublishedContent.IPublishedPropertyType)">
@@ -20186,7 +20186,7 @@
             <param name="id"></param>
             <returns></returns>
             <remarks>
-            We accept an object type because GetPropertyValue now returns an 'object', we still want to allow people to pass
+            We accept an object type because.Value now returns an 'object', we still want to allow people to pass
             this result in to this method.
             This method will throw an exception if the value is not of type int or string.
             </remarks>

@@ -1,18 +1,11 @@
-﻿@inherits UmbracoViewPage<Usn_Ac_FormListing_AN>
-
-@using USNStarterKit.USNBlog;
-@using USNStarterKit.USNModels;
-@using USNStarterKit.USNHelpers;
-@using USN.USNTemplate;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
+﻿@inherits UmbracoViewPage
 
 @{
     int globalSettingsId = Convert.ToInt32(ViewData["globalSettingsID"]);
 
-    USNTemplateStyleSettings settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
+    var settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
 
-    string backgroundImageStyle = USNViewTemplateHelper.GetBackgroundImageStyle(Model.BackgroundImage, Model.BackgroundImageOptions);
+    string backgroundImageStyle = ViewTemplateHelper.GetBackgroundImageStyle(Model.BackgroundImage, Model.BackgroundImageOptions);
 
     string firstDivClass = "col-md-6 col-xs-12 pull-left";
     string secondDivClass = "col-md-4 col-xs-12 pull-right";
@@ -42,7 +35,7 @@
                     <!-- LISTING - BLOG -->
                     @{
 
-                        USNLink linkToListing = USNUrlHelper.GetLinkFromRelatedLinks(Model.LinkToListing);
+                        Link linkToListing = UrlHelper.GetLinkFromRelatedLinks(Model.LinkToListing);
 
                         if (linkToListing != null && Model.PagesToDisplay.HasValue())
                         {
@@ -86,12 +79,12 @@
 
                                             if (node.HasValue("pageSummary"))
                                             {
-                                                introText = node.GetPropertyValue<string>("pageSummary");
+                                                introText = node.Value<string>("pageSummary");
                                                 displaySummaryText = true;
                                             }
                                             else if (Model.SummaryTextCharacterCount.HasValue() && node.IsDocumentType(UsnstandardPageBlogPost.ModelTypeAlias))
                                             {
-                                                introText = library.StripHtml(node.GetPropertyValue<string>("bodyText"));
+                                                introText = library.StripHtml(node.Value<string>("bodyText"));
 
                                                 displaySummaryText = true;
 
@@ -114,7 +107,7 @@
                                                 <a href="@node.Url">
 
                                                     @{
-                                                        string postName = node.HasValue("onPageTitle") ? node.GetPropertyValue<string>("onPageTitle") : node.Name;
+                                                        string postName = node.HasValue("onPageTitle") ? node.Value<string>("onPageTitle") : node.Name;
                                                     }
                                                     <p class="heading @settings.HeadingStyle">
                                                         @postName
@@ -157,7 +150,7 @@
 
                                         if (item.HasValue("pageSummary"))
                                         {
-                                            introText = item.GetPropertyValue<string>("pageSummary");
+                                            introText = item.Value<string>("pageSummary");
                                             displaySummaryText = true;
                                         }
                                         else
@@ -168,7 +161,7 @@
 
                                                 if (summaryTextLength > 0)
                                                 {
-                                                    introText = item.GetPropertyValue<string>("bodyText").StripHtml().Trim();
+                                                    introText = item.Value<string>("bodyText").StripHtml().Trim();
 
                                                     displaySummaryText = true;
 
@@ -191,7 +184,7 @@
                                                 <p class="heading @settings.HeadingStyle">
                                                     @if (item.HasValue("subPageListingLinkText"))
                                                     {
-                                                        @Html.Raw(item.GetPropertyValue<string>("subPageListingLinkText"))
+                                                        @Html.Raw(item.Value<string>("subPageListingLinkText"))
                                                     }
                                                     else
                                                     {

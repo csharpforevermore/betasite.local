@@ -1,17 +1,15 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
-
 @{
     var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
     IEnumerable<IPublishedContent> components = null;
 
-    if (Model.Content.GetPropertyValue<bool>("overrideDefaultBottomComponents"))
+    if (Model.Value<bool>("overrideDefaultBottomComponents"))
     {
-        if (Model.Content.HasValue("bottomComponents"))
+        if (Model.HasValue("bottomComponents"))
         {
-            components = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("bottomComponents");
+            components = Model.Value<IEnumerable<IPublishedContent>>("bottomComponents");
         }
     }
     else

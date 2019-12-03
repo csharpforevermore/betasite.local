@@ -1,7 +1,7 @@
 ﻿@inherits UmbracoViewPage
 
 @{
-    UsnstandardPageComponents pageComponentsNode = Model.Content.Children<UsnstandardPageComponents>().FirstOrDefault();
+    UsnstandardPageComponents pageComponentsNode = Model.Children<UsnstandardPageComponents>().FirstOrDefault();
 
     if (pageComponentsNode != null)
     {

@@ -1,12 +1,6 @@
-﻿@inherits UmbracoViewPage<Usn_Sc_SubpageListing_AN>
+﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
-@using USN.USNTemplate;
-@using USNStarterKit.USNBlog;
-@using USNStarterKit.USNModels;
 @using Umbraco.Web.Models;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
 
 @{
     int globalSettingsId = Convert.ToInt32(ViewData["globalSettingsID"]);
@@ -26,24 +20,24 @@
 
     if (pageType == "standard")
     {
-        settings = USNViewTemplateHelper.GetDefaultTemplateStyleSettings();
+        settings = ViewTemplateHelper.GetDefaultTemplateStyleSettings();
     }
     else
     {
-        settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
+        settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
     }
 
     string textAlignment;
 
     switch (Model.IntroductionTextAlignment)
     {
-        case USNOptions.TextAlignment_Left:
+        case Options.TextAlignment_Left:
             textAlignment = "text-left";
             break;
-        case USNOptions.TextAlignment_Center:
+        case Options.TextAlignment_Center:
             textAlignment = "text-center";
             break;
-        case USNOptions.TextAlignment_Right:
+        case Options.TextAlignment_Right:
             textAlignment = "text-right";
             break;
         default:
@@ -65,28 +59,28 @@
 
     switch (Model.ImageStyle)
     {
-        case USNOptions.ImageStyle_Square:
+        case Options.ImageStyle_Square:
             imageWidthSmall = 8;
             imageHeightSmall = 8;
             cropAlias = "Square/Circle";
             break;
-        case USNOptions.ImageStyle_Landscape:
+        case Options.ImageStyle_Landscape:
             imageWidthSmall = 8;
             imageHeightSmall = 6;
             cropAlias = "Landscape";
             break;
-        case USNOptions.ImageStyle_Portrait:
+        case Options.ImageStyle_Portrait:
             imageWidthSmall = 6;
             imageHeightSmall = 8;
             cropAlias = "Portrait";
             break;
-        case USNOptions.ImageStyle_Circle:
+        case Options.ImageStyle_Circle:
             imageWidthSmall = 8;
             imageHeightSmall = 8;
             cropAlias = "Square/Circle";
             circleClass = "img-circle";
             break;
-        case USNOptions.ImageStyle_Wide:
+        case Options.ImageStyle_Wide:
             imageWidthSmall = 120;
             imageHeightSmall = 63;
             cropAlias = "Wide";
@@ -96,11 +90,11 @@
     @* Add div for column width on Advanced Pages *@
     if (pageType == "advanced")
     {
-        if (Model.Width == USNOptions.ComponentWidth_Center)
+        if (Model.Width == Options.ComponentWidth_Center)
         {
             @:<div class="container"><div class="row"><div class="mid-col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
         }
-        else if(Model.Width == USNOptions.ComponentWidth_Full)
+        else if(Model.Width == Options.ComponentWidth_Full)
         {
             @:<div class="container-fluid"><div class="row"><div class="wide-col col-xs-12">
         }
@@ -120,13 +114,13 @@
 
     switch (Model.ItemTextAlignment)
     {
-        case USNOptions.TextAlignment_Left:
+        case Options.TextAlignment_Left:
             itemTextAlignment = "text-left";
             break;
-        case USNOptions.TextAlignment_Center:
+        case Options.TextAlignment_Center:
             itemTextAlignment = "text-center";
             break;
-        case USNOptions.TextAlignment_Right:
+        case Options.TextAlignment_Right:
             itemTextAlignment = "text-right";
             break;
         default:
@@ -137,7 +131,7 @@
     <!-- PAGE COMPONENT SUBPAGE LISTING -->
     <div class="spc listing @animateClass @customComponentClasses" data-os-animation="fadeIn" data-os-animation-delay="0s" @Html.Raw(anchorId)>
 
-        @Html.Partial("USNMiscPageElements/USN_ComponentIntro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
+        @Html.Partial("MiscPageElements/ComponentIntro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
 
         @{
             RelatedLinks listingPages = Model.LinkToListing;
@@ -150,16 +144,16 @@
                 {
                     switch (Model.ItemsPerRow)
                     {
-                        case USNOptions.ItemsPerRow_1:
+                        case Options.ItemsPerRow_1:
                             itemsPerRow = "items-1";
                             break;
-                        case USNOptions.ItemsPerRow_2:
+                        case Options.ItemsPerRow_2:
                             itemsPerRow = "items-2";
                             break;
-                        case USNOptions.ItemsPerRow_3:
+                        case Options.ItemsPerRow_3:
                             itemsPerRow = "items-3";
                             break;
-                        case USNOptions.ItemsPerRow_4:
+                        case Options.ItemsPerRow_4:
                             itemsPerRow = "items-4";
                             break;
                         default:
@@ -227,14 +221,14 @@
 
                                             if (item.HasValue("pageSummary"))
                                             {
-                                                introText = item.GetPropertyValue<string>("pageSummary");
+                                                introText = item.Value<string>("pageSummary");
                                                 displaySummaryText = true;
                                             }
                                             else
                                             {
                                                 if (summaryTextLength > 0 && item.HasProperty("bodyText"))
                                                 {
-                                                    introText = item.GetPropertyValue<string>("bodyText").StripHtml().Trim();
+                                                    introText = item.Value<string>("bodyText").StripHtml().Trim();
 
                                                     displaySummaryText = true;
 
@@ -250,7 +244,7 @@
                                                 }
                                             }
 
-                                            string pageName = item.HasValue("subpageListingLinkText") ? item.GetPropertyValue<string>("subpageListingLinkText") : item.Name;
+                                            string pageName = item.HasValue("subpageListingLinkText") ? item.Value<string>("subpageListingLinkText") : item.Name;
 
                                             if (Model.ListingLayout != USNOptions.ListingStyle_Grid)
                                             {
@@ -258,14 +252,14 @@
 
                                                 <div class="item @circleClass @itemsPerRow col-xs-12 @animateClass" data-os-animation="fadeIn" data-os-animation-delay="0s">
                                                     <div class="row">
-                                                        @if (item.HasValue("pageListingImage") && item.GetPropertyValue<IPublishedContent>("pageListingImage") != null)
+                                                        @if (item.HasValue("pageListingImage") && item.Value<IPublishedContent>("pageListingImage") != null)
                                                         {
                                                             textClass = "col-sm-7 pull-left";
 
                                                             <div class="col-sm-4 pull-right col-xs-12 text-right">
                                                                 <div class="image @circleClass">
                                                                     <a href="@item.Url">
-                                                                        <img class="@circleClass lazyload" src="@(item.GetPropertyValue<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall))" data-src="@(item.GetPropertyValue<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias))" alt="@(item.GetPropertyValue<string>("pageListingImageAltText"))">
+                                                                        <img class="@circleClass lazyload" src="@(item.Value<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall))" data-src="@(item.Value<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias))" alt="@(item.Value<string>("pageListingImageAltText"))">
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -287,10 +281,10 @@
 
                                                 <div class="item @circleClass @itemsPerRow col-xs-12 @animateClass" data-os-animation="fadeIn" data-os-animation-delay="0s">
                                                     <a href="@item.Url">
-                                                        @if (item.HasValue("pageListingImage") && item.GetPropertyValue<IPublishedContent>("pageListingImage") != null)
+                                                        @if (item.HasValue("pageListingImage") && item.Value<IPublishedContent>("pageListingImage") != null)
                                                         {
                                                             <div class="image @circleClass">
-                                                                <img class="@circleClass lazyload" src="@(item.GetPropertyValue<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall))" data-src="@(item.GetPropertyValue<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias))" alt="@(item.GetPropertyValue<string>("pageListingImageAltText"))">
+                                                                <img class="@circleClass lazyload" src="@(item.Value<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall))" data-src="@(item.Value<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias))" alt="@(item.Value<string>("pageListingImageAltText"))">
                                                             </div>
                                                         }
                                                         <p class="heading @settings.HeadingStyle">@Html.Raw(pageName)</p>
@@ -332,14 +326,14 @@
 
                                             if (post.HasValue("pageSummary"))
                                             {
-                                                introText = post.GetPropertyValue<string>("pageSummary");
+                                                introText = post.Value<string>("pageSummary");
                                                 displaySummaryText = true;
                                             }
                                             else
                                             {
                                                 if (summaryTextLength > 0 && post.HasProperty("bodyText"))
                                                 {
-                                                    introText = post.GetPropertyValue<string>("bodyText").StripHtml().Trim();
+                                                    introText = post.Value<string>("bodyText").StripHtml().Trim();
 
                                                     displaySummaryText = true;
 
@@ -355,7 +349,7 @@
                                                 }
                                             }
 
-                                            string postName = post.HasValue("onPageTitle") ? post.GetPropertyValue<string>("onPageTitle") : post.Name;
+                                            string postName = post.HasValue("onPageTitle") ? post.Value<string>("onPageTitle") : post.Name;
 
                                             if (Model.ListingLayout != USNOptions.ListingStyle_Grid)
                                             {
@@ -363,14 +357,14 @@
 
                                                 <div class="item @circleClass @itemsPerRow col-xs-12 @animateClass" data-os-animation="fadeIn" data-os-animation-delay="0s">
                                                     <div class="row">
-                                                        @if (post.HasValue("pageListingImage") && post.GetPropertyValue<IPublishedContent>("pageListingImage") != null)
+                                                        @if (post.HasValue("pageListingImage") && post.Value<IPublishedContent>("pageListingImage") != null)
                                                         {
                                                             textClass = "col-sm-7 pull-left";
 
                                                             <div class="col-sm-4 pull-right col-xs-12 text-right">
                                                                 <div class="image @circleClass">
                                                                     <a href="@post.Url">
-                                                                        <img class="@circleClass lazyload" src="@(post.GetPropertyValue<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall))" data-src="@(post.GetPropertyValue<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias))" alt="@(post.GetPropertyValue<string>("pageListingImageAltText"))">
+                                                                        <img class="@circleClass lazyload" src="@(post.Value<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall))" data-src="@(post.Value<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias))" alt="@(post.Value<string>("pageListingImageAltText"))">
                                                                     </a>
                                                                 </div>
                                                             </div>
@@ -395,10 +389,10 @@
 
                                                 <div class="item @circleClass @itemsPerRow col-xs-12 @animateClass" data-os-animation="fadeIn" data-os-animation-delay="0s">
                                                     <a href="@post.Url">
-                                                        @if (post.HasValue("pageListingImage") && post.GetPropertyValue<IPublishedContent>("pageListingImage") != null)
+                                                        @if (post.HasValue("pageListingImage") && post.Value<IPublishedContent>("pageListingImage") != null)
                                                         {
                                                             <div class="image @circleClass">
-                                                                <img class="@circleClass lazyload" src="@(post.GetPropertyValue<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall))" data-src="@(post.GetPropertyValue<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias))" alt="@(post.GetPropertyValue<string>("pageListingImageAltText"))">
+                                                                <img class="@circleClass lazyload" src="@(post.Value<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall))" data-src="@(post.Value<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias))" alt="@(post.Value<string>("pageListingImageAltText"))">
                                                             </div>
                                                         }
                                                         <p class="heading @settings.HeadingStyle">@Html.Raw(postName)</p>

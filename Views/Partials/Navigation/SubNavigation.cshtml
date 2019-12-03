@@ -2,9 +2,9 @@
 
 
 @{	
-    if (Model.Content.HasProperty("hideSubNavigation") && !Model.Content.GetPropertyValue<bool>("hideSubNavigation"))
+    if (Model.HasProperty("hideSubNavigation") && !Model.Value<bool>("hideSubNavigation"))
 	{
-		var parent = Model.Content.AncestorOrSelf(2);
+		var parent = Model.AncestorOrSelf(2);
 
         var pages = parent.Children.Where(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias)) && x.IsVisible());
 
@@ -15,7 +15,7 @@
 		<nav class="sub has-borders c6-borders">
 			<p class="heading inner">
 				<a href="@parent.Url()">
-				    @(parent.HasValue("subNavigationLinkText") ? parent.GetPropertyValue<string>("subNavigationLinkText") : parent.Name)
+				    @(parent.HasValue("subNavigationLinkText") ? parent.Value<string>("subNavigationLinkText") : parent.Name)
 				</a>
 			</p>
             <div class="inner">
@@ -36,13 +36,13 @@
             {
                 if (node != null)
                 {
-                    string selected = Array.IndexOf(Model.Content.Path.Split(','), node.Id.ToString()) >= 0 ? " class=\"active\"" : "";
+                    string selected = Array.IndexOf(Model.Path.Split(','), node.Id.ToString()) >= 0 ? " class=\"active\"" : "";
 
                     <li @Html.Raw(selected)>
                         <a href="@node.Url()">
                             @if (node.HasValue("subNavigationLinkText"))
                             {
-                                @(node.GetPropertyValue<string>("subNavigationLinkText"))
+                                @(node.Value<string>("subNavigationLinkText"))
                             }
                             else
                             {

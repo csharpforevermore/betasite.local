@@ -1,12 +1,12 @@
 ﻿@inherits UmbracoViewPage
 
 @{
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
     
 	@Html.Raw(globalSettings.AfterOpeningBodyScripts)
 
-    if (Model.Content.HasValue("pageAfterOpeningBodyScripts"))
+    if (Model.HasValue("pageAfterOpeningBodyScripts"))
     {
-        @Html.Raw(Model.Content.GetPropertyValue<string>("pageAfterOpeningBodyScripts"))
+        @Html.Raw(Model.Value<string>("pageAfterOpeningBodyScripts"))
     }
 }

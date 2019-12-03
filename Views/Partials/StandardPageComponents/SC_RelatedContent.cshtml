@@ -1,9 +1,4 @@
-﻿@inherits UmbracoViewPage<Usn_Sc_RelatedContent_AN>
-
-@using USNStarterKit.USNHelpers;
-@using USN.USNTemplate;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
+﻿@inherits UmbracoViewPage
 
 @{
     int globalSettingsId = Convert.ToInt32(ViewData["globalSettingsID"]);
@@ -11,7 +6,7 @@
     string anchorId = String.Empty;
     string customComponentClasses = String.Empty;
 
-    USNTemplateStyleSettings settings;
+    TemplateStyleSettings settings;
     string animateClass = String.Empty;
 
     if (Model.Animate)
@@ -23,11 +18,11 @@
 
     if (pageType == "standard")
     {
-        settings = USNViewTemplateHelper.GetDefaultTemplateStyleSettings();
+        settings = ViewTemplateHelper.GetDefaultTemplateStyleSettings();
     }
     else
     {
-        settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
+        settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
     }
 
     @* Add div for column width on Advanced Pages *@
@@ -231,14 +226,14 @@
 
                     if (item.HasValue("pageSummary"))
                     {
-                        introText = item.GetPropertyValue<string>("pageSummary");
+                        introText = item.Value<string>("pageSummary");
                         displaySummaryText = true;
                     }
                     else
                     {
                         if (summaryTextLength > 0 && item.HasProperty("bodyText"))
                         {
-                            introText = item.GetPropertyValue<string>("bodyText").StripHtml().Trim();
+                            introText = item.Value<string>("bodyText").StripHtml().Trim();
 
                             displaySummaryText = true;
 
@@ -262,11 +257,11 @@
 
                             @{
 
-                                string itemName = item.HasValue("onPageTitle") ? item.GetPropertyValue<string>("onPageTitle") : item.Name;
+                                string itemName = item.HasValue("onPageTitle") ? item.Value<string>("onPageTitle") : item.Name;
 
-                                if (item.GetPropertyValue<Image>("pageListingImage") != null)
+                                if (item.Value<Image>("pageListingImage") != null)
                                 {
-                                    <div class="image @circleClass"><a href="@item.Url"><img class="@circleClass lazyload" src="@(item.GetPropertyValue<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall))" data-src="@(item.GetPropertyValue<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias))" alt="@(item.GetPropertyValue<string>("pageListingImageAltText"))"></a></div>
+                                    <div class="image @circleClass"><a href="@item.Url"><img class="@circleClass lazyload" src="@(item.Value<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall))" data-src="@(item.Value<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias))" alt="@(item.Value<string>("pageListingImageAltText"))"></a></div>
                                 }
 
                             }
@@ -295,11 +290,11 @@
                             
                             @{
 
-                                string itemName = item.HasValue("subPageListingLinkText") ? item.GetPropertyValue<string>("subPageListingLinkText") : item.Name;
+                                string itemName = item.HasValue("subPageListingLinkText") ? item.Value<string>("subPageListingLinkText") : item.Name;
 
-                                if (item.GetPropertyValue<Image>("pageListingImage") != null)
+                                if (item.Value<Image>("pageListingImage") != null)
                                 {
-                                    <div class="image @circleClass"><a href="@item.Url"><img class="@circleClass lazyload" src="@(item.GetPropertyValue<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall))" data-src="@(item.GetPropertyValue<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias))" alt="@(item.GetPropertyValue<string>("pageListingImageAltText"))"></a></div>
+                                    <div class="image @circleClass"><a href="@item.Url"><img class="@circleClass lazyload" src="@(item.Value<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall))" data-src="@(item.Value<Image>("pageListingImage").GetCropUrl(cropAlias: cropAlias))" alt="@(item.Value<string>("pageListingImageAltText"))"></a></div>
                                 }
 
                             }

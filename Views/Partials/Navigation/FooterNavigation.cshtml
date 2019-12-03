@@ -1,11 +1,9 @@
 ﻿@inherits UmbracoViewPage
 
 @using Umbraco.Web.Models;
-@using USNStarterKit.USNModels;
-@using USNStarterKit.USNHelpers;
 	
 @{
-    Usnnavigation navigation = (Usnnavigation)Model.Navigation;
+    var navigation = (Navigation)Model.Navigation();
     
     RelatedLinks footerNavigation = navigation.FooterNavigation;
 

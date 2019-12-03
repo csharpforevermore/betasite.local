@@ -1,9 +1,6 @@
-﻿@inherits UmbracoViewPage<USN.USNModels.USNNewsletterFormViewModel>
-
-@using USNStarterKit.USNHeading.Models;
-@using USNStarterKit.USNHelpers;
+﻿@inherits UmbracoViewPage
 	
-@using (Ajax.BeginForm("HandleNewsletterSubmit", "USNNewsletterSignupSurface", new AjaxOptions
+@using (Ajax.BeginForm("HandleNewsletterSubmit", "NewsletterSignupSurface", new AjaxOptions
 {
     HttpMethod = "POST",
     InsertionMode = InsertionMode.Replace,
@@ -17,7 +14,7 @@
     var errorId = "NewsletterError" + Model.CurrentNodeID;
     var ajaxLoadingId = "NewsletterAjaxLoading" + Model.CurrentNodeID;
 
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Umbraco.TypedContent(Model.GlobalSettingsID);
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
 
     if (globalSettings.EmailMarketingPlatform.HasValue() && globalSettings.NewsletterApikey.HasValue() && (currentNode.HasValue("newsletterSubscriberListID") || globalSettings.DefaultNewsletterSubscriberListID.HasValue()))
@@ -83,7 +80,7 @@
             </fieldset>
             <fieldset class="buttons">
                 <button class="btn c1-borders c1-text" type="submit">
-                    <span>@(currentNode.GetPropertyValue<string>("newsletterButtonText"))</span>
+                    <span>@(currentNode.Value<string>("newsletterButtonText"))</span>
                 </button>
             </fieldset>
             <div class="ajax-loading" id="@ajaxLoadingId" style="display:none">

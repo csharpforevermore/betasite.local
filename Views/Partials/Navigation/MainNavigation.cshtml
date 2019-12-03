@@ -1,11 +1,10 @@
 ﻿@inherits UmbracoViewPage
 
 @using Umbraco.Web.Models;
-@using USNStarterKit.USNModels;
-@using USNStarterKit.USNHelpers;
+@using ContentModels = Umbraco.Web.PublishedModels;
 
-@{
-    Usnnavigation navigation = (Usnnavigation)Model.Navigation;
+@*
+    var navigation = (Navigation)Model.Navigation();
     RelatedLinks secondaryNavigation = navigation.SecondaryNavigation;
 
     RelatedLinks mainNavigation = navigation.MainNavigation;
@@ -23,14 +22,14 @@
                         //Display nav link for Umbraco Content Page
                         if (mainLink != null && mainLink.InternalNode != null && mainLink.InternalNode.IsVisible())
                         {
-                            var selected = Array.IndexOf(Model.Content.Path.Split(','), mainLink.InternalNode.Id.ToString()) >= 0 ? " class=\"active\"" : "";
+                            var selected = Array.IndexOf(Model.Path.Split(','), mainLink.InternalNode.Id.ToString()) >= 0 ? " class=\"active\"" : "";
 
-                            if (mainLink.InternalNode.IsDocumentType(Usnhomepage.ModelTypeAlias) && !Model.Content.IsDocumentType(Usnhomepage.ModelTypeAlias))
+                            if (mainLink.InternalNode.IsDocumentType(Usnhomepage.ModelTypeAlias) && !Model.IsDocumentType(Usnhomepage.ModelTypeAlias))
                             {
                                 selected = String.Empty;
                             }
 
-                            var subPages = mainLink.InternalNode.Children.Where(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || x.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnloginPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias) || x.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)) && x.IsVisible());
+                            var subPages = mainLink.InternalNode.Children.Where(x => (x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(AdvancedPage.ModelTypeAlias) || x.IsDocumentType(BlogLandingPage.ModelTypeAlias) || x.IsDocumentType(LoginPage.ModelTypeAlias) || x.IsDocumentType(SearchResultsPage.ModelTypeAlias) || x.IsDocumentType(BlogCategoryPage.ModelTypeAlias)) && x.IsVisible());
 
                             string subPageClass = String.Empty;
 
@@ -96,9 +95,9 @@
     <ul>
         @foreach (var node in pages)
         {
-            string selected = Array.IndexOf(Model.Content.Path.Split(','), node.Id.ToString()) >= 0 ? " class=\"active\"" : "";
+            string selected = Array.IndexOf(Model.Path.Split(','), node.Id.ToString()) >= 0 ? " class=\"active\"" : "";
 
-            var subPages = node.Children.Where(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || x.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnloginPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias) || x.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)) && x.IsVisible());
+            var subPages = node.Children.Where(x => (x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(AdvancedPage.ModelTypeAlias) || x.IsDocumentType(BlogLandingPage.ModelTypeAlias) || x.IsDocumentType(LoginPage.ModelTypeAlias) || x.IsDocumentType(SearchResultsPage.ModelTypeAlias) || x.IsDocumentType(ContentModels.BlogCategoryPage.ModelTypeAlias)) && x.IsVisible());
 
             string subPageClass = String.Empty;
 
@@ -113,7 +112,7 @@
                     <a href="@node.Url()">
                         @if (node.HasValue("subNavigationLinkText"))
                         {
-                            @(node.GetPropertyValue<string>("subNavigationLinkText"));
+                            @(node.Value<string>("subNavigationLinkText"));
                         }
                         else
                         {
@@ -133,3 +132,4 @@
         }
     </ul>
 }
+*@

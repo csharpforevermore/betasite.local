@@ -1,11 +1,11 @@
-﻿@inherits UmbracoViewPage<BaseViewModel>
+﻿@inherits UmbracoViewPage
 
 @using System.Globalization;
 @using ESO.Models;
 
 
 @{
-    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Umbraco.GlobalSettings();
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
     string metaTitle;
     string openGraphImage = String.Empty;

@@ -1,10 +1,4 @@
-﻿@inherits UmbracoViewPage<Usn_Swp_RelatedContentPod>
-
-@using USNStarterKit.USNHelpers;
-@using USNStarterKit.USNBlog;
-@using USNStarterKit.USNModels;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
+﻿@inherits UmbracoViewPage
 
 @{
 
@@ -59,7 +53,7 @@
                                     {
                                         if (item.HasValue("onPageTitle"))
                                         {
-                                            @(item.GetPropertyValue<string>("onPageTitle"))
+                                            @(item.Value<string>("onPageTitle"))
                                         }
                                         else
                                         {
@@ -70,7 +64,7 @@
                                     {
                                         if (item.HasValue("subPageListingLinkText"))
                                         {
-                                            @(item.GetPropertyValue<string>("subPageListingLinkText"))
+                                            @(item.Value<string>("subPageListingLinkText"))
                                         }
                                         else
                                         {
@@ -84,7 +78,7 @@
                             {
                                 <div class="meta base-text">
                                     <div>
-                                        <time><span class="date">@(item.GetPropertyValue<DateTime>("postDate").ToString("dd MMM yyyy"))</span></time>
+                                        <time><span class="date">@(item.Value<DateTime>("postDate").ToString("dd MMM yyyy"))</span></time>
                                     </div>
                                 </div>
                             }

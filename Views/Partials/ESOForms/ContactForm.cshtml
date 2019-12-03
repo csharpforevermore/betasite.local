@@ -1,8 +1,6 @@
-﻿@inherits UmbracoViewPage<USN.USNModels.USNContactFormViewModel>
+﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
-
-@using (Ajax.BeginForm("HandleContactSubmit", "USNContactFormSurface", new AjaxOptions
+@using (Ajax.BeginForm("HandleContactSubmit", "ContactFormSurface", new AjaxOptions
 {
     HttpMethod = "POST",
     InsertionMode = InsertionMode.Replace,
@@ -16,7 +14,7 @@
     var ajaxLoadingId = "ContactAjaxLoading" + Model.CurrentNodeID;
     var errorId = "ContactError" + Model.CurrentNodeID;
 
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Umbraco.TypedContent(Model.GlobalSettingsID);
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Umbraco.TypedContent(Model.GlobalSettingsID);
 
     @Html.Hidden("CurrentNodeID", Model.CurrentNodeID)
     @Html.Hidden("GlobalSettingsID", Model.GlobalSettingsID)

@@ -1,19 +1,14 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
-@using USNStarterKit.USNModels;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
-
 @{
     // get landing node
-    UsnblogLandingPage landing = (UsnblogLandingPage)Model.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
+    var landing = (BlogLandingPage)Model.AncestorOrSelf(BlogLandingPage.ModelTypeAlias);
 
     UsnblogAuthor authorNode = null;
 
     if (Model.HasValue("postAuthor"))
     {
-        authorNode = (UsnblogAuthor)Model.GetPropertyValue<IEnumerable<IPublishedContent>>("postAuthor").FirstOrDefault();
+        authorNode = (UsnblogAuthor)Model.Value<IEnumerable<IPublishedContent>>("postAuthor").FirstOrDefault();
     }
     else if (landing.DefaultAuthor != null)
     {

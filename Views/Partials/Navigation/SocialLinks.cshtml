@@ -1,12 +1,7 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
-@using USNStarterKit.USNModels;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
-
 @{
-    Usnnavigation navigation = (Usnnavigation)Model.Navigation;
+    var navigation = (Navigation)Model.Navigation();
 
     if (navigation.SocialLinks != null && navigation.SocialLinks.Any())
     {

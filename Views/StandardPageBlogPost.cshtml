@@ -1,11 +1,9 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNHelpers;
-
 @{
-    Layout = "USNMaster.cshtml";
+    Layout = "master.cshtml";
 
-    var standardPageBlogPost = (StandardPageBlogPost)Model.Content;
+    var standardPageBlogPost = (StandardPageBlogPost)Model.
 }
 
 @Html.Partial("MiscPageElements/StandardPageBannerSection", Model)
@@ -60,24 +58,24 @@
 </section>	
 <!--// CONTENT -->
 
-@Html.Partial("USNSiteWidePods/USN_SitewidePods", Model, new ViewDataDictionary { { "podstyle", "horizontal" } })
+@Html.Partial("SiteWidePods/SitewidePods", Model, new ViewDataDictionary { { "podstyle", "horizontal" } })
 		
 @section BodyTag
 {
     @{
         string headerClass = String.Empty;
 
-        if (Model.Content.GetPropertyValue<bool>("hideWebsiteHeaderSection"))
+        if (Model.Value<bool>("hideWebsiteHeaderSection"))
         {
             headerClass = "no-header";
         }
 
-        if (Model.Content.GetPropertyValue<bool>("hideWebsiteFooterSection"))
+        if (Model.Value<bool>("hideWebsiteFooterSection"))
         {
             headerClass = headerClass + " no-footer";
         }
 
-        UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+        var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
         string fixedWidth = String.Empty;
 
@@ -88,20 +86,20 @@
 
         string customBodyClass = String.Empty;
 
-        if (Model.Content.HasValue("customBodyClasses"))
+        if (Model.HasValue("customBodyClasses"))
         {
-            customBodyClass = Model.Content.GetPropertyValue<string>("customBodyClasses");
+            customBodyClass = Model.Value<string>("customBodyClasses");
         }
 
         string bannerClass = String.Empty;
 
         IEnumerable<IPublishedContent> components = null;
 
-        if (Model.Content.GetPropertyValue<bool>("overrideDefaultTopComponents"))
+        if (Model.Value<bool>("overrideDefaultTopComponents"))
         {
-            if (Model.Content.HasValue("topComponents"))
+            if (Model.HasValue("topComponents"))
             {
-                components = Model.Content.GetPropertyValue<IEnumerable<IPublishedContent>>("topComponents");
+                components = Model.Value<IEnumerable<IPublishedContent>>("topComponents");
             }
         }
         else
@@ -116,13 +114,13 @@
         {
             var publishedContents = components as IList<IPublishedContent> ?? components.ToList();
 
-            bannerClass = publishedContents.First().IsDocumentType(Usn_Ac_Banner_AN.ModelTypeAlias) ? "banner-top" : "";
+            bannerClass = publishedContents.First().IsDocumentType(Ac_Banner_AN.ModelTypeAlias) ? "banner-top" : "";
         }
 
         //If no top components look at header image section
         else if (components == null || !components.Any())
         {
-            if (Model.Content.GetPropertyValue<bool>("displayHeaderImageSection"))
+            if (Model.Value<bool>("displayHeaderImageSection"))
             {
                 bannerClass = "banner-top";
             }

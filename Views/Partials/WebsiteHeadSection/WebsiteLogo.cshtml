@@ -2,8 +2,7 @@
 @inherits UmbracoViewPage
 
 @{
-    var content = Model.GlobalSettings();
-    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)content;
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
     string logoClass = String.Empty;
 

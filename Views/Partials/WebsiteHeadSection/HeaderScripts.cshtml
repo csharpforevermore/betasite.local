@@ -1,9 +1,7 @@
-﻿@inherits UmbracoViewPage<USN.USNModels.USNBaseViewModel>
-
-@using USNStarterKit.USNHelpers;
+﻿@inherits UmbracoViewPage
 
 @{
-    UsnglobalSettings globalSettings = (UsnglobalSettings)Model.GlobalSettings;
+    var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
     if (globalSettings.GoogleReCaptchasiteKey.HasValue() && globalSettings.GoogleReCaptchasecretKey.HasValue())
     {
@@ -12,8 +10,8 @@
 
 	@Html.Raw(globalSettings.HeaderScripts)
 
-    if(Model.Content.HasValue("pageHeaderScripts"))
+    if(Model.HasValue("pageHeaderScripts"))
     {
-        @Html.Raw(Model.Content.GetPropertyValue<string>("pageHeaderScripts"))
+        @Html.Raw(Model.Value<string>("pageHeaderScripts"))
     }
 }

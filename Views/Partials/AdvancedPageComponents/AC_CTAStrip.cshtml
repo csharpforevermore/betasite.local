@@ -1,16 +1,10 @@
-﻿@inherits UmbracoViewPage<Usn_Ac_Ctastrip_AN>
-
-@using USNStarterKit.USNModels;
-@using USNStarterKit.USNHelpers;
-@using USN.USNTemplate;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
+﻿@inherits UmbracoViewPage
 
 @{
     string headingSource = String.Empty;
     string animateClass = String.Empty;
 
-    USNLink outroLink = USNUrlHelper.GetLinkFromRelatedLinks(Model.Link);
+    var outroLink = USNUrlHelper.GetLinkFromRelatedLinks(Model.Link);
 
     if (Model.Heading != null)
     {

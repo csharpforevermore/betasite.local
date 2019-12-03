@@ -1,17 +1,12 @@
-﻿@inherits UmbracoViewPage<Usn_Sc_Links_AN>
+﻿@inherits UmbracoViewPage
 
 @using Umbraco.Web.Models;
-@using USNStarterKit.USNModels;
-@using USNStarterKit.USNHelpers;
-@using USN.USNTemplate;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
 
 @{
     string anchorId = String.Empty;
     string customComponentClasses = String.Empty;
 
-    USNTemplateStyleSettings settings;
+    TemplateStyleSettings settings;
     string animateClass = String.Empty;
 
     if (Model.Animate)
