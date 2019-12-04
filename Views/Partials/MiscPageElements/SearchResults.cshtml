@@ -137,7 +137,7 @@
                         <p class="heading"><a class="c3-text" href="@item.Url">@item.Name</a></p>
                         @if (item.HasValue("metaDescription"))
                         {
-                            <div class="text">@Html.Raw(umbraco.library.ReplaceLineBreaks(item.Value<string>("metaDescription")))</div>
+                            <div class="text">@Html.Raw(Html.ReplaceLineBreaks(item.Value<string>("metaDescription")))</div>
                         }
                         <p class="link">@Umbraco.GetDictionaryValue("USN Search Results Link Label") <a href="@item.Url">@item.Url</a></p>
                     </div>

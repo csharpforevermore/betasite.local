@@ -168,7 +168,7 @@
 
                     <div class="item @quotesPerRow">
                         <blockquote>
-                            <p class="@settings.HeadingStyle">@Html.Raw(umbraco.library.ReplaceLineBreaks(quote.Quote))</p>
+                            <p class="@settings.HeadingStyle">@Html.Raw(Html.ReplaceLineBreaks(quote.Quote))</p>
                             @if (quote.Cite.HasValue())
                             {
                                 <cite>

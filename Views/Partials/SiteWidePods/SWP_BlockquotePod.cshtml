@@ -22,7 +22,7 @@
 
     <div class="item blockquote-pod c3-bg inner @textAlignment">
         <blockquote class="c5-text">
-            <p>@Html.Raw(umbraco.library.ReplaceLineBreaks(Model.Quote))</p>
+            <p>@Html.Raw(Html.ReplaceLineBreaks(Model.Quote))</p>
             @if (Model.Cite.HasValue())
             {
                 <cite>
