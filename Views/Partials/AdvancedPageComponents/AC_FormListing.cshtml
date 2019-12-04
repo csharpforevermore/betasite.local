@@ -41,7 +41,7 @@
                         {
                             int pagesDisplayCount = Model.PagesToDisplay;
 
-                            if (linkToListing.InternalNode != null && (linkToListing.InternalNode.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || linkToListing.InternalNode.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)))
+                            if (linkToListing.InternalNode != null && (linkToListing.InternalNode.IsDocumentType(BlogLandingPage.ModelTypeAlias) || linkToListing.InternalNode.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)))
                             {
                                 string category = null;
                                 IPublishedContent blogLandingPage;
@@ -49,7 +49,7 @@
                                 if (linkToListing.InternalNode.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
                                 {
                                     category = linkToListing.InternalNode.Id.ToString();
-                                    blogLandingPage = linkToListing.InternalNode.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
+                                    blogLandingPage = linkToListing.InternalNode.AncestorOrSelf(BlogLandingPage.ModelTypeAlias);
                                 }
                                 else
                                 {

@@ -44,7 +44,7 @@
                             @{
                                 string breadcrumbLinkTextPage = Model.HasValue("breadcrumbLinkText") ? Model.Value<string>("breadcrumbLinkText") : Model.Name;
 
-                                if (Model.IsDocumentType(UsnblogLandingPage.ModelTypeAlias))
+                                if (Model.IsDocumentType(BlogLandingPage.ModelTypeAlias))
                                 {
                                     if (!String.IsNullOrEmpty(Request.QueryString["year"]) && String.IsNullOrEmpty(Request.QueryString["month"]))
                                     {

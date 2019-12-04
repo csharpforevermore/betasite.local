@@ -6,7 +6,7 @@
 
     //If page is a blog category, need to get layout from blog landing page
     if (Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)){
-        IPublishedContent blogLandingPage = Model.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
+        IPublishedContent blogLandingPage = Model.AncestorOrSelf(BlogLandingPage.ModelTypeAlias);
         pageLayout = !blogLandingPage.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : blogLandingPage.Value<USNOptions>("pageLayout");
     }
     else

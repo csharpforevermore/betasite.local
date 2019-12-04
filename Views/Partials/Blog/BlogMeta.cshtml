@@ -2,7 +2,7 @@
 
 @{
     // get landing node
-    var landing = (BlogLandingPage)Model.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
+    var landing = (BlogLandingPage)Model.AncestorOrSelf(BlogLandingPage.ModelTypeAlias);
     int globalSettingsId = Convert.ToInt32(ViewData["globalSettingsID"]);
 
     var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();

@@ -27,7 +27,7 @@
 
 @helper Traverse(IPublishedContent node, string DATE_TIME_FORMAT)
 {
-var items = node.Children.Where(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || x.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnloginPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias)) && !x.Value<bool>("hideFromSearchEngines") && !library.IsProtected(x.Id, x.Url));
+var items = node.Children.Where(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || x.IsDocumentType(BlogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnloginPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias)) && !x.Value<bool>("hideFromSearchEngines") && !library.IsProtected(x.Id, x.Url));
 
 if (items.Any())
 {

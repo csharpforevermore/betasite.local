@@ -175,7 +175,7 @@
                                 {
                                     USNLink page = USNUrlHelper.GetLinkFromRelatedLink(link);
 
-                                    if (page != null && (page.InternalNode.IsDocumentType(UsnstandardPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)))
+                                    if (page != null && (page.InternalNode.IsDocumentType(UsnstandardPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(BlogLandingPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)))
                                     {
                                         <li role="presentation" @if (listPage == 1) { @Html.Raw("class=\"active\"")   }>
                                             <a href="#tab-name-@Model.Id-@listPage" aria-controls="tab-name-@Model.Id-@listPage" role="tab" data-toggle="tab">
@@ -300,7 +300,7 @@
 
 
                                     }
-                                    else if (page != null && (page.InternalNode.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)))
+                                    else if (page != null && (page.InternalNode.IsDocumentType(BlogLandingPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias)))
                                     {
                                         string category = null;
                                         IPublishedContent blogLandingPage;
@@ -308,7 +308,7 @@
                                         if (page.InternalNode.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
                                         {
                                             category = page.InternalNode.Id.ToString();
-                                            blogLandingPage = page.InternalNode.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
+                                            blogLandingPage = page.InternalNode.AncestorOrSelf(BlogLandingPage.ModelTypeAlias);
                                         }
                                         else
                                         {

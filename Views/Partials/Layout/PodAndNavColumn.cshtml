@@ -9,7 +9,7 @@
     //If Page is a blog category, need to get layout from blog landing page
     if (Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
     {
-        IPublishedContent blogLandingPage = Model.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
+        IPublishedContent blogLandingPage = Model.AncestorOrSelf(BlogLandingPage.ModelTypeAlias);
         pageLayout = !blogLandingPage.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : blogLandingPage.Value<USNOptions>("pageLayout");
     }
     else
@@ -21,7 +21,7 @@
     {
         case USNOptions.PageLayout_Left:
 			<div class="right-col col-lg-3 col-md-4 col-xs-12 pull-right">                                                     
-               @if (Model.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
+               @if (Model.IsDocumentType(BlogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
                {
                    @Html.Partial("USNBlog/USN_BlogArchiveNavigation", Model)
                    @Html.Partial("USNBlog/USN_BlogCategoryNavigation", Model)
@@ -37,7 +37,7 @@
             break;
         case USNOptions.PageLayout_Right:
             <div class="left-col col-lg-3 col-md-4 col-xs-12 pull-left">
-                @if (Model.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
+                @if (Model.IsDocumentType(BlogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
                 {
                     @Html.Partial("USNBlog/USN_BlogArchiveNavigation", Model)
                     @Html.Partial("USNBlog/USN_BlogCategoryNavigation", Model)
@@ -58,7 +58,7 @@
                 <!--// SUB -->
             </div>
             <div class="right-col col-md-3 col-xs-12">
-                @if (Model.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
+                @if (Model.IsDocumentType(BlogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
                 {
                     @Html.Partial("USNBlog/USN_BlogArchiveNavigation", Model)
                     @Html.Partial("USNBlog/USN_BlogCategoryNavigation", Model)
@@ -70,7 +70,7 @@
             break;
         case USNOptions.PageLayout_Center:
             <div class="left-col col-md-3 col-md-pull-6 col-xs-12">
-               @if (Model.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
+               @if (Model.IsDocumentType(BlogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
                {
                     @Html.Partial("USNBlog/USN_BlogArchiveNavigation", Model)
                     @Html.Partial("USNBlog/USN_BlogCategoryNavigation", Model)
@@ -89,7 +89,7 @@
             break;
         default:
             <div class="right-col col-lg-3 col-md-4 col-xs-12 pull-right">
-                @if (Model.IsDocumentType(UsnblogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
+                @if (Model.IsDocumentType(BlogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias))
                 {
                     @Html.Partial("USNBlog/USN_BlogArchiveNavigation", Model)
                     @Html.Partial("USNBlog/USN_BlogCategoryNavigation", Model)

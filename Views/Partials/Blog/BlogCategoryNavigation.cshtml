@@ -1,7 +1,7 @@
 ﻿@inherits UmbracoViewPage
 
 @{
-    UsnblogLandingPage landing = (UsnblogLandingPage)Model.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
+    BlogLandingPage landing = (BlogLandingPage)Model.AncestorOrSelf(BlogLandingPage.ModelTypeAlias);
 
     var categoryFolder = landing.Children<BlogCategories>().FirstOrDefault();
 
