@@ -1,11 +1,15 @@
 ﻿@inherits UmbracoViewPage
 
 @using Umbraco.Web.Models;
+@using ESO.Models;
 
 	
 @{
     var navigation = (Navigation)Model.Navigation();
     
+
+    // TODO FIX CS0266
+    /*
     RelatedLinks footerQuickLinks = navigation.FooterQuickLinks;
 
     if (navigation.FooterQuickLinksHeading.HasValue() || footerQuickLinks != null)
@@ -33,5 +37,5 @@
             </ul>
         }
 		</nav>
-    }
+    }*/
 }
