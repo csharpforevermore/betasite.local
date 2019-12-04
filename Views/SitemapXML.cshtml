@@ -63,7 +63,7 @@ if (items.Any())
 
 @helper TraverseCategories(IPublishedContent catFolder, string DATE_TIME_FORMAT)
 {
-    var items = catFolder.Children.Where(x => x.IsDocumentType(UsnblogCategoryPage.ModelTypeAlias) && !x.Value<bool>("hideFromSearchEngines"));
+    var items = catFolder.Children.Where(x => x.IsDocumentType(BlogCategoryPage.ModelTypeAlias) && !x.Value<bool>("hideFromSearchEngines"));
 
     if (items.Any())
     {
