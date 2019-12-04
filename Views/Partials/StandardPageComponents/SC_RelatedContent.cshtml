@@ -60,7 +60,7 @@
 
             if (Model.RelatedContent.HasValue())
             {
-                relatedContent = Model.RelatedContent.Where(x => x.IsDocumentType(UsnadvancedPageBlogPost.ModelTypeAlias) ||
+                relatedContent = Model.RelatedContent.Where(x => x.IsDocumentType(AdvancedPageBlogPost.ModelTypeAlias) ||
                     x.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || x.IsDocumentType(UsnstandardPage.ModelTypeAlias)
                     || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias));
             }
@@ -249,7 +249,7 @@
                         }
                     }
 
-                    if (item.IsDocumentType(UsnadvancedPageBlogPost.ModelTypeAlias) || item.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
+                    if (item.IsDocumentType(AdvancedPageBlogPost.ModelTypeAlias) || item.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
                     {
 
                         <!-- ITEM -->

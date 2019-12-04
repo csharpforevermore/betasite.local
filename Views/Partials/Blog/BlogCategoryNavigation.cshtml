@@ -3,7 +3,7 @@
 @{
     UsnblogLandingPage landing = (UsnblogLandingPage)Model.AncestorOrSelf(UsnblogLandingPage.ModelTypeAlias);
 
-    var categoryFolder = landing.Children<UsnblogCategories>().FirstOrDefault();
+    var categoryFolder = landing.Children<BlogCategories>().FirstOrDefault();
 
     if (categoryFolder != null && categoryFolder.Children.Any())
     {

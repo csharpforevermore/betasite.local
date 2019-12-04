@@ -53,7 +53,7 @@ if (items.Any())
         }
     }
 
-    var catFolder = node.Children.FirstOrDefault(x => x.IsDocumentType(UsnblogCategories.ModelTypeAlias)  && !library.IsProtected(x.Id,x.Url));
+    var catFolder = node.Children.FirstOrDefault(x => x.IsDocumentType(BlogCategories.ModelTypeAlias)  && !library.IsProtected(x.Id,x.Url));
 
     if (catFolder != null)
     {
