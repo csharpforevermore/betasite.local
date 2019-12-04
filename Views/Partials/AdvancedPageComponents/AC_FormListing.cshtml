@@ -82,7 +82,7 @@
                                                 introText = node.Value<string>("pageSummary");
                                                 displaySummaryText = true;
                                             }
-                                            else if (Model.SummaryTextCharacterCount.HasValue() && node.IsDocumentType(UsnstandardPageBlogPost.ModelTypeAlias))
+                                            else if (Model.SummaryTextCharacterCount.HasValue() && node.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
                                             {
                                                 introText = library.StripHtml(node.Value<string>("bodyText"));
 

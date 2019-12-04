@@ -14,7 +14,7 @@
                 <div class="row">
                     <nav class="col-xs-12">
                         <ol itemscope itemtype="http://schema.org/BreadcrumbList">
-                            @if (Model.IsDocumentType(UsnstandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(UsnadvancedPageBlogPost.ModelTypeAlias))
+                            @if (Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(UsnadvancedPageBlogPost.ModelTypeAlias))
                             {
                                 //Start blog breadcrumb 4 levels lower than blog post
                                 int blogLevel = Model.Level - 4;

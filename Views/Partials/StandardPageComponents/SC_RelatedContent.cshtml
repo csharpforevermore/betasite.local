@@ -61,7 +61,7 @@
             if (Model.RelatedContent.HasValue())
             {
                 relatedContent = Model.RelatedContent.Where(x => x.IsDocumentType(UsnadvancedPageBlogPost.ModelTypeAlias) ||
-                    x.IsDocumentType(UsnstandardPageBlogPost.ModelTypeAlias) || x.IsDocumentType(UsnstandardPage.ModelTypeAlias)
+                    x.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || x.IsDocumentType(UsnstandardPage.ModelTypeAlias)
                     || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias));
             }
 
@@ -249,7 +249,7 @@
                         }
                     }
 
-                    if (item.IsDocumentType(UsnadvancedPageBlogPost.ModelTypeAlias) || item.IsDocumentType(UsnstandardPageBlogPost.ModelTypeAlias))
+                    if (item.IsDocumentType(UsnadvancedPageBlogPost.ModelTypeAlias) || item.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
                     {
 
                         <!-- ITEM -->
@@ -328,7 +328,7 @@
     </div>
 
     @* Close div for column width on Advanced Pages *@
-    if (!Model.Parent.Parent.IsDocumentType(UsnstandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(UsnstandardPageBlogPost.ModelTypeAlias))
+    if (!Model.Parent.Parent.IsDocumentType(UsnstandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
     {
         @:</div></div></div>
     }

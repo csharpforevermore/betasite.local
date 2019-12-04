@@ -7,7 +7,7 @@
     if (Model.RelatedContent.HasValue())
     {
         relatedContent = Model.RelatedContent.Where(x => x.IsDocumentType(UsnadvancedPageBlogPost.ModelTypeAlias) ||
-                    x.IsDocumentType(UsnstandardPageBlogPost.ModelTypeAlias) || x.IsDocumentType(UsnstandardPage.ModelTypeAlias)
+                    x.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || x.IsDocumentType(UsnstandardPage.ModelTypeAlias)
                     || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias));
     }
 
@@ -49,7 +49,7 @@
                         <div class="item"> 
                             <p class="heading c3-text">
                                 <a class="c3-text" href="@item.Url">
-                                    @if (item.IsDocumentType(UsnadvancedPageBlogPost.ModelTypeAlias) || item.IsDocumentType(UsnstandardPageBlogPost.ModelTypeAlias))
+                                    @if (item.IsDocumentType(UsnadvancedPageBlogPost.ModelTypeAlias) || item.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
                                     {
                                         if (item.HasValue("onPageTitle"))
                                         {
@@ -74,7 +74,7 @@
                                 </a>
                             </p>
                             
-                            @if (item.IsDocumentType(UsnadvancedPageBlogPost.ModelTypeAlias) || item.IsDocumentType(UsnstandardPageBlogPost.ModelTypeAlias))
+                            @if (item.IsDocumentType(UsnadvancedPageBlogPost.ModelTypeAlias) || item.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
                             {
                                 <div class="meta base-text">
                                     <div>
