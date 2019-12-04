@@ -141,7 +141,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("topComponents")]
-		public string TopComponents => ReusableContent.GetTopComponents(this);
+		public IEnumerable<IPublishedContent> TopComponents => ReusableContent.GetTopComponents(this);
 
 		///<summary>
 		/// After opening body scripts

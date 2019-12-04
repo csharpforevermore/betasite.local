@@ -85,7 +85,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("defaultBottomComponents")]
-		public string DefaultBottomComponents => this.Value<string>("defaultBottomComponents");
+		public IEnumerable<IPublishedContent> DefaultBottomComponents => this.Value<IEnumerable<IPublishedContent>>("defaultBottomComponents");
 
 		///<summary>
 		/// Default Subscriber list ID: Newsletter Signup will only be available if a Subscriber List ID is available. Individual signup forms can have their own Subscriber List ID however the one entered here will be used as the default.
@@ -113,7 +113,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("defaultTopComponents")]
-		public string DefaultTopComponents => this.Value<string>("defaultTopComponents");
+		public IEnumerable<IPublishedContent> DefaultTopComponents => this.Value<IEnumerable<IPublishedContent>>("defaultTopComponents");
 
 		///<summary>
 		/// Disable delete: If "Yes" is selected, when a user attempts to delete this node they will be presented with a warning message indicating that this node cannot be deleted.

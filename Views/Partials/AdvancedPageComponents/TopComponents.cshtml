@@ -1,5 +1,6 @@
 ﻿@inherits UmbracoViewPage
 
+
 @{
     var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
 
@@ -28,7 +29,7 @@
         {
             if (component != null)
             {
-                @Html.Partial("USNAdvancedPageComponents/USN_ComponentsSwitch", component, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettings.Id } })
+                @Html.Partial("AdvancedPageComponents/ComponentsSwitch", component, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettings().Id } })
             }
         }
     }

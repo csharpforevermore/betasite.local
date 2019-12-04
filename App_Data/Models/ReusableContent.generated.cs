@@ -46,7 +46,7 @@ namespace Umbraco.Web.PublishedModels
 
 		/// <summary>Top components</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		string TopComponents { get; }
+		IEnumerable<IPublishedContent> TopComponents { get; }
 	}
 
 	/// <summary>Reusable Content</summary>
@@ -134,10 +134,10 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("topComponents")]
-		public string TopComponents => GetTopComponents(this);
+		public IEnumerable<IPublishedContent> TopComponents => GetTopComponents(this);
 
 		/// <summary>Static getter for Top components</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static string GetTopComponents(IReusableContent that) => that.Value<string>("topComponents");
+		public static IEnumerable<IPublishedContent> GetTopComponents(IReusableContent that) => that.Value<IEnumerable<IPublishedContent>>("topComponents");
 	}
 }

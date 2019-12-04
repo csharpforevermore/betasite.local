@@ -9,6 +9,7 @@ using System;
 using System.Linq;
 using System.Net;
 using System.Configuration;
+using System.Collections.Generic;
 
 
 namespace ESO.Extensions
@@ -28,6 +29,12 @@ namespace ESO.Extensions
         public static bool HasValue(this string text)
         {
             return !string.IsNullOrEmpty(text);
+        }
+
+
+        public static bool HasValue(this IEnumerable<IPublishedContent> content)
+        {
+            return (content != null && content.Any());
         }
 
 
