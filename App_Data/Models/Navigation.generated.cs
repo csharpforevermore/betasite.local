@@ -126,8 +126,8 @@ namespace Umbraco.Web.PublishedModels
 		/// Navigation heading
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("navigationHeading")]
-		public string NavigationHeading => this.Value<string>("navigationHeading");
+		[ImplementPropertyType("membersNavigationHeading")]
+		public string MembersNavigationHeading => this.Value<string>("membersNavigationHeading");
 
 		///<summary>
 		/// Secondary navigation: Select the links you would like to appear on the "Secondary Navigation" of your website.  The "Caption" field is used for your link text.
