@@ -67,7 +67,7 @@
                         {
                             case USNLink.UrlPickerTypes.Url:
                                 iconClass = "ion-android-open pull-right after c1-text";
-                                note = umbraco.library.GetDictionaryItem("USN Resources Component External Web Link") + " - " + attachement.LinkURL;
+                                note = Umbraco.GetDictionaryValue("USN Resources Component External Web Link") + " - " + attachement.LinkURL;
                                 break;
                             case USNLink.UrlPickerTypes.Content:
                                 iconClass = "ion-link pull-right after c1-text";
@@ -81,7 +81,7 @@
                                     long fileInMbu = finfoU.Length / 1024;
 
                                     string fileSizeU = fileInMbu + "KB";
-                                    note = umbraco.library.GetDictionaryItem("USN Resources Component File Size") + ": " + fileSizeU;
+                                    note = Umbraco.GetDictionaryValue("USN Resources Component File Size") + ": " + fileSizeU;
                                 }
                                 catch (Exception e)
                                 {

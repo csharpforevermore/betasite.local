@@ -37,7 +37,7 @@
         
     if (!Model.SearchResults.BlogPostsList.Any())
     {
-        <p>@umbraco.library.GetDictionaryItem("USN Blog Nothing Found")</p>
+        <p>@Umbraco.GetDictionaryValue("USN Blog Nothing Found")</p>
     }
     else
     {

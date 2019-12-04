@@ -7,7 +7,7 @@
 
     if (navigation.LoginPage != null)
     {
-        string navigationHeading = Umbraco.GetDictionaryItem("ESO Members Navigation Default Heading");
+        string navigationHeading = umbraco.library.GetDictionaryItem("USN Members Navigation Default Heading");
 
         if (navigation.MembersNavigationHeading.HasValue())
         {

@@ -71,7 +71,7 @@
                 @if (secondaryNavigation != null)
                 {
                     <li class="has-child secondary-nav more">
-                        <span><a href="#">@umbraco.library.GetDictionaryItem("USN Navigation More")</a><i class="ion-plus"></i></span>
+                        <span><a href="#">@Umbraco.GetDictionaryValue("USN Navigation More")</a><i class="ion-plus"></i></span>
                         <ul>
                             @foreach (RelatedLink link in secondaryNavigation)
                             {

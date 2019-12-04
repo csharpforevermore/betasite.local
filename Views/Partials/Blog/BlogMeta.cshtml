@@ -29,7 +29,7 @@
                     USNLink authorPage = USNUrlHelper.GetLinkFromRelatedLinks(authorNode.AuthorPage);
 
                     <span class="author">
-                        @umbraco.library.GetDictionaryItem("USN Blog Meta Posted By")
+                        @Umbraco.GetDictionaryValue("USN Blog Meta Posted By")
                         @if (authorPage != null)
                         {
                             <a href="@authorPage.LinkURL" @Html.Raw(authorPage.LinkTarget) @Html.Raw(authorPage.LinkTitle)>@authorNode.Name@Html.Raw(authorPage.LinkIcon)</a>
@@ -38,7 +38,7 @@
                         {
                             @authorNode.Name
                         }
-                        @umbraco.library.GetDictionaryItem("USN Blog Meta On")
+                        @Umbraco.GetDictionaryValue("USN Blog Meta On")
                     </span>
                 }
             }
@@ -47,7 +47,7 @@
         <div class="row">
             @if (globalSettings.DisqusUsername.HasValue() && !Model.Value<bool>("disableComments"))
             {
-                <span class="comments col-xs-12"><a href="@Model.Url#disqus_thread">0 @umbraco.library.GetDictionaryItem("USN Blog Meta Comments")</a></span>
+                <span class="comments col-xs-12"><a href="@Model.Url#disqus_thread">0 @Umbraco.GetDictionaryValue("USN Blog Meta Comments")</a></span>
             }
 
             @Html.Partial("USNBlog/USN_BlogPostCategories", Model)

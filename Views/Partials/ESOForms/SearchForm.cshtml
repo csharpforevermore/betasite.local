@@ -11,8 +11,8 @@
         <form role="search" action="@searchResultsPage.Url" method="get" name="searchForm">
             <fieldset>
                 <div class="form-group">
-                    <label class="control-label hidden" for="search_field">@umbraco.library.GetDictionaryItem("USN Search Form Placeholder")</label>
-                    <input type="text" class="form-control" id="search_field" name="search_field" placeholder="@umbraco.library.GetDictionaryItem("USN Search Form Placeholder")" value="@Request.QueryString["search_field"]">
+                    <label class="control-label hidden" for="search_field">@Umbraco.GetDictionaryValue("USN Search Form Placeholder")</label>
+                    <input type="text" class="form-control" id="search_field" name="search_field" placeholder="@Umbraco.GetDictionaryValue("USN Search Form Placeholder")" value="@Request.QueryString["search_field"]">
                 </div>
                 <button type="submit" class="btn no-bg c1-text"><i class="ion-search"></i></button>
             </fieldset>

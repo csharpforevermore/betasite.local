@@ -79,7 +79,7 @@
                     }
                     else
                     {
-                        <p>@umbraco.library.GetDictionaryItem("USN Blog Nothing Found")</p>
+                        <p>@Umbraco.GetDictionaryValue("USN Blog Nothing Found")</p>
                     }
                     <p class="link"><a class="btn btn-xs c1-borders c1-text" href="@linkToListing.LinkURL" @Html.Raw(linkToListing.LinkTarget) @Html.Raw(linkToListing.LinkTitle)>@linkToListing.LinkCaption@Html.Raw(linkToListing.LinkIcon)</a></p>
                 </div>

@@ -19,11 +19,11 @@
 	    }
         @if (globalSettings.TelephoneNumber.HasValue())
         {
-            <p>@umbraco.library.GetDictionaryItem("USN Contact Telephone") @Html.Raw(globalSettings.TelephoneNumber)</p>
+            <p>@Umbraco.GetDictionaryValue("USN Contact Telephone") @Html.Raw(globalSettings.TelephoneNumber)</p>
         }    
 	    @if (globalSettings.EmailAddress.HasValue())
         {
-            <p>@umbraco.library.GetDictionaryItem("USN Contact Email") <a href="mailto:@globalSettings.EmailAddress">@globalSettings.EmailAddress</a></p>
+            <p>@Umbraco.GetDictionaryValue("USN Contact Email") <a href="mailto:@globalSettings.EmailAddress">@globalSettings.EmailAddress</a></p>
         }                                                  
 	    </div> 
     }

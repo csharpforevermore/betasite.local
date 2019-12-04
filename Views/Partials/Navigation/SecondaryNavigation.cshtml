@@ -54,13 +54,13 @@
                             }
                         }
                         <li class="divider"></li>
-                        <li><a href="@loginPage.Url?signout=true">@umbraco.library.GetDictionaryItem("USN Members Navigation Logout")<i class="fa fa-sign-out c1-text after"></i></a></li>
+                        <li><a href="@loginPage.Url?signout=true">@Umbraco.GetDictionaryValue("USN Members Navigation Logout")<i class="fa fa-sign-out c1-text after"></i></a></li>
                     </ul>
                 </li>
                 }
                 else
                 {
-                    string navigationHeading = umbraco.library.GetDictionaryItem("USN Members Navigation Default Heading");
+                    string navigationHeading = Umbraco.GetDictionaryValue("USN Members Navigation Default Heading");
 
                     if (navigation.MembersNavigationHeading.HasValue())
                     {
@@ -70,7 +70,7 @@
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-user c1-text"></i>@navigationHeading<i class="fa fa-angle-down after"></i></a>
                         <ul class="dropdown-menu pull-right" role="menu">
-                            <li><a href="@loginPage.Url"><i class="fa fa-sign-in c1-text"></i>@umbraco.library.GetDictionaryItem("USN Members Navigation Login")</a></li>
+                            <li><a href="@loginPage.Url"><i class="fa fa-sign-in c1-text"></i>@Umbraco.GetDictionaryValue("USN Members Navigation Login")</a></li>
                         </ul>
                     </li>
                 }

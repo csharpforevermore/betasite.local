@@ -68,7 +68,7 @@
                 <item>
                     <title>@postName</title>
                     <comments>@blogUrl@p.Url</comments>
-					<description><![CDATA[@mainText <a href="@blogUrl@p.Url">@umbraco.library.GetDictionaryItem("USN Blog RSS Continue Reading")</a>]]></description>
+					<description><![CDATA[@mainText <a href="@blogUrl@p.Url">@Umbraco.GetDictionaryValue("USN Blog RSS Continue Reading")</a>]]></description>
                     @Html.Raw("<link>")
                     @Html.Raw(blogUrl + p.Url)
                     @Html.Raw("</link>")

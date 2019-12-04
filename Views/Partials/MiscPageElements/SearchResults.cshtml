@@ -112,11 +112,11 @@
 
         if (searchError)
         {
-            <p>@umbraco.library.GetDictionaryItem("USN Search Term Limit")</p>
+            <p>@Umbraco.GetDictionaryValue("USN Search Term Limit")</p>
         }
         if (totalNodes == 0)
         {
-            <p>@umbraco.library.GetDictionaryItem("USN Search Results Nothing Found")</p>
+            <p>@Umbraco.GetDictionaryValue("USN Search Results Nothing Found")</p>
             @Html.Partial("USNForms/USN_SearchForm", Model)
         }
         else
@@ -124,7 +124,7 @@
             int pages = (int)Math.Ceiling(totalNodes / (double)pageSize);
 
             //Please note the dictionary item should have a {0} and {1} placeholder for string formatting.
-            string searchResultsFeedback = umbraco.library.GetDictionaryItem("USN Search Results Feedback");
+            string searchResultsFeedback = Umbraco.GetDictionaryValue("USN Search Results Feedback");
             searchResultsFeedback = String.Format(searchResultsFeedback, originalSearchTerm, totalNodes);
 
             <p>@Html.Raw(searchResultsFeedback)</p>
@@ -139,7 +139,7 @@
                         {
                             <div class="text">@Html.Raw(umbraco.library.ReplaceLineBreaks(item.Value<string>("metaDescription")))</div>
                         }
-                        <p class="link">@umbraco.library.GetDictionaryItem("USN Search Results Link Label") <a href="@item.Url">@item.Url</a></p>
+                        <p class="link">@Umbraco.GetDictionaryValue("USN Search Results Link Label") <a href="@item.Url">@item.Url</a></p>
                     </div>
                 }
             </div>
