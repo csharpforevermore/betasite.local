@@ -6,17 +6,17 @@ using Umbraco.Web.Models;
 
 namespace ESO.Models
 {
-    public class USNLink
+    public class Link
     {
-	private string _linkTitle;
-    private string _linkUrl;
-    private string _linkTarget;
-    private string _linkIcon;
-    private string _linkCaption;
-    private IPublishedContent _internalNode;
-    private USNLink.UrlPickerTypes _linkType;
+        private string _linkTitle;
+        private string _linkUrl;
+        private string _linkTarget;
+        private string _linkIcon;
+        private string _linkCaption;
+        private IPublishedContent _internalNode;
+        private Link.UrlPickerTypes _linkType;
 
-    public USNLink()
+        public Link()
         {
             this.LinkTitle = string.Empty;
             this.LinkURL = string.Empty;
@@ -24,7 +24,7 @@ namespace ESO.Models
             this.LinkIcon = string.Empty;
             this.LinkCaption = string.Empty;
             this.InternalNode = (IPublishedContent)null;
-            this.LinkType = USNLink.UrlPickerTypes.Url;
+            this.LinkType = Link.UrlPickerTypes.Url;
         }
 
         public string LinkTitle
@@ -99,7 +99,7 @@ namespace ESO.Models
             }
         }
 
-        public USNLink.UrlPickerTypes LinkType
+        public Link.UrlPickerTypes LinkType
         {
             get
             {
