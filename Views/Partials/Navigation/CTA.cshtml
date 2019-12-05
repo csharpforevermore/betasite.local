@@ -1,19 +1,14 @@
 ﻿@inherits UmbracoViewPage
-
-@using ESO.Models;
 	
 @{
     var navigation = (Navigation)Model.Navigation();
 
     // Link ctaLink = (Link)Model.Value<IEnumerable<IPublishedContent>>("MultiTreePickerNodeName").First();
 
-    // Link ctaLink = UrlHelper.GetLinkFromRelatedLinks(navigation.CtaLink);
-
-    var ctaLink = navigation.CtaLink;
-
-    /*
+    Link ctaLink = UrlHelper.GetLinkFromRelatedLinks(navigation.CtaLink);
+    
     if (ctaLink != null)
     {
         <nav class="cta-link"><a class="btn c5-borders c5-text" href="@ctaLink.LinkURL" @Html.Raw(ctaLink.LinkTitle) @Html.Raw(ctaLink.LinkTarget)>@ctaLink.LinkCaption@Html.Raw(ctaLink.LinkIcon)</a></nav>
-    }*/
+    }
 }
