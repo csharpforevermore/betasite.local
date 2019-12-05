@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Configuration;
 using System.Collections.Generic;
+using System.Web;
 
 
 namespace ESO.Extensions
@@ -37,6 +38,10 @@ namespace ESO.Extensions
             return (content != null && content.Any());
         }
 
+        public static bool HasValue(this IHtmlString text)
+        {
+            return string.IsNullOrEmpty(text.ToString());
+        }
 
         private static IPublishedContent GetNode(IPublishedContent currentPage, string keyValue, int defaultValue)
         {
