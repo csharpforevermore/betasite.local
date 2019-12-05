@@ -1,7 +1,7 @@
 ﻿@inherits UmbracoViewPage
 
 @{
-    var globalSettings = (GlobalSettings) Model.GlobalSettings;
+    var globalSettings = (GlobalSettings) Model.GlobalSettings();
 
     if (globalSettings.Enable)
     {
