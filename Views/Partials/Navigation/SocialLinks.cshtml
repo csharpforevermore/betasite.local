@@ -1,4 +1,5 @@
 ﻿@inherits UmbracoViewPage
+@using ESO.Models;
 
 @{
     var navigation = (Navigation)Model.Navigation();
@@ -9,13 +10,13 @@
 
         switch (navigation.IconShape)
         {
-            case USNOptions.IconShape_Circle:
+            case Options.IconShape_Circle:
                 iconClass = "img-circle";
                 break;
-            case USNOptions.IconShape_Rounded:
+            case Options.IconShape_Rounded:
                 iconClass = "img-rounded";
                 break;
-            case USNOptions.IconShape_Square:
+            case Options.IconShape_Square:
                 iconClass = String.Empty;
                 break;
             default:
