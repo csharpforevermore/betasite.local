@@ -1,4 +1,5 @@
 using System.Web;
+using System.Linq;
 using Umbraco.Web;
 using Umbraco.Core.Models.PublishedContent;
 
@@ -58,7 +59,7 @@ public static class UrlHelper
             link.LinkURL = "";
             link.LinkCaption = "";
         }
-        else if ((links == null) || (links.FirstOrDefault<RelatedLink>() == null))
+        else if (links == null || links.Any())
         {
             link = null;
         }
@@ -80,13 +81,13 @@ public static class UrlHelper
             }
             else
             {
-                IPublishedContent content = new UmbracoHelper(UmbracoContext.Current).Content(link2.Id);
+                IPublishedContent content = umbraco.Content(link2.Id);
                 if (content != null)
                 {
                     link.InternalNode = content;
                     link.LinkType = Link.UrlPickerTypes.Content;
                 }
-                if ((content != null) && (content.Alias.IndexOf("TODO DOC TYPE ALIAS") != -1))
+                if ((content != null) && (content.ContentType.Alias.IndexOf("TODO DOC TYPE ALIAS") != -1))
                 {
                     string str = "TODO " + content.Id.ToString();
                     link.LinkURL = content.Parent.Parent.Url + str;
