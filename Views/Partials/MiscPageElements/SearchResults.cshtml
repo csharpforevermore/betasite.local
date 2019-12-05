@@ -6,7 +6,7 @@
 @using System.Text.RegularExpressions;
 
 @{
-    var globalSettings = (GlobalSettings)Model.GlobalSettings;
+    var globalSettings = (GlobalSettings)Model.GlobalSettings();
 
     if (globalSettings.SearchResultsPage != null)
     {

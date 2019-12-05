@@ -1,7 +1,7 @@
 ﻿@inherits UmbracoViewPage
 
 @{
-    var globalSettings = (GlobalSettings)Model.GlobalSettings;
+    var globalSettings = (GlobalSettings)Model.GlobalSettings();
 
     string podStyle = ViewData["podstyle"].ToString();
     string pageType = ViewData["pagetype"] != null ? ViewData["pagetype"].ToString() : String.Empty;
