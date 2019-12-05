@@ -148,6 +148,6 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("socialLinks")]
-		public string SocialLinks => this.Value<string>("socialLinks");
+		public IEnumerable<SocialLink> SocialLinks => this.Value<IEnumerable<SocialLink>>("socialLinks");
 	}
 }

@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Social Link</summary>
 	[PublishedModel("SocialLink")]
-	public partial class SocialLink : PublishedContentModel
+	public partial class SocialLink : PublishedElementModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -39,7 +39,7 @@ namespace Umbraco.Web.PublishedModels
 #pragma warning restore 0109
 
 		// ctor
-		public SocialLink(IPublishedContent content)
+		public SocialLink(IPublishedElement content)
 			: base(content)
 		{ }
 

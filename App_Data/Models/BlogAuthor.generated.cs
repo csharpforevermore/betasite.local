@@ -92,7 +92,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("socialLinks")]
-		public string SocialLinks => this.Value<string>("socialLinks");
+		public IEnumerable<SocialLink> SocialLinks => this.Value<IEnumerable<SocialLink>>("socialLinks");
 
 		///<summary>
 		/// Disable delete: If "Yes" is selected, when a user attempts to delete this node they will be presented with a warning message indicating that this node cannot be deleted.
