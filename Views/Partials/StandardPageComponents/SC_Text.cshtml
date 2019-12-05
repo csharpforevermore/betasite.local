@@ -1,6 +1,6 @@
-﻿@inherits UmbracoViewPage<Usn_Sc_Text_AN>
+﻿@inherits UmbracoViewPage<Sc_Text_AN>
 
-@using USNOptions = USNStarterKit.USNEnums.Options;
+@*using Options = ESO.Options;*@
 
 @{
     string anchorId = String.Empty;
@@ -17,11 +17,11 @@
     @* Add div for column width on Advanced Pages *@
     if (pageType == "advanced")
     {
-        if (Model.Width == USNOptions.ComponentWidth_Center)
+        if (Model.Width == Options.ComponentWidth_Center)
         {
             @:<div class="container"><div class="row"><div class="mid-col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
         }
-        else if(Model.Width == USNOptions.ComponentWidth_Full)
+        else if(Model.Width == Options.ComponentWidth_Full)
         {
             @:<div class="container-fluid"><div class="row"><div class="wide-col col-xs-12">
         }
@@ -44,7 +44,7 @@
     <!--// PAGE COMPONENT TEXT -->
 
     @* Close div for column width on Advanced Pages *@
-    if (!Model.Parent.Parent.IsDocumentType(UsnstandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
+    if (!Model.Parent.Parent.IsDocumentType(StandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
     {
         @:</div></div></div>
     }

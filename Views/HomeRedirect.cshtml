@@ -5,7 +5,7 @@
 
 @{
     IEnumerable<IPublishedContent> rootNode = Umbraco.TypedContentAtRoot();
-    var home = rootNode.First(x => x.IsDocumentType(Usnhomepage.ModelTypeAlias));
+    var home = rootNode.First(x => x.IsDocumentType(Homepage.ModelTypeAlias));
 	
 	Response.Redirect(home.Url);
 }

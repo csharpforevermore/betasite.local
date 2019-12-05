@@ -1,104 +1,103 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNOptions = USNStarterKit.USNEnums.Options;
 
 @{
     var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
-    USNOptions pageLayout;
+    Options pageLayout;
 
     //If Page is a blog category, need to get layout from blog landing page
     if (Model.IsDocumentType(BlogCategoryPage.ModelTypeAlias))
     {
         IPublishedContent blogLandingPage = Model.AncestorOrSelf(BlogLandingPage.ModelTypeAlias);
-        pageLayout = !blogLandingPage.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : blogLandingPage.Value<USNOptions>("pageLayout");
+        pageLayout = !blogLandingPage.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : blogLandingPage.Value<Options>("pageLayout");
     }
     else
     {
-        pageLayout = !Model.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : Model.Value<USNOptions>("pageLayout");
+        pageLayout = !Model.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : Model.Value<Options>("pageLayout");
     }
 
     switch (pageLayout)
     {
-        case USNOptions.PageLayout_Left:
+        case Options.PageLayout_Left:
 			<div class="right-col col-lg-3 col-md-4 col-xs-12 pull-right">                                                     
                @if (Model.IsDocumentType(BlogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(BlogCategoryPage.ModelTypeAlias))
                {
-                   @Html.Partial("USNBlog/USN_BlogArchiveNavigation", Model)
-                   @Html.Partial("USNBlog/USN_BlogCategoryNavigation", Model)
+                   @Html.Partial("Blog/BlogArchiveNavigation", Model)
+                   @Html.Partial("Blog/BlogCategoryNavigation", Model)
                }
 
 			    <!-- SUB  -->
-			    @Html.Partial("USNNavigation/USN_SubNavigation", Model)
+			    @Html.Partial("Navigation/SubNavigation", Model)
 			    <!--// SUB -->
 			    <!-- PROMO PODS -->
-			    @Html.Partial("USNSiteWidePods/USN_SitewidePods", @Model, new ViewDataDictionary { { "podstyle", "vertical" } })
+			    @Html.Partial("SiteWidePods/SitewidePods", @Model, new ViewDataDictionary { { "podstyle", "vertical" } })
 			    <!--// PROMO PODS -->
 			</div>
             break;
-        case USNOptions.PageLayout_Right:
+        case Options.PageLayout_Right:
             <div class="left-col col-lg-3 col-md-4 col-xs-12 pull-left">
                 @if (Model.IsDocumentType(BlogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(BlogCategoryPage.ModelTypeAlias))
                 {
-                    @Html.Partial("USNBlog/USN_BlogArchiveNavigation", Model)
-                    @Html.Partial("USNBlog/USN_BlogCategoryNavigation", Model)
+                    @Html.Partial("Blog/BlogArchiveNavigation", Model)
+                    @Html.Partial("Blog/BlogCategoryNavigation", Model)
                 }
 
                 <!-- SUB  -->
-                @Html.Partial("USNNavigation/USN_SubNavigation", Model)
+                @Html.Partial("Navigation/SubNavigation", Model)
                 <!--// SUB -->
                 <!-- PROMO PODS -->
-                @Html.Partial("USNSiteWidePods/USN_SitewidePods", Model, new ViewDataDictionary { { "podstyle", "vertical" } })
+                @Html.Partial("SiteWidePods/SitewidePods", Model, new ViewDataDictionary { { "podstyle", "vertical" } })
                 <!--// PROMO PODS -->
             </div>
             break;
-        case USNOptions.PageLayout_CenterAlt:
+        case Options.PageLayout_CenterAlt:
             <div class="left-col col-md-3 col-md-pull-6 col-xs-12">
                 <!-- SUB  -->
-                @Html.Partial("USNSiteWidePods/USN_SitewidePods", Model, new ViewDataDictionary { { "podstyle", "vertical" } })
+                @Html.Partial("SiteWidePods/SitewidePods", Model, new ViewDataDictionary { { "podstyle", "vertical" } })
                 <!--// SUB -->
             </div>
             <div class="right-col col-md-3 col-xs-12">
                 @if (Model.IsDocumentType(BlogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(BlogCategoryPage.ModelTypeAlias))
                 {
-                    @Html.Partial("USNBlog/USN_BlogArchiveNavigation", Model)
-                    @Html.Partial("USNBlog/USN_BlogCategoryNavigation", Model)
+                    @Html.Partial("Blog/BlogArchiveNavigation", Model)
+                    @Html.Partial("Blog/BlogCategoryNavigation", Model)
                 }
                 <!-- SUB  -->
-                @Html.Partial("USNNavigation/USN_SubNavigation", Model)
+                @Html.Partial("Navigation/SubNavigation", Model)
                 <!--// SUB -->
             </div>
             break;
-        case USNOptions.PageLayout_Center:
+        case Options.PageLayout_Center:
             <div class="left-col col-md-3 col-md-pull-6 col-xs-12">
                @if (Model.IsDocumentType(BlogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(BlogCategoryPage.ModelTypeAlias))
                {
-                    @Html.Partial("USNBlog/USN_BlogArchiveNavigation", Model)
-                    @Html.Partial("USNBlog/USN_BlogCategoryNavigation", Model)
+                    @Html.Partial("Blog/BlogArchiveNavigation", Model)
+                    @Html.Partial("Blog/BlogCategoryNavigation", Model)
                 }
                 <!-- SUB  -->
-                @Html.Partial("USNNavigation/USN_SubNavigation", Model, new ViewDataDictionary { { "podstyle", "vertical" } })
+                @Html.Partial("Navigation/SubNavigation", Model, new ViewDataDictionary { { "podstyle", "vertical" } })
                 <!--// SUB -->
             </div>
             <div class="right-col col-md-3 col-xs-12">
                 <!-- SUB  -->
-                @Html.Partial("USNSiteWidePods/USN_SitewidePods", Model, new ViewDataDictionary { { "podstyle", "vertical" } })
+                @Html.Partial("SiteWidePods/SitewidePods", Model, new ViewDataDictionary { { "podstyle", "vertical" } })
                 <!--// SUB -->
             </div>
             break;
-        case USNOptions.PageLayout_Wide:
+        case Options.PageLayout_Wide:
             break;
         default:
             <div class="right-col col-lg-3 col-md-4 col-xs-12 pull-right">
                 @if (Model.IsDocumentType(BlogLandingPage.ModelTypeAlias) || Model.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || Model.IsDocumentType(BlogCategoryPage.ModelTypeAlias))
                 {
-                    @Html.Partial("USNBlog/USN_BlogArchiveNavigation", Model)
-                    @Html.Partial("USNBlog/USN_BlogCategoryNavigation", Model)
+                    @Html.Partial("Blog/BlogArchiveNavigation", Model)
+                    @Html.Partial("Blog/BlogCategoryNavigation", Model)
                 }
                 <!-- SUB  -->
-                @Html.Partial("USNNavigation/USN_SubNavigation", Model)
+                @Html.Partial("Navigation/SubNavigation", Model)
                 <!--// SUB -->
                 <!-- PROMO PODS -->
-                @Html.Partial("USNSiteWidePods/USN_SitewidePods", Model, new ViewDataDictionary { { "podstyle", "vertical" } })
+                @Html.Partial("SiteWidePods/SitewidePods", Model, new ViewDataDictionary { { "podstyle", "vertical" } })
                 <!--// PROMO PODS -->
             </div>
             break;

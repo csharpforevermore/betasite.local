@@ -1,7 +1,7 @@
 ﻿@inherits UmbracoViewPage
 
 @{
-    USNLink podLink = USNUrlHelper.GetLinkFromRelatedLinks(Model.PodLink);
+    Link podLink = UrlHelper.GetLinkFromRelatedLinks(Model.PodLink);
 
     IHtmlString podText = Model.PodText;
 
@@ -9,13 +9,13 @@
 
     switch (Model.PodTextAlignment)
     {
-        case USNOptions.TextAlignment_Left:
+        case Options.TextAlignment_Left:
             textAlignment = "text-left";
             break;
-        case USNOptions.TextAlignment_Center:
+        case Options.TextAlignment_Center:
             textAlignment = "text-center";
             break;
-        case USNOptions.TextAlignment_Right:
+        case Options.TextAlignment_Right:
             textAlignment = "text-right";
             break;
         default:

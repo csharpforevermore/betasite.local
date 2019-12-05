@@ -13,15 +13,15 @@
         animateClass = "os-animation";
     }
 
-    USNTemplateStyleSettings settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
+    TemplateStyleSettings settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
 
-    string backgroundImageStyle = USNViewTemplateHelper.GetBackgroundImageStyle(Model.BackgroundImage, Model.BackgroundImageOptions);
+    string backgroundImageStyle = ViewTemplateHelper.GetBackgroundImageStyle(Model.BackgroundImage, Model.BackgroundImageOptions);
 
     if (components != null)
     {
         var publishedContents = components as IList<IPublishedContent> ?? components.ToList();
 
-        bool hasTabs = (Model.Style == USNOptions.ReusableComponentStyle_Tabbed && publishedContents.Count > 1) ? true : false;
+        bool hasTabs = (Model.Style == Options.ReusableComponentStyle_Tabbed && publishedContents.Count > 1) ? true : false;
 
         int componentCount = 1;
 
@@ -46,7 +46,7 @@
 
         <section class="content apc reusable-content tabbed @sectionPadding @settings.BackGroundStyle @Model.CustomComponentClasses" @Html.Raw(backgroundImageStyle) id="pos_@Model.Id">
 
-            @Html.Partial("USNMiscPageElements/USN_ComponentIntro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }, { "addContainer", true } })
+            @Html.Partial("MiscPageElements/ComponentIntro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }, { "addContainer", true } })
 
             @if (hasTabs)
             {
@@ -83,7 +83,7 @@
                     @:<div id="tab-name-@Model.Id-@componentCount" role="tabpanel" class="tab-pane @if(componentCount == 1){@Html.Raw("active")}">
                 }
 
-                @Html.Partial("USNAdvancedPageComponents/USN_ComponentsSwitch", component, new ViewDataDictionary { { "globalSettingsID", globalSettingsId } })
+                @Html.Partial("AdvancedPageComponents/ComponentsSwitch", component, new ViewDataDictionary { { "globalSettingsID", globalSettingsId } })
 
                 if (hasTabs)
                 {
@@ -97,7 +97,7 @@
                 @:</div>
             }
 
-            @Html.Partial("USNMiscPageElements/USN_ComponentOutro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }, { "addContainer", true } })
+            @Html.Partial("MiscPageElements/ComponentOutro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }, { "addContainer", true } })
 
     </section>
     }

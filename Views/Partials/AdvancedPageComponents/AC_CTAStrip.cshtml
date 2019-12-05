@@ -4,7 +4,7 @@
     string headingSource = String.Empty;
     string animateClass = String.Empty;
 
-    var outroLink = USNUrlHelper.GetLinkFromRelatedLinks(Model.Link);
+    Link outroLink = UrlHelper.GetLinkFromRelatedLinks(Model.Link, Umbraco);
 
     if (Model.Heading != null)
     {
@@ -18,21 +18,21 @@
         animateClass = "os-animation";
     }
 
-    USNTemplateStyleSettings settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
+    TemplateStyleSettings settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
 
-    string backgroundImageStyle = USNViewTemplateHelper.GetBackgroundImageStyle(Model.BackgroundImage, Model.BackgroundImageOptions);
+    string backgroundImageStyle = ViewTemplateHelper.GetBackgroundImageStyle(Model.BackgroundImage, Model.BackgroundImageOptions);
 
     string textAlignment;
 
     switch (Model.TextAlignment)
     {
-        case USNOptions.TextAlignment_Left:
+        case Options.TextAlignment_Left:
             textAlignment = "text-left";
             break;
-        case USNOptions.TextAlignment_Center:
+        case Options.TextAlignment_Center:
             textAlignment = "text-center";
             break;
-        case USNOptions.TextAlignment_Right:
+        case Options.TextAlignment_Right:
             textAlignment = "text-right";
             break;
         default:

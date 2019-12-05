@@ -7,8 +7,8 @@
     if (Model.RelatedContent.HasValue())
     {
         relatedContent = Model.RelatedContent.Where(x => x.IsDocumentType(AdvancedPageBlogPost.ModelTypeAlias) ||
-                    x.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || x.IsDocumentType(UsnstandardPage.ModelTypeAlias)
-                    || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias));
+                    x.IsDocumentType(StandardPageBlogPost.ModelTypeAlias) || x.IsDocumentType(StandardPage.ModelTypeAlias)
+                    || x.IsDocumentType(AdvancedPage.ModelTypeAlias));
     }
 
     if (relatedContent != null && relatedContent.Any())
@@ -18,13 +18,13 @@
 
         switch (Model.TextAlignment)
         {
-            case USNOptions.TextAlignment_Left:
+            case Options.TextAlignment_Left:
                 textAlignment = "text-left";
                 break;
-            case USNOptions.TextAlignment_Center:
+            case Options.TextAlignment_Center:
                 textAlignment = "text-center";
                 break;
-            case USNOptions.TextAlignment_Right:
+            case Options.TextAlignment_Right:
                 textAlignment = "text-right";
                 break;
             default:

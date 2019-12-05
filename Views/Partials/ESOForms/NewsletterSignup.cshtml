@@ -8,7 +8,7 @@
     LoadingElementId = "NewsletterAjaxLoading" + Model.CurrentNodeID
 }))
 {
-    IUsn_Cmp_NewsletterForm currentNode = (IUsn_Cmp_NewsletterForm)Umbraco.TypedContent(Model.CurrentNodeID);
+    ICmp_NewsletterForm currentNode = (ICmp_NewsletterForm)Umbraco.TypedContent(Model.CurrentNodeID);
 
     var containerId = "NewsletterSignupContainer" + Model.CurrentNodeID;
     var errorId = "NewsletterError" + Model.CurrentNodeID;
@@ -54,24 +54,24 @@
             <fieldset>
                 <div class="form-group">
                     <label for="FirstName" class="control-label">
-                        @Umbraco.GetDictionaryValue("USN Form First Name Label") <em class="req">*</em>
+                        @Umbraco.GetDictionaryValue(" Form First Name Label") <em class="req">*</em>
                     </label>
-                    @Html.TextBoxFor(x => Model.FirstName, new { @class = "form-control", placeholder = Umbraco.GetDictionaryValue("USN Form First Name Label") })
-                    @Html.ValidationMessageFor(x => Model.FirstName, @Umbraco.GetDictionaryValue("USN Form First Name Validation"))
+                    @Html.TextBoxFor(x => Model.FirstName, new { @class = "form-control", placeholder = Umbraco.GetDictionaryValue(" Form First Name Label") })
+                    @Html.ValidationMessageFor(x => Model.FirstName, @Umbraco.GetDictionaryValue(" Form First Name Validation"))
                 </div>
                 <div class="form-group">
                     <label for="LastName" class="control-label">
-                        @Umbraco.GetDictionaryValue("USN Form Last Name Label") <em class="req">*</em>
+                        @Umbraco.GetDictionaryValue(" Form Last Name Label") <em class="req">*</em>
                     </label>
-                    @Html.TextBoxFor(x => Model.LastName, new { @class = "form-control", placeholder = Umbraco.GetDictionaryValue("USN Form Last Name Label") })
-                    @Html.ValidationMessageFor(x => Model.LastName, @Umbraco.GetDictionaryValue("USN Form Last Name Validation"))
+                    @Html.TextBoxFor(x => Model.LastName, new { @class = "form-control", placeholder = Umbraco.GetDictionaryValue(" Form Last Name Label") })
+                    @Html.ValidationMessageFor(x => Model.LastName, @Umbraco.GetDictionaryValue(" Form Last Name Validation"))
                 </div>
                 <div class="form-group">
                     <label for="Email" class="control-label">
-                        @Umbraco.GetDictionaryValue("USN Form Email Address Label") <em class="req">*</em>
+                        @Umbraco.GetDictionaryValue(" Form Email Address Label") <em class="req">*</em>
                     </label>
-                    @Html.TextBoxFor(x => Model.Email, new { autocapitalize = "off", @class = "form-control", placeholder = Umbraco.GetDictionaryValue("USN Form Email Address Label") })
-                    @Html.ValidationMessageFor(x => Model.Email, @Umbraco.GetDictionaryValue("USN Form Email Address Validation"))
+                    @Html.TextBoxFor(x => Model.Email, new { autocapitalize = "off", @class = "form-control", placeholder = Umbraco.GetDictionaryValue(" Form Email Address Label") })
+                    @Html.ValidationMessageFor(x => Model.Email, @Umbraco.GetDictionaryValue(" Form Email Address Validation"))
                 </div>
                 @if (globalSettings.GoogleReCaptchasiteKey.HasValue() && globalSettings.GoogleReCaptchasecretKey.HasValue())
                 {
@@ -85,7 +85,7 @@
             </fieldset>
             <div class="ajax-loading" id="@ajaxLoadingId" style="display:none">
                 <div class="loading">
-                    <span class="message">@Umbraco.GetDictionaryValue("USN Newsletter Form Sending Message")</span>
+                    <span class="message">@Umbraco.GetDictionaryValue(" Newsletter Form Sending Message")</span>
                 </div>
             </div>
         </div>

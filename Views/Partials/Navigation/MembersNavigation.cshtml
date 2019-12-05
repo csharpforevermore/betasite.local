@@ -8,7 +8,7 @@
 
     if (navigation.LoginPage != null)
     {
-        string navigationHeading = Umbraco.GetDictionaryValue("USN Members Navigation Default Heading");
+        string navigationHeading = Umbraco.GetDictionaryValue(" Members Navigation Default Heading");
 
         if (navigation.MembersNavigationHeading.HasValue())
         {
@@ -48,12 +48,12 @@
                             }*/
                         }
 
-                        <li><a href="@loginPage.Url?signout=true">@Umbraco.GetDictionaryValue("USN Members Navigation Logout")<i class="fa fa-sign-out c1-text after"></i></a></li>
+                        <li><a href="@loginPage.Url?signout=true">@Umbraco.GetDictionaryValue(" Members Navigation Logout")<i class="fa fa-sign-out c1-text after"></i></a></li>
 
                     }
                     else
                     {
-                        <li><a href="@loginPage.Url"><i class="fa fa-sign-in c1-text"></i>@Umbraco.GetDictionaryValue("USN Members Navigation Login")</a></li>
+                        <li><a href="@loginPage.Url"><i class="fa fa-sign-in c1-text"></i>@Umbraco.GetDictionaryValue(" Members Navigation Login")</a></li>
                     }
                 }
 

@@ -4,25 +4,25 @@
     // get landing node
     var landing = (BlogLandingPage)Model.AncestorOrSelf(BlogLandingPage.ModelTypeAlias);
 
-    UsnblogAuthor authorNode = null;
+    BlogAuthor authorNode = null;
 
     if (Model.HasValue("postAuthor"))
     {
-        authorNode = (UsnblogAuthor)Model.Value<IEnumerable<IPublishedContent>>("postAuthor").FirstOrDefault();
+        authorNode = (BlogAuthor)Model.Value<IEnumerable<IPublishedContent>>("postAuthor").FirstOrDefault();
     }
     else if (landing.DefaultAuthor != null)
     {
-        authorNode = (UsnblogAuthor)landing.DefaultAuthor.FirstOrDefault();
+        authorNode = (BlogAuthor)landing.DefaultAuthor.FirstOrDefault();
     }
 
     if (authorNode != null)
     {
-        USNLink authorPage = USNUrlHelper.GetLinkFromRelatedLinks(authorNode.AuthorPage);
+        Link authorPage = UrlHelper.GetLinkFromRelatedLinks(authorNode.AuthorPage);
 
         <!-- PAGE COMPONENT AUTHOR BIO -->
         <div class="spc author-bio">
             <div class="inner c4-bg has-borders c6-borders">
-                <p class="heading main">@Umbraco.GetDictionaryValue("USN Blog About The Author")</p>
+                <p class="heading main">@Umbraco.GetDictionaryValue(" Blog About The Author")</p>
 
                 <div class="row">
 
@@ -35,22 +35,22 @@
 
                         switch (authorNode.AuthorImageStyle)
                         {
-                            case USNOptions.ImageStyle_Square:
+                            case Options.ImageStyle_Square:
                                 imageWidthSmall = 8;
                                 imageHeightSmall = 8;
                                 cropAlias = "Square/Circle";
                                 break;
-                            case USNOptions.ImageStyle_Landscape:
+                            case Options.ImageStyle_Landscape:
                                 imageWidthSmall = 8;
                                 imageHeightSmall = 6;
                                 cropAlias = "Landscape";
                                 break;
-                            case USNOptions.ImageStyle_Portrait:
+                            case Options.ImageStyle_Portrait:
                                 imageWidthSmall = 6;
                                 imageHeightSmall = 8;
                                 cropAlias = "Portrait";
                                 break;
-                            case USNOptions.ImageStyle_Circle:
+                            case Options.ImageStyle_Circle:
                                 imageWidthSmall = 8;
                                 imageHeightSmall = 8;
                                 cropAlias = "Square/Circle";
@@ -92,13 +92,13 @@
 
                             switch (authorNode.IconShape)
                             {
-                                case USNOptions.IconShape_Circle:
+                                case Options.IconShape_Circle:
                                     iconClass = "img-circle";
                                     break;
-                                case USNOptions.IconShape_Rounded:
+                                case Options.IconShape_Rounded:
                                     iconClass = "img-rounded";
                                     break;
-                                case USNOptions.IconShape_Square:
+                                case Options.IconShape_Square:
                                     iconClass = String.Empty;
                                     break;
                                 default:
@@ -109,9 +109,9 @@
                             <!-- SOCIAL -->
                             <nav class="social">
                                 <ul>
-                                    @foreach (Usn_SocialLink socialLink in authorNode.SocialLinks)
+                                    @foreach (SocialLink socialLink in authorNode.SocialLinks)
                                     {
-                                        USNLink link = USNUrlHelper.GetLinkFromRelatedLinks(socialLink.Link);
+                                        Link link = UrlHelper.GetLinkFromRelatedLinks(socialLink.Link);
 
                                         if (link != null)
                                         {

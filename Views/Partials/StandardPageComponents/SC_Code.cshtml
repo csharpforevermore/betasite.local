@@ -1,14 +1,13 @@
-﻿@inherits UmbracoViewPage<Usn_Sc_Code_AN>
+﻿@inherits UmbracoViewPage<Sc_Code_AN>
 
-@using USN.USNTemplate;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
+@*using ESO.Template;*@
+@*using Options = ESO.Options;*@
 
 @{
     string anchorId = String.Empty;
     string customComponentClasses = String.Empty;
 
-    USNTemplateStyleSettings settings;
+    TemplateStyleSettings settings;
     string animateClass = String.Empty;
 
     if (Model.Animate)
@@ -20,21 +19,21 @@
 
     if (pageType == "standard")
     {
-        settings = USNViewTemplateHelper.GetDefaultTemplateStyleSettings();
+        settings = ViewTemplateHelper.GetDefaultTemplateStyleSettings();
     }
     else
     {
-        settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
+        settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
     }
 
     @* Add div for column width on Advanced Pages *@
     if (pageType == "advanced")
     {
-        if (Model.Width == USNOptions.ComponentWidth_Center)
+        if (Model.Width == Options.ComponentWidth_Center)
         {
             @:<div class="container"><div class="row"><div class="mid-col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
         }
-        else if(Model.Width == USNOptions.ComponentWidth_Full)
+        else if(Model.Width == Options.ComponentWidth_Full)
         {
             @:<div class="container-fluid"><div class="row"><div class="wide-col col-xs-12">
         }
@@ -53,17 +52,17 @@
     <!-- PAGE COMPONENT CODE -->
     <div class="spc codeblock @animateClass @customComponentClasses" data-os-animation="fadeIn" data-os-animation-delay="0s" @Html.Raw(anchorId)>
 
-        @Html.Partial("USNMiscPageElements/USN_ComponentIntro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
+        @Html.Partial("MiscPageElements/ComponentIntro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
 
         @Html.Raw(Model.Code)
 
-        @Html.Partial("USNMiscPageElements/USN_ComponentOutro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
+        @Html.Partial("MiscPageElements/ComponentOutro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
 
     </div>
     <!--// PAGE COMPONENT CODE -->
 
     @* Close div for column width on Advanced Pages *@
-    if (!Model.Parent.Parent.IsDocumentType(UsnstandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
+    if (!Model.Parent.Parent.IsDocumentType(StandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
     {
         @:</div></div></div>
     }

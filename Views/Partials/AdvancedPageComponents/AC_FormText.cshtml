@@ -3,9 +3,9 @@
 @{
     int globalSettingsId = Convert.ToInt32(ViewData["globalSettingsID"]);
 
-    USNTemplateStyleSettings settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
+    TemplateStyleSettings settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
 
-    string backgroundImageStyle = USNViewTemplateHelper.GetBackgroundImageStyle(Model.BackgroundImage, Model.BackgroundImageOptions);
+    string backgroundImageStyle = ViewTemplateHelper.GetBackgroundImageStyle(Model.BackgroundImage, Model.BackgroundImageOptions);
 
     string firstDivClass = "col-md-6 col-xs-12 pull-left";
     string secondDivClass = "col-md-4 col-xs-12 pull-right";
@@ -13,7 +13,7 @@
     string formFadeInDirection = "fadeInRight";
     string animateClass = String.Empty;
 
-    if (Model.TextPosition == USNOptions.TextPosition_After)
+    if (Model.TextPosition == Options.TextPosition_After)
     {
         firstDivClass = "col-md-6 col-xs-12 pull-right";
         secondDivClass = "col-md-4 col-xs-12 pull-left";
@@ -30,13 +30,13 @@
 
     switch (Model.TextAlignment)
     {
-        case USNOptions.TextAlignment_Left:
+        case Options.TextAlignment_Left:
             textAlignment = "text-left";
             break;
-        case USNOptions.TextAlignment_Center:
+        case Options.TextAlignment_Center:
             textAlignment = "text-center";
             break;
-        case USNOptions.TextAlignment_Right:
+        case Options.TextAlignment_Right:
             textAlignment = "text-right";
             break;
         default:
@@ -71,7 +71,7 @@
                             </div>
                         }
                         @{
-                            USNLink link = USNUrlHelper.GetLinkFromRelatedLinks(Model.Link);
+                            Link link = UrlHelper.GetLinkFromRelatedLinks(Model.Link, Umbraco);
 
                             if (link != null)
                             {
@@ -88,14 +88,14 @@
                         case "contactForm":
                             <div class="contact form ajax-wrap">
                                 <div class="inner c5-bg base-text has-borders c6-borders">
-                                    @Html.Action("Index", "USNContactFormSurface", new { NodeID = Model.Id, GlobalSettingsID = globalSettingsId })
+                                    @Html.Action("Index", "ContactFormSurface", new { NodeID = Model.Id, GlobalSettingsID = globalSettingsId })
                                 </div>
                             </div>
                             break;
                         case "newsletterForm":
                             <div class="newsletter form ajax-wrap">
                                 <div class="inner c4-bg base-text has-borders c6-borders">
-                                    @Html.Action("Index", "USNNewsletterSignupSurface", new { NodeID = Model.Id, GlobalSettingsID = globalSettingsId, DataSize = "normal" })
+                                    @Html.Action("Index", "NewsletterSignupSurface", new { NodeID = Model.Id, GlobalSettingsID = globalSettingsId, DataSize = "normal" })
                                 </div>
                             </div>
                             break;

@@ -7,89 +7,89 @@
 
     switch (Model.DocumentTypeAlias)
     {
-        case Usn_Swp_GeneralPod.ModelTypeAlias:
+        case Swp_GeneralPod.ModelTypeAlias:
             if (addPodContainer)
             {
                 @:<div class="item @itemsPerRow col-xs-12">
             }
-            @Html.Partial("USNSiteWidePods/USN_SWP_GeneralPod", (Usn_Swp_GeneralPod)Model)
+            @Html.Partial("SiteWidePods/SWP_GeneralPod", (Swp_GeneralPod)Model)
             if (addPodContainer)
             {
                 @:</div>
             }
             break;
-        case Usn_Swp_ImagePod.ModelTypeAlias:
+        case Swp_ImagePod.ModelTypeAlias:
             if (addPodContainer)
             {
                 @:<div class="item @itemsPerRow col-xs-12">
             }
-            @Html.Partial("USNSiteWidePods/USN_SWP_ImagePod", (Usn_Swp_ImagePod)Model)
+            @Html.Partial("SiteWidePods/SWP_ImagePod", (Swp_ImagePod)Model)
             if (addPodContainer)
             {
                 @:</div>
             }
             break;
-        case Usn_Swp_VideoPod.ModelTypeAlias:
+        case Swp_VideoPod.ModelTypeAlias:
             if (addPodContainer)
             {
                 @:<div class="item @itemsPerRow col-xs-12">
             }
-            @Html.Partial("USNSiteWidePods/USN_SWP_VideoPod", (Usn_Swp_VideoPod)Model)
+            @Html.Partial("SiteWidePods/SWP_VideoPod", (Swp_VideoPod)Model)
             if (addPodContainer)
             {
                 @:</div>
             }
             break;
-        case Usn_Swp_CodePod.ModelTypeAlias:
+        case Swp_CodePod.ModelTypeAlias:
             if (addPodContainer)
             {
                 @:<div class="item @itemsPerRow col-xs-12">
             }
-            @Html.Partial("USNSiteWidePods/USN_SWP_CodePod", (Usn_Swp_CodePod)Model)
+            @Html.Partial("SiteWidePods/SWP_CodePod", (Swp_CodePod)Model)
             if (addPodContainer)
             {
                 @:</div>
             }
             break;
-        case Usn_Swp_ListingPod.ModelTypeAlias:
+        case Swp_ListingPod.ModelTypeAlias:
             if (addPodContainer)
             {
                 @:<div class="item @itemsPerRow col-xs-12">
             }
-            @Html.Partial("USNSiteWidePods/USN_SWP_ListingPod", (Usn_Swp_ListingPod)Model)
+            @Html.Partial("SiteWidePods/SWP_ListingPod", (Swp_ListingPod)Model)
             if (addPodContainer)
             {
                 @:</div>
             }
             break;
-        case Usn_Swp_BlockquotePod.ModelTypeAlias:
+        case Swp_BlockquotePod.ModelTypeAlias:
             if (addPodContainer)
             {
                 @:<div class="item @itemsPerRow col-xs-12">
             }
-            @Html.Partial("USNSiteWidePods/USN_SWP_BlockquotePod", (Usn_Swp_BlockquotePod)Model)
+            @Html.Partial("SiteWidePods/SWP_BlockquotePod", (Swp_BlockquotePod)Model)
             if (addPodContainer)
             {
                 @:</div>
             }
             break;
-        case Usn_Swp_FormPod.ModelTypeAlias:
+        case Swp_FormPod.ModelTypeAlias:
             if (addPodContainer)
             {
                 @:<div class="item @itemsPerRow col-xs-12">
             }
-                @Html.Partial("USNSiteWidePods/USN_SWP_FormPod", (Usn_Swp_FormPod)Model, new ViewDataDictionary { { "globalSettingsID", globalSettingsId } })
+                @Html.Partial("SiteWidePods/SWP_FormPod", (Swp_FormPod)Model, new ViewDataDictionary { { "globalSettingsID", globalSettingsId } })
             if (addPodContainer)
             {
                 @:</div>
             }
             break;
-        case Usn_Swp_RelatedContentPod.ModelTypeAlias:
+        case Swp_RelatedContentPod.ModelTypeAlias:
             if (addPodContainer)
             {
                 @:<div class="item @itemsPerRow col-xs-12">
             }
-            @Html.Partial("USNSiteWidePods/USN_SWP_RelatedContentPod", (Usn_Swp_RelatedContentPod)Model)
+            @Html.Partial("SiteWidePods/SWP_RelatedContentPod", (Swp_RelatedContentPod)Model)
             if (addPodContainer)
             {
                 @:</div>

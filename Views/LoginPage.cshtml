@@ -1,7 +1,7 @@
 ﻿@inherits UmbracoViewPage
 
 @{
-    Layout = "USNMaster.cshtml";
+    Layout = "master.cshtml";
 
     if (!String.IsNullOrEmpty(Request.QueryString["signout"]))
     {
@@ -50,7 +50,7 @@
 </section>	
 <!--// CONTENT -->
 
-@Html.Partial("USNSiteWidePods/USN_SitewidePods", Model, new ViewDataDictionary { { "podstyle", "horizontal" } })
+@Html.Partial("SiteWidePods/SitewidePods", Model, new ViewDataDictionary { { "podstyle", "horizontal" } })
 
 @section BodyTag
 {
@@ -106,7 +106,7 @@
         {
             var publishedContents = components as IList<IPublishedContent> ?? components.ToList();
 
-            bannerClass = publishedContents.First().IsDocumentType(Usn_Ac_Banner_AN.ModelTypeAlias) ? "banner-top" : "";
+            bannerClass = publishedContents.First().IsDocumentType(Ac_Banner_AN.ModelTypeAlias) ? "banner-top" : "";
         }
 
         //If no top components look at header image section

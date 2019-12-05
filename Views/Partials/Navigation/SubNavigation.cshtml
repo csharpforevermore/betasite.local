@@ -6,7 +6,7 @@
 	{
 		var parent = Model.AncestorOrSelf(2);
 
-        var pages = parent.Children.Where(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias)) && x.IsVisible());
+        var pages = parent.Children.Where(x => (x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(AdvancedPage.ModelTypeAlias)) && x.IsVisible());
 
         if (pages.Any())
 		{
@@ -29,10 +29,10 @@
 	
 @helper Traverse(IPublishedContent parent)
 {
-    if (parent.Children.Any(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias)) && x.IsVisible()))
+    if (parent.Children.Any(x => (x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(AdvancedPage.ModelTypeAlias)) && x.IsVisible()))
     { 
         <ul>
-            @foreach (var node in parent.Children.Where(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias)) && x.IsVisible()))
+            @foreach (var node in parent.Children.Where(x => (x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(AdvancedPage.ModelTypeAlias)) && x.IsVisible()))
             {
                 if (node != null)
                 {

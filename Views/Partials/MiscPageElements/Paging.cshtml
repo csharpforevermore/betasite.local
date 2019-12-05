@@ -22,7 +22,7 @@
                 url = url.ReplaceQueryStringItem("page", (currentPageNo - 1).ToString());
                 
                 <li class="prev">
-                    <a href="@url" aria-label="Previous" title="@Umbraco.GetDictionaryValue("USN Listing Navigation Previous")"><i class="ion-chevron-left"></i><span class="hidden">@Umbraco.GetDictionaryValue("USN Listing Navigation Previous")</span></a>
+                    <a href="@url" aria-label="Previous" title="@Umbraco.GetDictionaryValue(" Listing Navigation Previous")"><i class="ion-chevron-left"></i><span class="hidden">@Umbraco.GetDictionaryValue(" Listing Navigation Previous")</span></a>
                 </li>
 
                 if (currentPageNo > pagesPerGroup)
@@ -124,7 +124,7 @@
                 url = url.ReplaceQueryStringItem("page", (currentPageNo + 1).ToString());
                 @* render next link *@
                 <li class="next">
-                    <a href="@url" aria-label="Next" title="@Umbraco.GetDictionaryValue("USN Listing Navigation Next")"><span class="hidden">@Umbraco.GetDictionaryValue("USN Listing Navigation Next")</span><i class="ion-chevron-right"></i></a>
+                    <a href="@url" aria-label="Next" title="@Umbraco.GetDictionaryValue(" Listing Navigation Next")"><span class="hidden">@Umbraco.GetDictionaryValue(" Listing Navigation Next")</span><i class="ion-chevron-right"></i></a>
                 </li>
             }
         </ul>

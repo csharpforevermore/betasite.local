@@ -12,24 +12,24 @@
     <div class="meta @textStyle">
         <div class="author-date">
             @{                
-                UsnblogAuthor authorNode = null;
+                BlogAuthor authorNode = null;
 
                 if (Model.HasValue("postAuthor"))
                 {
-                    authorNode = (UsnblogAuthor)Model.Value<IEnumerable<IPublishedContent>>("postAuthor").FirstOrDefault();
+                    authorNode = (BlogAuthor)Model.Value<IEnumerable<IPublishedContent>>("postAuthor").FirstOrDefault();
                 }
                 else if (landing.DefaultAuthor != null)
                 {
-                    authorNode = (UsnblogAuthor)landing.DefaultAuthor.FirstOrDefault();
+                    authorNode = (BlogAuthor)landing.DefaultAuthor.FirstOrDefault();
                 }
 
                 if (authorNode != null)
                 {
 
-                    USNLink authorPage = USNUrlHelper.GetLinkFromRelatedLinks(authorNode.AuthorPage);
+                    Link authorPage = UrlHelper.GetLinkFromRelatedLinks(authorNode.AuthorPage);
 
                     <span class="author">
-                        @Umbraco.GetDictionaryValue("USN Blog Meta Posted By")
+                        @Umbraco.GetDictionaryValue(" Blog Meta Posted By")
                         @if (authorPage != null)
                         {
                             <a href="@authorPage.LinkURL" @Html.Raw(authorPage.LinkTarget) @Html.Raw(authorPage.LinkTitle)>@authorNode.Name@Html.Raw(authorPage.LinkIcon)</a>
@@ -38,7 +38,7 @@
                         {
                             @authorNode.Name
                         }
-                        @Umbraco.GetDictionaryValue("USN Blog Meta On")
+                        @Umbraco.GetDictionaryValue(" Blog Meta On")
                     </span>
                 }
             }
@@ -47,10 +47,10 @@
         <div class="row">
             @if (globalSettings.DisqusUsername.HasValue() && !Model.Value<bool>("disableComments"))
             {
-                <span class="comments col-xs-12"><a href="@Model.Url#disqus_thread">0 @Umbraco.GetDictionaryValue("USN Blog Meta Comments")</a></span>
+                <span class="comments col-xs-12"><a href="@Model.Url#disqus_thread">0 @Umbraco.GetDictionaryValue(" Blog Meta Comments")</a></span>
             }
 
-            @Html.Partial("USNBlog/USN_BlogPostCategories", Model)
+            @Html.Partial("Blog/BlogPostCategories", Model)
         </div>
     </div>
 }

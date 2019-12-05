@@ -34,17 +34,17 @@
 
             switch (Model.HeaderStyle)
             {
-                case USNOptions.BannerSize_Short:
+                case Options.BannerSize_Short:
                     bannerStyle = "short";
                     cropAlias = "Short Banner";
                     imageHeightSmall = parallaxClass != String.Empty ? 110 : 45;
                     break;
-                case USNOptions.BannerSize_Medium:
+                case Options.BannerSize_Medium:
                     bannerStyle = "medium";
                     cropAlias = "Medium Banner";
                     imageHeightSmall = parallaxClass != String.Empty ? 110 : 65;
                     break;
-                case USNOptions.BannerSize_Takeover:
+                case Options.BannerSize_Takeover:
                     bannerStyle = "takeover";
                     imageHeightSmall = 110;
                     cropAlias = "Takeover Banner";
@@ -60,9 +60,9 @@
                 bgImageSmall = "style=\"background-image:url('" + Model.HeaderImage.GetCropUrl(cropAlias: cropAlias, width: 150, height: imageHeightSmall) + "')\"";
             }
 
-            USNTemplateStyleSettings settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.HeaderBackgroundColor, Model.HeaderButtonColor);
+            TemplateStyleSettings settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.HeaderBackgroundColor, Model.HeaderButtonColor);
 
-            USNLink headerLink = USNUrlHelper.GetLinkFromRelatedLinks(Model.HeaderLink);
+            Link headerLink = UrlHelper.GetLinkFromRelatedLinks(Model.HeaderLink);
 
             <div class="item @colorOverlayClass @bannerStyle @parallaxClass @settings.BackGroundStyle">
 	                    
@@ -93,13 +93,13 @@
 
                     switch (Model.HeaderTextAlignment)
                     {
-                        case USNOptions.TextAlignment_Left:
+                        case Options.TextAlignment_Left:
                             textAlignment = "col-md-8 col-xs-12 text-left";
                             break;
-                        case USNOptions.TextAlignment_Center:
+                        case Options.TextAlignment_Center:
                             textAlignment = "col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 text-center";
                             break;
-                        case USNOptions.TextAlignment_Right:
+                        case Options.TextAlignment_Right:
                             textAlignment = "col-md-8 col-sm-10 col-xs-12 pull-right text-right";
                             break;
                         default:
@@ -150,7 +150,7 @@
                         <!-- SCROLL PROMPT -->
                         <div class="scroll-prompt text-center">
                             <a class="c5-text hidden-lg"><i class="ion-ios-arrow-down"></i></a>
-                            <a class="c5-text hidden-md hidden-sm hidden-xs"><div class="mouse-scroll"></div><span>@Umbraco.GetDictionaryValue("USN Banner Component Scroll Prompt")</span></a>
+                            <a class="c5-text hidden-md hidden-sm hidden-xs"><div class="mouse-scroll"></div><span>@Umbraco.GetDictionaryValue(" Banner Component Scroll Prompt")</span></a>
                         </div>
                         <!--// SCROLL PROMPT -->
                     }

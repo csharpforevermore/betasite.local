@@ -30,7 +30,7 @@
         {
             @:<div class="container"><div class="row"><div class="mid-col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
         }
-        else if(Model.Width == USNOptions.ComponentWidth_Full)
+        else if(Model.Width == Options.ComponentWidth_Full)
         {
             @:<div class="container-fluid"><div class="row"><div class="wide-col col-xs-12">
         }
@@ -48,31 +48,31 @@
 	<!-- PAGE COMPONENT RESOURCES -->
     <div class="spc resources @animateClass @customComponentClasses" data-os-animation="fadeIn" data-os-animation-delay="0s" @Html.Raw(anchorId)>
 
-        @Html.Partial("USNMiscPageElements/USN_ComponentIntro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
+        @Html.Partial("MiscPageElements/ComponentIntro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
 
         @if (Model.Resources != null)
         {
             <div class="list-group">
-                @foreach (Usn_Sc_ResourceItem item in Model.Resources)
+                @foreach (Sc_ResourceItem item in Model.Resources)
                 {
                     string note = String.Empty;
                     string iconClass = String.Empty;
                     bool fileError = false;
 
-                    USNLink attachement = USNUrlHelper.GetLinkFromRelatedLinks(item.Link);
+                    Link attachement = UrlHelper.GetLinkFromRelatedLinks(item.Link);
 
                     if (attachement != null)
                     {
                         switch (attachement.LinkType)
                         {
-                            case USNLink.UrlPickerTypes.Url:
+                            case Link.UrlPickerTypes.Url:
                                 iconClass = "ion-android-open pull-right after c1-text";
-                                note = Umbraco.GetDictionaryValue("USN Resources Component External Web Link") + " - " + attachement.LinkURL;
+                                note = Umbraco.GetDictionaryValue(" Resources Component External Web Link") + " - " + attachement.LinkURL;
                                 break;
-                            case USNLink.UrlPickerTypes.Content:
+                            case Link.UrlPickerTypes.Content:
                                 iconClass = "ion-link pull-right after c1-text";
                                 break;
-                            case USNLink.UrlPickerTypes.Media:
+                            case Link.UrlPickerTypes.Media:
                                 iconClass = "ion-android-arrow-down pull-right after c1-text";
                                 string fullPathU = Server.MapPath(attachement.LinkURL);
                                 try
@@ -81,7 +81,7 @@
                                     long fileInMbu = finfoU.Length / 1024;
 
                                     string fileSizeU = fileInMbu + "KB";
-                                    note = Umbraco.GetDictionaryValue("USN Resources Component File Size") + ": " + fileSizeU;
+                                    note = Umbraco.GetDictionaryValue(" Resources Component File Size") + ": " + fileSizeU;
                                 }
                                 catch (Exception e)
                                 {
@@ -111,12 +111,12 @@
 
         }
 
-        @Html.Partial("USNMiscPageElements/USN_ComponentOutro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
+        @Html.Partial("MiscPageElements/ComponentOutro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
 
     </div>
 
     @* Close div for column width on Advanced Pages *@
-    if (!Model.Parent.Parent.IsDocumentType(UsnstandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
+    if (!Model.Parent.Parent.IsDocumentType(StandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
     {
         @:</div></div></div>
     }

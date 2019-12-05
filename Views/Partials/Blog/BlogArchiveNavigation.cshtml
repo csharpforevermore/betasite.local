@@ -1,6 +1,5 @@
 ﻿@inherits UmbracoViewPage
 
-@using USNStarterKit.USNBlog;
 @using System.Globalization;
 
 @{
@@ -22,14 +21,14 @@
         selectedMonth = Convert.ToInt32(Request.QueryString["month"]);
     }
 
-    List<KeyValuePair<int, string>> yearNavigation = USNBlogPostService.Instance.GetBlogYearsNavigation(landing);
+    List<KeyValuePair<int, string>> yearNavigation = BlogPostService.Instance.GetBlogYearsNavigation(landing);
 
 
     if (yearNavigation.Any())
     {
         <!-- SUB - FILTER -->
         <nav class="sub filter has-borders c6-borders">
-            <p class="heading inner"><a href="@landing.Url">@Umbraco.GetDictionaryValue("USN Blog All Posts")</a>
+            <p class="heading inner"><a href="@landing.Url">@Umbraco.GetDictionaryValue(" Blog All Posts")</a>
             </p>
             <div class="inner">
                 <ul>
@@ -43,7 +42,7 @@
                             <a href="@landing.Url?year=@yearNav.Key" rel="NOINDEX, FOLLOW">@yearNav.Value</a>
                             @if (selectedYear == currentYear)
                             {
-                                List<KeyValuePair<int, string>> monthNavigation = USNBlogPostService.Instance.GetBlogMonthsNavigation(landing, selectedYear);
+                                List<KeyValuePair<int, string>> monthNavigation = BlogPostService.Instance.GetBlogMonthsNavigation(landing, selectedYear);
 
                                 <ul>
                                     @foreach (var monthNav in monthNavigation)

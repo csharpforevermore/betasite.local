@@ -14,7 +14,7 @@
     {
         foreach (RelatedLink link in footerNavigation)
         {
-            USNLink footerLink = USNUrlHelper.GetLinkFromRelatedLink(link);
+            Link footerLink = UrlHelper.GetLinkFromRelatedLink(link);
             
             if(footerLink != null && ((footerLink.InternalNode != null && footerLink.InternalNode.IsVisible()) || (footerLink.InternalNode == null && footerLink.LinkURL != String.Empty)))
             { 

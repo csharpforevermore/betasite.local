@@ -12,14 +12,14 @@
 
     if (!Model.HasValue("pageLayout"))
     {
-        pageLayout = globalSettings.DefaultPageLayout.HasValue() ? (USNOptions)globalSettings.DefaultPageLayout : USNOptions.PageLayout_Left;
+        pageLayout = globalSettings.DefaultPageLayout.HasValue() ? (Options)globalSettings.DefaultPageLayout : Options.PageLayout_Left;
     }
     else
     {
         pageLayout = Model.Value<Options>("pageLayout");
     }
 
-    if ((podStyle == "vertical" && pageLayout != USNOptions.PageLayout_Wide) || (podStyle == "horizontal" && pageLayout == USNOptions.PageLayout_Wide) || pageType == "advanced")
+    if ((podStyle == "vertical" && pageLayout != Options.PageLayout_Wide) || (podStyle == "horizontal" && pageLayout == Options.PageLayout_Wide) || pageType == "advanced")
     {
         if (Model.Value<bool>("overrideDefaultPods"))
         {
@@ -42,7 +42,7 @@
             var publishedContents = pods as IList<IPublishedContent> ?? pods.ToList();
             if (publishedContents.Any())
             {
-                if (pageLayout == USNOptions.PageLayout_Wide || pageType == "advanced")
+                if (pageLayout == Options.PageLayout_Wide || pageType == "advanced")
                 {
                     @:<section class="content swp-wide"><div class="container"><div class="row">
 

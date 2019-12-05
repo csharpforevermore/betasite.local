@@ -19,13 +19,13 @@
         {
 	        <p class="heading">@navigation.FooterQuickLinksHeading</p>
         }
-        @Html.Partial("USNForms/USN_SearchForm", Model)
+        @Html.Partial("Forms/SearchForm", Model)
 		@if (footerQuickLinks != null)
         {
             <ul>
                 @foreach (RelatedLink link in footerQuickLinks)
                 {
-                    USNLink quickLink = USNUrlHelper.GetLinkFromRelatedLink(link);
+                    Link quickLink = UrlHelper.GetLinkFromRelatedLink(link);
 
                     if (quickLink != null && ((quickLink.InternalNode != null && quickLink.InternalNode.IsVisible()) || (quickLink.InternalNode == null && quickLink.LinkURL != String.Empty)))
                     { 

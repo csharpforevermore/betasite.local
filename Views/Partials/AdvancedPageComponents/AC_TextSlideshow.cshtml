@@ -36,13 +36,13 @@
 
     switch (Model.TextAlignment)
     {
-        case USNOptions.TextAlignment_Left:
+        case Options.TextAlignment_Left:
             textAlignment = "text-left";
             break;
-        case USNOptions.TextAlignment_Center:
+        case Options.TextAlignment_Center:
             textAlignment = "text-center";
             break;
-        case USNOptions.TextAlignment_Right:
+        case Options.TextAlignment_Right:
             textAlignment = "text-right";
             break;
         default:
@@ -205,13 +205,13 @@
 
                         else
                         {
-                            Usn_Sc_GalleryVideo galleryVideo = (Usn_Sc_GalleryVideo)galleryItem;
+                            Sc_GalleryVideo galleryVideo = (Sc_GalleryVideo)galleryItem;
 
                             if (galleryVideo.GalleryVideo.HasValue())
                             {
                                 string videoUrlOriginal = galleryVideo.GalleryVideo;
 
-                                USNVideo video = USNVideoHelper.GetVideoInfo(videoUrlOriginal);
+                                Video video = VideoHelper.GetVideoInfo(videoUrlOriginal);
 
                                 string videoImageSrc = galleryVideo.GalleryThumbnailImage != null ? galleryVideo.GalleryThumbnailImage.GetCropUrl(cropAlias: cropAlias, width: imageWidthSmall, height: imageHeightSmall) : video.VideoImage;
                                 string videoImageDataSrc = galleryVideo.GalleryThumbnailImage != null ? galleryVideo.GalleryThumbnailImage.GetCropUrl(cropAlias: cropAlias) : video.VideoImage;
@@ -281,7 +281,7 @@
                     </div>
                 }
                 @{
-                    USNLink link = USNUrlHelper.GetLinkFromRelatedLinks(Model.Link);
+                    Link link = UrlHelper.GetLinkFromRelatedLinks(Model.Link);
 
                     if (link != null)
                     {

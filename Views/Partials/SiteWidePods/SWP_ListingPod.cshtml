@@ -2,7 +2,7 @@
 
 @{
 
-    USNLink linkToListing = USNUrlHelper.GetLinkFromRelatedLinks(Model.LinkToListing);
+    Link linkToListing = UrlHelper.GetLinkFromRelatedLinks(Model.LinkToListing);
 
     if (linkToListing != null && Model.PagesToDisplay.HasValue())
     {
@@ -12,13 +12,13 @@
 
         switch (Model.TextAlignment)
         {
-            case USNOptions.TextAlignment_Left:
+            case Options.TextAlignment_Left:
                 textAlignment = "text-left";
                 break;
-            case USNOptions.TextAlignment_Center:
+            case Options.TextAlignment_Center:
                 textAlignment = "text-center";
                 break;
-            case USNOptions.TextAlignment_Right:
+            case Options.TextAlignment_Right:
                 textAlignment = "text-right";
                 break;
             default:
@@ -41,7 +41,7 @@
                 blogLandingPage = linkToListing.InternalNode;
             }
 
-            USNSearchResults searchResult = USNBlogPostService.Instance.GetPostItems(blogLandingPage, null, null, category, 1, pagesDisplayCount);
+            SearchResults searchResult = BlogPostService.Instance.GetPostItems(blogLandingPage, null, null, category, 1, pagesDisplayCount);
 
             <div class="item listing-pod c4-bg has-borders c6-borders">
                 <div class="inner @textAlignment">
@@ -79,14 +79,14 @@
                     }
                     else
                     {
-                        <p>@Umbraco.GetDictionaryValue("USN Blog Nothing Found")</p>
+                        <p>@Umbraco.GetDictionaryValue(" Blog Nothing Found")</p>
                     }
                     <p class="link"><a class="btn btn-xs c1-borders c1-text" href="@linkToListing.LinkURL" @Html.Raw(linkToListing.LinkTarget) @Html.Raw(linkToListing.LinkTitle)>@linkToListing.LinkCaption@Html.Raw(linkToListing.LinkIcon)</a></p>
                 </div>
             </div>
  
         }
-        else if (linkToListing.InternalNode != null && (linkToListing.InternalNode.Children.Where(x => x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias)).Any()))
+        else if (linkToListing.InternalNode != null && (linkToListing.InternalNode.Children.Where(x => x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(AdvancedPage.ModelTypeAlias)).Any()))
         {
             <div class="item listing-pod c4-bg has-borders c6-borders">
                 <div class="inner @textAlignment">
@@ -100,7 +100,7 @@
                     }
                     <div class="listing short">
                         @{ 
-                            IEnumerable<IPublishedContent> pages = linkToListing.InternalNode.Children.Where(x => x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias));
+                            IEnumerable<IPublishedContent> pages = linkToListing.InternalNode.Children.Where(x => x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(AdvancedPage.ModelTypeAlias));
 
                             if (Model.PagesToDisplay.HasValue() && Model.PagesToDisplay != 0)
                             {

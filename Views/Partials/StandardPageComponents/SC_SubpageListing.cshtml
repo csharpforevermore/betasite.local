@@ -8,7 +8,7 @@
     string anchorId = String.Empty;
     string customComponentClasses = String.Empty;
 
-    USNTemplateStyleSettings settings;
+    TemplateStyleSettings settings;
     string animateClass = String.Empty;
 
     if (Model.Animate)
@@ -131,7 +131,7 @@
     <!-- PAGE COMPONENT SUBPAGE LISTING -->
     <div class="spc listing @animateClass @customComponentClasses" data-os-animation="fadeIn" data-os-animation-delay="0s" @Html.Raw(anchorId)>
 
-        @Html.Partial("MiscPageElements/ComponentIntro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
+        @Html.Partial("MiscPageElements/ComponentIntro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
 
         @{
             RelatedLinks listingPages = Model.LinkToListing;
@@ -173,9 +173,9 @@
                             <ul class="nav nav-tabs" role="tablist">
                                 @foreach (RelatedLink link in listingPages)
                                 {
-                                    USNLink page = USNUrlHelper.GetLinkFromRelatedLink(link);
+                                    Link page = UrlHelper.GetLinkFromRelatedLink(link);
 
-                                    if (page != null && (page.InternalNode.IsDocumentType(UsnstandardPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(BlogLandingPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(BlogCategoryPage.ModelTypeAlias)))
+                                    if (page != null && (page.InternalNode.IsDocumentType(StandardPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(AdvancedPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(BlogLandingPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(BlogCategoryPage.ModelTypeAlias)))
                                     {
                                         <li role="presentation" @if (listPage == 1) { @Html.Raw("class=\"active\"")   }>
                                             <a href="#tab-name-@Model.Id-@listPage" aria-controls="tab-name-@Model.Id-@listPage" role="tab" data-toggle="tab">
@@ -203,11 +203,11 @@
                                 <!-- ROW -->
                                 <div class="row @itemTextAlignment">
                                 @{
-                                    USNLink page = USNUrlHelper.GetLinkFromRelatedLink(link);
+                                    Link page = UrlHelper.GetLinkFromRelatedLink(link, Umbraco);
 
-                                    if (page != null && (page.InternalNode.IsDocumentType(UsnstandardPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(UsnadvancedPage.ModelTypeAlias)))
+                                    if (page != null && (page.InternalNode.IsDocumentType(StandardPage.ModelTypeAlias) || page.InternalNode.IsDocumentType(AdvancedPage.ModelTypeAlias)))
                                     {
-                                        var pages = page.InternalNode.Children.Where(x => x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias));
+                                        var pages = page.InternalNode.Children.Where(x => x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(AdvancedPage.ModelTypeAlias));
 
                                         if (Model.PagesToDisplay.HasValue() && Model.PagesToDisplay != 0)
                                         {
@@ -246,7 +246,7 @@
 
                                             string pageName = item.HasValue("subpageListingLinkText") ? item.Value<string>("subpageListingLinkText") : item.Name;
 
-                                            if (Model.ListingLayout != USNOptions.ListingStyle_Grid)
+                                            if (Model.ListingLayout != Options.ListingStyle_Grid)
                                             {
                                                 string textClass = String.Empty;
 
@@ -317,7 +317,7 @@
 
                                         int pagesToDisplay = (Model.PagesToDisplay.HasValue() && Model.PagesToDisplay != 0) ? Model.PagesToDisplay : - 1;
 
-                                        USNSearchResults searchResult = USNBlogPostService.Instance.GetPostItems(blogLandingPage, null, null, category, 1, pagesToDisplay);
+                                        SearchResults searchResult = BlogPostService.Instance.GetPostItems(blogLandingPage, null, null, category, 1, pagesToDisplay);
 
                                         foreach (var post in searchResult.SearchResults)
                                         {
@@ -351,7 +351,7 @@
 
                                             string postName = post.HasValue("onPageTitle") ? post.Value<string>("onPageTitle") : post.Name;
 
-                                            if (Model.ListingLayout != USNOptions.ListingStyle_Grid)
+                                            if (Model.ListingLayout != Options.ListingStyle_Grid)
                                             {
                                                 string textClass = String.Empty;
 
@@ -378,7 +378,7 @@
                                                                 <div class="text @settings.TextStyle">@Html.Raw(introText)</div>
                                                             }
 
-                                                            @Html.Partial("USNBlog/USN_BlogMeta", post, new ViewDataDictionary { { "textStyle", settings.TextStyle }, { "globalSettingsID", globalSettingsId } })
+                                                            @Html.Partial("Blog/BlogMeta", post, new ViewDataDictionary { { "textStyle", settings.TextStyle }, { "globalSettingsID", globalSettingsId } })
 
                                                         </div>
                                                     </div>
@@ -402,7 +402,7 @@
                                                         <div class="text @settings.TextStyle">@Html.Raw(introText)</div>
                                                     }
 
-                                                    @Html.Partial("USNBlog/USN_BlogMeta", post, new ViewDataDictionary { { "textStyle", settings.TextStyle }, { "globalSettingsID", globalSettingsId } })
+                                                    @Html.Partial("Blog/BlogMeta", post, new ViewDataDictionary { { "textStyle", settings.TextStyle }, { "globalSettingsID", globalSettingsId } })
                                                 </div>
                                             }
                                         }
@@ -423,13 +423,13 @@
             }
         }
     
-        @Html.Partial("USNMiscPageElements/USN_ComponentOutro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
+        @Html.Partial("MiscPageElements/ComponentOutro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
     
     </div>
     <!-- PAGE COMPONENT SUBPAGE LISTING -->
 
     @* Close div for column width on Advanced Pages *@
-    if (!Model.Parent.Parent.IsDocumentType(UsnstandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
+    if (!Model.Parent.Parent.IsDocumentType(StandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
     {
         @:</div></div></div>
     }

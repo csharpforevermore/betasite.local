@@ -17,9 +17,9 @@
 
     bool bigSmallOrder = false;
 
-    USNTemplateStyleSettings settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
+    TemplateStyleSettings settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
 
-    string backgroundImageStyle = USNViewTemplateHelper.GetBackgroundImageStyle(Model.BackgroundImage, Model.BackgroundImageOptions);
+    string backgroundImageStyle = ViewTemplateHelper.GetBackgroundImageStyle(Model.BackgroundImage, Model.BackgroundImageOptions);
 
     int currentItemPosition = 1;
     int currentRow = 1;
@@ -36,39 +36,39 @@
 
     switch (Model.ImageOrder)
     {
-        case USNOptions.WindowsOrder_4_Big:
+        case Options.WindowsOrder_4_Big:
             itemsPerRow = 4;
             rowClass = "windows-4 big-window-first";
             bigSmallOrder = true;
             break;
-        case USNOptions.WindowsOrder_4_Small:
+        case Options.WindowsOrder_4_Small:
             itemsPerRow = 4;
             rowClass = "windows-4 small-window-first";
             bigSmallOrder = true;
             break;
-        case USNOptions.WindowsOrder_3_Big:
+        case Options.WindowsOrder_3_Big:
             itemsPerRow = 3;
             rowClass = "windows-3 big-window-first";
             bigSmallOrder = true;
             break;
-        case USNOptions.WindowsOrder_3_Small:
+        case Options.WindowsOrder_3_Small:
             itemsPerRow = 3;
             rowClass = "windows-3 small-window-first";
             bigSmallOrder = true;
             break;
-        case USNOptions.WindowsOrder_4:
+        case Options.WindowsOrder_4:
             itemsPerRow = 4;
             rowClass = "basic-windows windows-4";
             break;
-        case USNOptions.WindowsOrder_3:
+        case Options.WindowsOrder_3:
             itemsPerRow = 3;
             rowClass = "basic-windows windows-3";
             break;
-        case USNOptions.WindowsOrder_2:
+        case Options.WindowsOrder_2:
             itemsPerRow = 2;
             rowClass = "basic-windows windows-2";
             break;
-        case USNOptions.WindowsOrder_1:
+        case Options.WindowsOrder_1:
             itemsPerRow = 1;
             rowClass = "basic-windows windows-1";
             break;
@@ -79,7 +79,7 @@
 
     <section class="content apc pod-windows @settings.BackGroundStyle @Model.CustomComponentClasses" @Html.Raw(backgroundImageStyle) id="pos_@Model.Id">
          
-        @Html.Partial("USNMiscPageElements/USN_ComponentIntro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }, { "addContainer", true } })
+        @Html.Partial("MiscPageElements/ComponentIntro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }, { "addContainer", true } })
 
         @if (Model.Windows != null)
         {
@@ -120,11 +120,11 @@
                             @:<div class="windows text-center @rowClass">
                         }
 
-                        if (item.IsDocumentType(Usn_Ac_WindowSectionImage.ModelTypeAlias))
+                        if (item.IsDocumentType(Ac_WindowSectionImage.ModelTypeAlias))
                         {
-                            Usn_Ac_WindowSectionImage windowSectionImage = (Usn_Ac_WindowSectionImage)item;
+                            Ac_WindowSectionImage windowSectionImage = (Ac_WindowSectionImage)item;
 
-                            USNTemplateStyleSettings windowSettings = USNViewTemplateHelper.GetTemplateStyleSettings(windowSectionImage.BackgroundColor, windowSectionImage.ButtonColor);
+                            TemplateStyleSettings windowSettings = ViewTemplateHelper.GetTemplateStyleSettings(windowSectionImage.BackgroundColor, windowSectionImage.ButtonColor);
 
                             string bgImage = String.Empty;
                             string bgImageSmall = String.Empty;
@@ -135,7 +135,7 @@
                                 bgImageSmall = "style=\"background-image:url('" + windowSectionImage.BackgroundImage.GetCropUrl(cropAlias: "Square/Circle", width: 8, height: 8) + "')\"";
                             }
 
-                            USNLink link = USNUrlHelper.GetLinkFromRelatedLinks(windowSectionImage.Link);
+                            Link link = UrlHelper.GetLinkFromRelatedLinks(windowSectionImage.Link);
 
                             if (windowSectionImage.AddColorOverlay)
                             {
@@ -205,9 +205,9 @@
                         }
                         else
                         {
-                            Usn_Ac_WindowSectionVideo windowSectionVideo = (Usn_Ac_WindowSectionVideo)item;
+                            Ac_WindowSectionVideo windowSectionVideo = (Ac_WindowSectionVideo)item;
 
-                            USNTemplateStyleSettings windowSettings = USNViewTemplateHelper.GetTemplateStyleSettings(windowSectionVideo.BackgroundColor, windowSectionVideo.ButtonColor);
+                            TemplateStyleSettings windowSettings = ViewTemplateHelper.GetTemplateStyleSettings(windowSectionVideo.BackgroundColor, windowSectionVideo.ButtonColor);
 
                             string bgImage = String.Empty;
                             string bgImageSmall = String.Empty;
@@ -233,7 +233,7 @@
                                 footer = "data-footer=\"" + windowSectionVideo.LightWindowFooter + "\"";
                             }
 
-                            USNVideo video = USNVideoHelper.GetVideoInfo(videoUrlOriginal);
+                            Video video = VideoHelper.GetVideoInfo(videoUrlOriginal);
 
                             if (windowSectionVideo.AddColorOverlay)
                             {
@@ -257,7 +257,7 @@
                                             <!-- INNER -->
                                             <div class="inner">
 
-                                                <p class="link"><span class="btn btn-xs @windowSettings.ButtonStyle">@Umbraco.GetDictionaryValue("USN Window Section Component Play Video")</span></p>
+                                                <p class="link"><span class="btn btn-xs @windowSettings.ButtonStyle">@Umbraco.GetDictionaryValue(" Window Section Component Play Video")</span></p>
 
                                             </div>
                                             <!--// INNER -->
@@ -317,7 +317,7 @@
 
         }
 
-        @Html.Partial("USNMiscPageElements/USN_ComponentOutro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }, { "addContainer", true } })
+        @Html.Partial("MiscPageElements/ComponentOutro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }, { "addContainer", true } })
 
     </section>
 

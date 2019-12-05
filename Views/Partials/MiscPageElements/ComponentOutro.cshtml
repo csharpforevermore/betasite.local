@@ -18,13 +18,13 @@
 
         switch (Model.OutroTextAlignment)
         {
-            case USNOptions.TextAlignment_Left:
+            case Options.TextAlignment_Left:
                 textAlignment = "text-left";
                 break;
-            case USNOptions.TextAlignment_Center:
+            case Options.TextAlignment_Center:
                 textAlignment = "text-center";
                 break;
-            case USNOptions.TextAlignment_Right:
+            case Options.TextAlignment_Right:
                 textAlignment = "text-right";
                 break;
             default:
@@ -62,7 +62,7 @@
                     <p class="link">
                         @foreach (RelatedLink link in outroLinks)
                         {
-                            USNLink outroLink = USNUrlHelper.GetLinkFromRelatedLink(link);
+                            Link outroLink = UrlHelper.GetLinkFromRelatedLink(link);
 
                             if (outroLink != null)
                             {

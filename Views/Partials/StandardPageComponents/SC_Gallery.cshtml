@@ -4,7 +4,7 @@
     string anchorId = String.Empty;
     string customComponentClasses = String.Empty;
 
-    USNTemplateStyleSettings settings;
+    TemplateStyleSettings settings;
     string animateClass = String.Empty;
 
     if (Model.Animate)
@@ -16,21 +16,21 @@
 
     if (pageType == "standard")
     {
-        settings = USNViewTemplateHelper.GetDefaultTemplateStyleSettings();
+        settings = ViewTemplateHelper.GetDefaultTemplateStyleSettings();
     }
     else
     {
-        settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
+        settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
     }
 
     @* Add div for column width on Advanced Pages *@
     if (pageType == "advanced")
     {
-        if (Model.Width == USNOptions.ComponentWidth_Center)
+        if (Model.Width == Options.ComponentWidth_Center)
         {
             @:<div class="container"><div class="row"><div class="mid-col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
         }
-        else if(Model.Width == USNOptions.ComponentWidth_Full)
+        else if(Model.Width == Options.ComponentWidth_Full)
         {
             @:<div class="container-fluid"><div class="row"><div class="wide-col col-xs-12">
         }
@@ -49,7 +49,7 @@
     <!-- PAGE COMPONENT GALLERY -->
     <div class="spc gallery @animateClass @customComponentClasses" data-os-animation="fadeIn" data-os-animation-delay="0s" @Html.Raw(anchorId)>
 
-        @Html.Partial("USNMiscPageElements/USN_ComponentIntro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
+        @Html.Partial("MiscPageElements/ComponentIntro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
 
         @if (Model.ImageVideo != null)
         {
@@ -75,7 +75,7 @@
 
             switch (Model.ItemsPerRow)
             {
-                case USNOptions.ItemsPerRow_1:
+                case Options.ItemsPerRow_1:
                     if (Model.EnableCarousel)
                     {
                         slidesToShowAttribute = "\"slidesToShow\": 1";
@@ -85,7 +85,7 @@
                         itemsPerRow = "items-1 col-xs-12";
                     }
                     break;
-                case USNOptions.ItemsPerRow_2:
+                case Options.ItemsPerRow_2:
                     if (Model.EnableCarousel)
                     {
                         slidesToShowAttribute = "\"slidesToShow\": 2, \"responsive\": [{\"breakpoint\": 480,\"settings\": {\"slidesToShow\": 1}}]";
@@ -95,7 +95,7 @@
                         itemsPerRow = "items-2 col-xs-12";
                     }
                     break;
-                case USNOptions.ItemsPerRow_3:
+                case Options.ItemsPerRow_3:
                     if (Model.EnableCarousel)
                     {
                         slidesToShowAttribute = "\"slidesToShow\": 3, \"responsive\": [{\"breakpoint\": 768,\"settings\": {\"slidesToShow\": 2}},{\"breakpoint\": 480,\"settings\": {\"slidesToShow\": 1}}]";
@@ -105,7 +105,7 @@
                         itemsPerRow = "items-3 col-xs-12";
                     }
                     break;
-                case USNOptions.ItemsPerRow_4:
+                case Options.ItemsPerRow_4:
                     if (Model.EnableCarousel)
                     {
                         slidesToShowAttribute = "\"slidesToShow\": 4, \"responsive\": [{\"breakpoint\": 992,\"settings\": {\"slidesToShow\": 3}},{\"breakpoint\": 768,\"settings\": {\"slidesToShow\": 2}},{\"breakpoint\": 480,\"settings\": {\"slidesToShow\": 1}}]";
@@ -141,28 +141,28 @@
 
             switch (Model.ImageStyle)
             {
-                case USNOptions.ImageStyle_Square:
+                case Options.ImageStyle_Square:
                     imageWidthSmall = 8;
                     imageHeightSmall = 8;
                     cropAlias = "Square/Circle";
                     break;
-                case USNOptions.ImageStyle_Landscape:
+                case Options.ImageStyle_Landscape:
                     imageWidthSmall = 8;
                     imageHeightSmall = 6;
                     cropAlias = "Landscape";
                     break;
-                case USNOptions.ImageStyle_Portrait:
+                case Options.ImageStyle_Portrait:
                     imageWidthSmall = 6;
                     imageHeightSmall = 8;
                     cropAlias = "Portrait";
                     break;
-                case USNOptions.ImageStyle_Circle:
+                case Options.ImageStyle_Circle:
                     imageWidthSmall = 8;
                     imageHeightSmall = 8;
                     cropAlias = "Square/Circle";
                     circleClass = "img-circle";
                     break;
-                case USNOptions.ImageStyle_Wide:
+                case Options.ImageStyle_Wide:
                     imageWidthSmall = 120;
                     imageHeightSmall = 63;
                     cropAlias = "Wide";
@@ -183,9 +183,9 @@
                 string title = String.Empty;
                 string footer = String.Empty;
 
-                if (galleryItem.IsDocumentType(Usn_Sc_GalleryImage.ModelTypeAlias))
+                if (galleryItem.IsDocumentType(Sc_GalleryImage.ModelTypeAlias))
                 {
-                    Usn_Sc_GalleryImage galleryImage = (Usn_Sc_GalleryImage)galleryItem;
+                    Sc_GalleryImage galleryImage = (Sc_GalleryImage)galleryItem;
 
                     if (!galleryImage.DisableLightWindow)
                     {
@@ -211,7 +211,7 @@
                         if (galleryImage.DisableLightWindow && galleryImage.ImageLink.HasValue())
                         {
 
-                            USNLink imageLink = USNUrlHelper.GetLinkFromRelatedLinks(galleryImage.ImageLink);
+                            Link imageLink = UrlHelper.GetLinkFromRelatedLinks(galleryImage.ImageLink);
 
                             if (imageLink != null)
                             {
@@ -258,13 +258,13 @@
 
                 else
                 {
-                    Usn_Sc_GalleryVideo galleryVideo = (Usn_Sc_GalleryVideo)galleryItem;
+                    Sc_GalleryVideo galleryVideo = (Sc_GalleryVideo)galleryItem;
 
                     if (galleryVideo.GalleryVideo.HasValue())
                     {
                         string videoUrlOriginal = galleryVideo.GalleryVideo;
 
-                        USNVideo video = USNVideoHelper.GetVideoInfo(videoUrlOriginal);
+                        Video video = VideoHelper.GetVideoInfo(videoUrlOriginal);
 
                         string videoImageSrc = String.Empty;
                         string videoImageDataSrc = String.Empty;
@@ -319,13 +319,13 @@
 
         }
 
-        @Html.Partial("USNMiscPageElements/USN_ComponentOutro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
+        @Html.Partial("MiscPageElements/ComponentOutro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
 
     </div>
     <!--// PAGE COMPONENT GALLERY -->
 
     @* Close div for column width on Advanced Pages *@
-    if (!Model.Parent.Parent.IsDocumentType(UsnstandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
+    if (!Model.Parent.Parent.IsDocumentType(StandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
     {
         @:</div></div></div>
     }

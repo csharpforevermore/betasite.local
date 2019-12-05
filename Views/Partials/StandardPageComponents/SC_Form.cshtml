@@ -17,11 +17,11 @@
     @* Add div for column width on Advanced Pages *@
 if (pageType == "advanced")
 {
-    if (Model.Width == USNOptions.ComponentWidth_Center)
+    if (Model.Width == Options.ComponentWidth_Center)
     {
             @:<div class="container"><div class="row"><div class="mid-col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
         }
-        else if(Model.Width == USNOptions.ComponentWidth_Full)
+        else if(Model.Width == Options.ComponentWidth_Full)
         {
             @:<div class="container-fluid"><div class="row"><div class="wide-col col-xs-12">
         }
@@ -45,14 +45,14 @@ if (pageType == "advanced")
             case "contactForm":
                 <div class="contact form ajax-wrap">
                     <div class="inner c5-bg base-text has-borders c6-borders">
-                        @Html.Action("Index", "USNContactFormSurface", new { NodeID = Model.Id, GlobalSettingsID = globalSettingsId, DataSize = "normal" })
+                        @Html.Action("Index", "ContactFormSurface", new { NodeID = Model.Id, GlobalSettingsID = globalSettingsId, DataSize = "normal" })
                     </div>
                 </div>
                 break;
             case "newsletterForm":
                 <div class="newsletter form ajax-wrap">
                     <div class="inner c4-bg base-text has-borders c6-borders">
-                        @Html.Action("Index", "USNNewsletterSignupSurface", new { NodeID = Model.Id, GlobalSettingsID = globalSettingsId, DataSize = "normal" })
+                        @Html.Action("Index", "NewsletterSignupSurface", new { NodeID = Model.Id, GlobalSettingsID = globalSettingsId, DataSize = "normal" })
                     </div>
                 </div>
                 break;

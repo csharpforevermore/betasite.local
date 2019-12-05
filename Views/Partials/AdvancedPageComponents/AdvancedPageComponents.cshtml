@@ -1,11 +1,8 @@
 ﻿@inherits UmbracoViewPage
-	
-@using USNStarterKit.USNBackgroundOptions.Models
-@using USN.USNTemplate;
 
 @{
 
-    UsnadvancedPageComponents pageComponentsNode = Model.Children<AdvancedPageComponents>().FirstOrDefault();
+    AdvancedPageComponents pageComponentsNode = Model.Children<AdvancedPageComponents>().FirstOrDefault();
 
     if (pageComponentsNode != null)
     {
@@ -13,9 +10,9 @@
         {
             if (component != null)
             {
-                USNTemplateStyleSettings settings = USNViewTemplateHelper.GetTemplateStyleSettings(component.Value<string>("backgroundColor"), component.Value<string>("buttonColor"));
+                TemplateStyleSettings settings = ViewTemplateHelper.GetTemplateStyleSettings(component.Value<string>("backgroundColor"), component.Value<string>("buttonColor"));
 
-                string backgroundImageStyle = USNViewTemplateHelper.GetBackgroundImageStyle(component.Value<IPublishedContent>("backgroundImage"), component.Value<USNBackgroundOption>("backgroundImageOptions"));
+                string backgroundImageStyle = ViewTemplateHelper.GetBackgroundImageStyle(component.Value<IPublishedContent>("backgroundImage"), component.Value<BackgroundOption>("backgroundImageOptions"));
 
                 string animateClass = String.Empty;
 
@@ -24,7 +21,7 @@
                     animateClass = "os-animation";
                 }
 
-                @Html.Partial("USNAdvancedPageComponents/USN_ComponentsSwitch", component, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettings.Id }, { "backgroundImageStyle", backgroundImageStyle }, { "animateClass", animateClass }, { "backgroundStyle", settings.BackGroundStyle } })
+                @Html.Partial("AdvancedPageComponents/ComponentsSwitch", component, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettings.Id }, { "backgroundImageStyle", backgroundImageStyle }, { "animateClass", animateClass }, { "backgroundStyle", settings.BackGroundStyle } })
             }
         }
     }

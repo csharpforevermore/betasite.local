@@ -33,7 +33,7 @@
             <ul>
                 @foreach (SocialLink socialLink in navigation.SocialLinks)
                 {
-                    Link link = USNUrlHelper.GetLinkFromRelatedLinks(socialLink.Link);
+                    Link link = UrlHelper.GetLinkFromRelatedLinks(socialLink.Link, Umbraco);
 
                     if (link != null)
                     {

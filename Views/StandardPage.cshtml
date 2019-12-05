@@ -13,26 +13,26 @@
     <!-- CONTAINER -->
     <div class="container">
 				
-                @Html.Partial("USNMiscPageElements/USN_StandardPageTitle", Model)
+                @Html.Partial("MiscPageElements/StandardPageTitle", Model)
 
         <!-- ROW -->
         <div class="row">
 
             <!-- CONTENT COL -->
-            <div @Html.Partial("USNLayout/USN_ContentColumnStyle", Model)>
+            <div @Html.Partial("Layout/ContentColumnStyle", Model)>
 
                 <!-- IMAGE -->
-                @Html.Partial("USNMiscPageElements/USN_MainImage", Model)
+                @Html.Partial("MiscPageElements/MainImage", Model)
                 <!--// IMAGE -->
 
                 @Html.Raw(standardPage.BodyText)
 
-                @Html.Partial("USNStandardPageComponents/USN_StandardPageComponents")
+                @Html.Partial("StandardPageComponents/StandardPageComponents")
 
             </div>
             <!--// CONTENT COL -->
 
-            @Html.Partial("USNLayout/USN_PodAndNavColumn", Model)
+            @Html.Partial("Layout/PodAndNavColumn", Model)
 
         </div>
         <!--// ROW -->
@@ -43,7 +43,7 @@
 </section>
 <!--// CONTENT -->
 
-@Html.Partial("USNSiteWidePods/USN_SitewidePods", Model, new ViewDataDictionary { { "podstyle", "horizontal" } })
+@Html.Partial("SiteWidePods/SitewidePods", Model, new ViewDataDictionary { { "podstyle", "horizontal" } })
 
 @section BodyTag
 {
@@ -99,7 +99,7 @@
         {
             var publishedContents = components as IList<IPublishedContent> ?? components.ToList();
 
-            bannerClass = publishedContents.First().IsDocumentType(Usn_Ac_Banner_AN.ModelTypeAlias) ? "banner-top" : "";
+            bannerClass = publishedContents.First().IsDocumentType(Ac_Banner_AN.ModelTypeAlias) ? "banner-top" : "";
         }
 
         //If no top components look at header image section

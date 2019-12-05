@@ -16,13 +16,13 @@
 
         switch (Model.IntroductionTextAlignment)
         {
-            case USNOptions.TextAlignment_Left:
+            case Options.TextAlignment_Left:
                 textAlignment = "text-left";
                 break;
-            case USNOptions.TextAlignment_Center:
+            case Options.TextAlignment_Center:
                 textAlignment = "text-center";
                 break;
-            case USNOptions.TextAlignment_Right:
+            case Options.TextAlignment_Right:
                 textAlignment = "text-right";
                 break;
             default:
@@ -60,7 +60,7 @@
                     <p class="link">
                         @foreach (RelatedLink link in introLinks)
                         {
-                            USNLink introLink = USNUrlHelper.GetLinkFromRelatedLink(link);
+                            Link introLink = UrlHelper.GetLinkFromRelatedLink(link);
 
                             if (introLink != null)
                             {

@@ -9,14 +9,14 @@
             case "contactForm":
                 <div class="contact form ajax-wrap">
                     <div class="inner c5-bg has-borders c6-borders">
-                        @Html.Action("Index", "USNContactFormSurface", new { NodeID = Model.Id, GlobalSettingsID = globalSettingsId, DataSize = "compact" })
+                        @Html.Action("Index", "ContactFormSurface", new { NodeID = Model.Id, GlobalSettingsID = globalSettingsId, DataSize = "compact" })
                     </div>
                 </div>
                 break;
             case "newsletterForm":
                 <div class="newsletter form ajax-wrap">
                     <div class="inner c4-bg has-borders c6-borders">
-                        @Html.Action("Index", "USNNewsletterSignupSurface", new { NodeID = Model.Id, GlobalSettingsID = globalSettingsId, DataSize = "compact" })
+                        @Html.Action("Index", "NewsletterSignupSurface", new { NodeID = Model.Id, GlobalSettingsID = globalSettingsId, DataSize = "compact" })
                     </div>
                 </div>
                 break;

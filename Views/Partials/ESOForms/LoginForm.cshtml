@@ -1,6 +1,7 @@
-﻿@inherits UmbracoViewPage<USN.USNModels.USNLoginFormViewModel>
+﻿@*inherits UmbracoViewPage<LoginFormViewModel>*@
+@inherits UmbracoViewPage
 
-@using (Html.BeginUmbracoForm("HandleLoginSubmit", "USNLoginFormSurface"))
+@using (Html.BeginUmbracoForm("HandleLoginSubmit", "LoginFormSurface"))
 {    
     if (TempData["LoginFailure"] != null)
     { 
@@ -17,18 +18,18 @@
 
             <div class="form-group">
                 <label for="Username" class="control-label">
-                    @Umbraco.GetDictionaryValue("USN Form Username Label") <em class="req">*</em>
+                    @Umbraco.GetDictionaryValue(" Form Username Label") <em class="req">*</em>
                 </label>
-                @Html.TextBoxFor(x => Model.Username, new { autocapitalize = "off", @class = "form-control", placeholder = Umbraco.GetDictionaryValue("USN Form Username Label") })
-                @Html.ValidationMessageFor(x => Model.Username, Umbraco.GetDictionaryValue("USN Form Username Validation"))
+                @Html.TextBoxFor(x => Model.Username, new { autocapitalize = "off", @class = "form-control", placeholder = Umbraco.GetDictionaryValue(" Form Username Label") })
+                @Html.ValidationMessageFor(x => Model.Username, Umbraco.GetDictionaryValue(" Form Username Validation"))
             </div>
 
             <div class="form-group">
                 <label for="Password" class="control-label">
-                    @Umbraco.GetDictionaryValue("USN Form Password Label") <em class="req">*</em>
+                    @Umbraco.GetDictionaryValue(" Form Password Label") <em class="req">*</em>
                 </label>
-                @Html.PasswordFor(x => Model.Password, new { @class = "form-control", placeholder = Umbraco.GetDictionaryValue("USN Form Password Label") })
-                @Html.ValidationMessageFor(x => Model.Password, Umbraco.GetDictionaryValue("USN Form Password Validation"))
+                @Html.PasswordFor(x => Model.Password, new { @class = "form-control", placeholder = Umbraco.GetDictionaryValue(" Form Password Label") })
+                @Html.ValidationMessageFor(x => Model.Password, Umbraco.GetDictionaryValue(" Form Password Validation"))
             </div>
             @Html.HiddenFor(x => Model.ReturnUrl)
         </fieldset>

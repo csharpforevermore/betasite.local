@@ -1,8 +1,7 @@
-﻿@inherits UmbracoViewPage<Usn_Sc_Sitemap_AN>
+﻿@inherits UmbracoViewPage<Sc_Sitemap_AN>
 
-@using USN.USNTemplate;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
+@*using ESO.Template;*@
+@*using Options = ESO.Options;*@
 
 @{
     string anchorId = String.Empty;
@@ -10,7 +9,7 @@
 
     string pageType = ViewData["pageType"] != null ? ViewData["pageType"].ToString() : "standard";
 
-    USNTemplateStyleSettings settings;
+    TemplateStyleSettings settings;
     string animateClass = String.Empty;
 
     if (Model.Animate)
@@ -22,22 +21,22 @@
 
     if (pageType == "standard")
     {
-        settings = USNViewTemplateHelper.GetDefaultTemplateStyleSettings();
+        settings = ViewTemplateHelper.GetDefaultTemplateStyleSettings();
     }
     else
     {
-        settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
+        settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
     }
 
     @* Add div for column width on Advanced Pages *@
     if (pageType == "advanced")
     {
 
-        if (Model.Width == USNOptions.ComponentWidth_Center)
+        if (Model.Width == Options.ComponentWidth_Center)
         {
             @:<div class="container"><div class="row"><div class="mid-col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
         }
-        else if(Model.Width == USNOptions.ComponentWidth_Full)
+        else if(Model.Width == Options.ComponentWidth_Full)
         {
             @:<div class="container-fluid"><div class="row"><div class="wide-col col-xs-12">
         }
@@ -56,7 +55,7 @@
     <!-- PAGE COMPONENT TEXT -->
     <div class="spc sitemap @animateClass @customComponentClasses" data-os-animation="fadeIn" data-os-animation-delay="0s" @Html.Raw(anchorId)>
         
-        @Html.Partial("USNMiscPageElements/USN_ComponentIntro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
+        @Html.Partial("MiscPageElements/ComponentIntro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
 
         @if (startPage != null)
         {
@@ -79,13 +78,13 @@
         </nav>
         }
 
-        @Html.Partial("USNMiscPageElements/USN_ComponentOutro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
+        @Html.Partial("MiscPageElements/ComponentOutro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle } })
 
     </div>
     <!--// PAGE COMPONENT TEXT -->
 
     @* Close div for column width on Advanced Pages *@
-    if (!Model.Parent.Parent.IsDocumentType(UsnstandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
+    if (!Model.Parent.Parent.IsDocumentType(StandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
     {
         @:</div></div></div>
     }
@@ -99,11 +98,11 @@
     
     if(Model.IncludeProtectedPages)
     {
-        items = node.Children.Where(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || x.IsDocumentType(BlogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnloginPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias)) && x.IsVisible());
+        items = node.Children.Where(x => (x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(AdvancedPage.ModelTypeAlias) || x.IsDocumentType(BlogLandingPage.ModelTypeAlias) || x.IsDocumentType(LoginPage.ModelTypeAlias) || x.IsDocumentType(SearchResultsPage.ModelTypeAlias)) && x.IsVisible());
     }
     else
     {
-        items = node.Children.Where(x => (x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || x.IsDocumentType(BlogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnloginPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias)) && x.IsVisible() && !library.IsProtected(x.Id,x.Url));
+        items = node.Children.Where(x => (x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(AdvancedPage.ModelTypeAlias) || x.IsDocumentType(BlogLandingPage.ModelTypeAlias) || x.IsDocumentType(LoginPage.ModelTypeAlias) || x.IsDocumentType(SearchResultsPage.ModelTypeAlias)) && x.IsVisible() && !library.IsProtected(x.Id,x.Url));
     }
 
     

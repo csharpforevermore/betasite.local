@@ -10,7 +10,7 @@
 
     if (globalSettings.SearchResultsPage != null)
     {
-        var searchResultsPage = (UsnsearchResultsPage)Model.
+        var searchResultsPage = (SearchResultsPage)Model.
 
         int pageSize = searchResultsPage.SearchResultsPageSize; // How many items per page
         int page; // The page we are viewing
@@ -45,7 +45,7 @@
             var criteria = baseSearchProvider.CreateSearchCriteria(IndexTypes.Content, BooleanOperation.And);
             var siteRootId = Model.Site();
 
-            //Field added via USNRegisterEvents class.
+            //Field added via RegisterEvents class.
             var examineQuery = criteria.Field("searchablePath", siteRootId.ToString());
             examineQuery.Not().Field("umbracoNaviHide", 1.ToString());
 
@@ -80,9 +80,9 @@
                     if (node != null)
                     {
                         //Check if node found has a parent redirect template. If it does we want to find the first parent page.
-                        if (node.GetTemplateAlias() == "USNParentRedirect")
+                        if (node.GetTemplateAlias() == "ParentRedirect")
                         {
-                            node = node.Ancestors().First(x => x.GetTemplateAlias() != "USNParentRedirect");
+                            node = node.Ancestors().First(x => x.GetTemplateAlias() != "ParentRedirect");
                         }
 
                         if (node.IsVisible())
@@ -112,23 +112,23 @@
 
         if (searchError)
         {
-            <p>@Umbraco.GetDictionaryValue("USN Search Term Limit")</p>
+            <p>@Umbraco.GetDictionaryValue(" Search Term Limit")</p>
         }
         if (totalNodes == 0)
         {
-            <p>@Umbraco.GetDictionaryValue("USN Search Results Nothing Found")</p>
-            @Html.Partial("USNForms/USN_SearchForm", Model)
+            <p>@Umbraco.GetDictionaryValue(" Search Results Nothing Found")</p>
+            @Html.Partial("Forms/SearchForm", Model)
         }
         else
         {
             int pages = (int)Math.Ceiling(totalNodes / (double)pageSize);
 
             //Please note the dictionary item should have a {0} and {1} placeholder for string formatting.
-            string searchResultsFeedback = Umbraco.GetDictionaryValue("USN Search Results Feedback");
+            string searchResultsFeedback = Umbraco.GetDictionaryValue(" Search Results Feedback");
             searchResultsFeedback = String.Format(searchResultsFeedback, originalSearchTerm, totalNodes);
 
             <p>@Html.Raw(searchResultsFeedback)</p>
-            @Html.Partial("USNForms/USN_SearchForm", Model)
+            @Html.Partial("Forms/SearchForm", Model)
 
             <div class="listing vertical search">
                 @foreach (var item in nodes.Skip((page - 1) * pageSize).Take(pageSize))
@@ -139,7 +139,7 @@
                         {
                             <div class="text">@Html.Raw(Html.ReplaceLineBreaks(item.Value<string>("metaDescription")))</div>
                         }
-                        <p class="link">@Umbraco.GetDictionaryValue("USN Search Results Link Label") <a href="@item.Url">@item.Url</a></p>
+                        <p class="link">@Umbraco.GetDictionaryValue(" Search Results Link Label") <a href="@item.Url">@item.Url</a></p>
                     </div>
                 }
             </div>
@@ -147,7 +147,7 @@
             if (pages > 1)
             {
                 <!-- PAGINATION -->
-                @Html.Partial("USNMiscPageElements/USN_Paging", new ViewDataDictionary { { "totalPageCount", pages } })
+                @Html.Partial("MiscPageElements/Paging", new ViewDataDictionary { { "totalPageCount", pages } })
                 <!--// PAGINATION -->
             }
         }

@@ -17,7 +17,7 @@
         {
             <priority>@homePage.SitemapXmlpriority.ToString("0.0")</priority>
         }
-        @if (homePage.SitemapXmlchangeFrequency != USNOptions.EMPTY)
+        @if (homePage.SitemapXmlchangeFrequency != Options.EMPTY)
         {
             <changefreq>@homePage.SitemapXmlchangeFrequency.ToString().Remove(0,8).ToLower()</changefreq>
         }
@@ -27,7 +27,7 @@
 
 @helper Traverse(IPublishedContent node, string DATE_TIME_FORMAT)
 {
-var items = node.Children.Where(x => (x.IsDocumentType(UsnstandardPage.ModelTypeAlias) || x.IsDocumentType(UsnadvancedPage.ModelTypeAlias) || x.IsDocumentType(BlogLandingPage.ModelTypeAlias) || x.IsDocumentType(UsnloginPage.ModelTypeAlias) || x.IsDocumentType(UsnsearchResultsPage.ModelTypeAlias)) && !x.Value<bool>("hideFromSearchEngines") && !library.IsProtected(x.Id, x.Url));
+var items = node.Children.Where(x => (x.IsDocumentType(StandardPage.ModelTypeAlias) || x.IsDocumentType(AdvancedPage.ModelTypeAlias) || x.IsDocumentType(BlogLandingPage.ModelTypeAlias) || x.IsDocumentType(LoginPage.ModelTypeAlias) || x.IsDocumentType(SearchResultsPage.ModelTypeAlias)) && !x.Value<bool>("hideFromSearchEngines") && !library.IsProtected(x.Id, x.Url));
 
 if (items.Any())
 {
@@ -44,7 +44,7 @@ if (items.Any())
                 {
                     <priority>@(item.Value<decimal>("sitemapXmlpriority").ToString("0.0"))</priority>
                 }
-                @if (item.Value<USNOptions>("sitemapXmlchangeFrequency") != USNOptions.EMPTY)
+                @if (item.Value<Options>("sitemapXmlchangeFrequency") != Options.EMPTY)
                 {
                     <changefreq>@(item.Value<string>("sitemapXmlchangeFrequency").Remove(0, 8).ToLower())</changefreq>
                 }
@@ -80,7 +80,7 @@ if (items.Any())
                 {
                     <priority>@(item.Value<decimal>("sitemapXmlpriority").ToString("0.0"))</priority>
                 }
-                @if (item.Value<USNOptions>("sitemapXmlchangeFrequency") != USNOptions.EMPTY)
+                @if (item.Value<Options>("sitemapXmlchangeFrequency") != Options.EMPTY)
                 {
                     <changefreq>@(item.Value<string>("sitemapXmlchangeFrequency").Remove(0, 8).ToLower())</changefreq>
                 }

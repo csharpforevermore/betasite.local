@@ -2,33 +2,33 @@
 
 @{
     var globalSettings = (Umbraco.Web.PublishedModels.GlobalSettings)Model.GlobalSettings();
-    USNOptions pageLayout;
+    Options pageLayout;
 
     //If page is a blog category, need to get layout from blog landing page
     if (Model.IsDocumentType(BlogCategoryPage.ModelTypeAlias)){
         IPublishedContent blogLandingPage = Model.AncestorOrSelf(BlogLandingPage.ModelTypeAlias);
-        pageLayout = !blogLandingPage.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : blogLandingPage.Value<USNOptions>("pageLayout");
+        pageLayout = !blogLandingPage.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : blogLandingPage.Value<Options>("pageLayout");
     }
     else
     {
-        pageLayout = !Model.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : Model.Value<USNOptions>("pageLayout");
+        pageLayout = !Model.HasValue("pageLayout") ? globalSettings.DefaultPageLayout : Model.Value<Options>("pageLayout");
     }
 
     switch (pageLayout)
     {
-        case USNOptions.PageLayout_Left:
+        case Options.PageLayout_Left:
 			@Html.Raw(" class=\"left-col col-md-8 col-xs-12\"")
 			break;
-		case USNOptions.PageLayout_Right:
+		case Options.PageLayout_Right:
 			@Html.Raw("class=\"right-col col-md-8 col-xs-12 pull-right\"")
 			break;
-		case USNOptions.PageLayout_CenterAlt:
+		case Options.PageLayout_CenterAlt:
 			@Html.Raw("class=\"mid-col col-md-6 col-md-push-3 col-xs-12\"")
 			break;
-		case USNOptions.PageLayout_Center:
+		case Options.PageLayout_Center:
 			@Html.Raw("class=\"mid-col col-md-6 col-md-push-3 col-xs-12\"")
 			break;
-        case USNOptions.PageLayout_Wide:
+        case Options.PageLayout_Wide:
 			@Html.Raw("class=\"wide-col col-xs-12\"")
             break;
         default:

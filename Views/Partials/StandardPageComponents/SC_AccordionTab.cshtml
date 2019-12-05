@@ -1,8 +1,6 @@
-﻿@inherits UmbracoViewPage<Usn_Sc_AccordionTab_AN>
+﻿@inherits UmbracoViewPage<Sc_AccordionTab_AN>
 
-@using USN.USNTemplate;
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
+@*using Options = ESO.Options;*@
 
 @{
     string anchorId = String.Empty;
@@ -12,7 +10,7 @@
     int tabContentCount = 1;
     int accordionCount = 1;
 
-    USNTemplateStyleSettings settings;
+    TemplateStyleSettings settings;
     string animateClass = String.Empty;
 
     if (Model.Animate)
@@ -24,21 +22,21 @@
 
     if(pageType == "standard")
     {
-        settings = USNViewTemplateHelper.GetDefaultTemplateStyleSettings();
+        settings = ViewTemplateHelper.GetDefaultTemplateStyleSettings();
     }
     else
     {
-        settings = USNViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
+        settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.BackgroundColor, Model.ButtonColor);
     }
 
     @* Add div for column width on Advanced Pages *@
     if (pageType == "advanced")
     {
-        if (Model.Width == USNOptions.ComponentWidth_Center)
+        if (Model.Width == Options.ComponentWidth_Center)
         {
             @:<div class="container"><div class="row"><div class="mid-col col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12">
         }
-        else if(Model.Width == USNOptions.ComponentWidth_Full)
+        else if(Model.Width == Options.ComponentWidth_Full)
         {
             @:<div class="container-fluid"><div class="row"><div class="wide-col col-xs-12">
         }
@@ -54,19 +52,19 @@
         customComponentClasses = Model.CustomComponentClasses;
     }
 
-    if (Model.RepeaterStyle == USNOptions.RepeatableLayout_Tabbed)
+    if (Model.RepeaterStyle == Options.RepeatableLayout_Tabbed)
     {
 		<!-- PAGE COMPONENT TABBED -->
         <div class="spc tabbed @animateClass @customComponentClasses" data-os-animation="fadeIn" data-os-animation-delay="0s" role="tabpanel" @Html.Raw(anchorId)>
 
-            @Html.Partial("USNMiscPageElements/USN_ComponentIntro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }})
+            @Html.Partial("MiscPageElements/ComponentIntro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }})
 
             @if (Model.AccordianTabs != null)
             {
 
                 <nav class="tabs">
                     <ul class="nav nav-tabs" role="tablist">
-                        @foreach (Usn_Sc_AccordionTabItem item in Model.AccordianTabs)
+                        @foreach (Sc_AccordionTabItem item in Model.AccordianTabs)
                         {
                             <li role="presentation" @if (tabHeadingCount == 1)
                             { @Html.Raw("class=\"active\"") }><a href="#tabname-@Model.Id-@tabHeadingCount" aria-controls="tabname-@Model.Id-@tabHeadingCount" role="tab" data-toggle="tab">@item.ItemHeading</a></li>
@@ -76,7 +74,7 @@
                 </nav>
 
                 <div class="tab-content base-text">
-                    @foreach (Usn_Sc_AccordionTabItem item in Model.AccordianTabs)
+                    @foreach (Sc_AccordionTabItem item in Model.AccordianTabs)
                     {
                         <div id="tabname-@Model.Id-@tabContentCount" role="tabpanel" class="tab-pane  @if (tabContentCount == 1)
                         {@Html.Raw("active")}">
@@ -89,7 +87,7 @@
 
             }
 
-            @Html.Partial("USNMiscPageElements/USN_ComponentOutro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }})
+            @Html.Partial("MiscPageElements/ComponentOutro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }})
 
         </div>
 		<!--// PAGE COMPONENT TABBED -->
@@ -99,10 +97,10 @@
     	<!-- PAGE COMPONENT ACCORDION -->
         <div class="spc accordion" @Html.Raw(anchorId)>
 
-            @Html.Partial("USNMiscPageElements/USN_ComponentIntro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }})
+            @Html.Partial("MiscPageElements/ComponentIntro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }})
 
             <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-            @foreach (Usn_Sc_AccordionTabItem item in Model.AccordianTabs)
+            @foreach (Sc_AccordionTabItem item in Model.AccordianTabs)
             {   
                 <div role="tab" id="heading-@accordionCount">
                     <p class="heading">
@@ -120,14 +118,14 @@
             }
             </div>
 
-            @Html.Partial("USNMiscPageElements/USN_ComponentOutro", @Model as IUsn_Cmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }})
+            @Html.Partial("MiscPageElements/ComponentOutro", @Model as ICmp_IntroOutro, new ViewDataDictionary { { "animateClass", animateClass }, { "headingStyle", settings.HeadingStyle }, { "secondaryHeadingStyle", settings.SecondaryHeadingStyle }, { "textStyle", settings.TextStyle }, { "buttonStyle", settings.ButtonStyle }})
 
         </div>
 		<!--// PAGE COMPONENT ACCORDION -->
     }
 
     @* Close div for column width on Advanced Pages *@
-    if (!Model.Parent.Parent.IsDocumentType(UsnstandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
+    if (!Model.Parent.Parent.IsDocumentType(StandardPage.ModelTypeAlias) && !Model.Parent.Parent.IsDocumentType(StandardPageBlogPost.ModelTypeAlias))
     {
         @:</div></div></div>
     }

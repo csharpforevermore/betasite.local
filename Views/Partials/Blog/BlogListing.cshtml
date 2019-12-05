@@ -1,24 +1,22 @@
-﻿@inherits UmbracoViewPage<USNStarterKit.USNModels.USNBlogListingViewModel>
-
-@using USNOptions = USNStarterKit.USNEnums.Options;
+﻿@inherits UmbracoViewPage
 
 @{
     int summaryTextLength = Model.BlogLandingPage.HasValue("blogSummaryTextCharacterCount") ? Model.BlogLandingPage.Value<int>("blogSummaryTextCharacterCount") : 0;
 
     string itemsPerRowStyle = String.Empty;
 
-    switch (Model.BlogLandingPage.Value<USNOptions>("itemsPerRow"))
+    switch (Model.BlogLandingPage.Value<Options>("itemsPerRow"))
     {
-        case USNOptions.ItemsPerRow_1:
+        case Options.ItemsPerRow_1:
             itemsPerRowStyle = "items-1";
             break;
-        case USNOptions.ItemsPerRow_2:
+        case Options.ItemsPerRow_2:
             itemsPerRowStyle = "items-2";
             break;
-        case USNOptions.ItemsPerRow_3:
+        case Options.ItemsPerRow_3:
             itemsPerRowStyle = "items-3";
             break;
-        case USNOptions.ItemsPerRow_4:
+        case Options.ItemsPerRow_4:
             itemsPerRowStyle = "items-4";
             break;
         default:
@@ -30,14 +28,14 @@
     if (Model.SearchResults.Paging.CurrentPage == 1 && Model.SelectedYear == -1)
     {
         <!-- IMAGE -->
-        @Html.Partial("USNMiscPageElements/USN_MainImage", (IUsn_Cmp_Sp_Content) Model.CurrentPage)
+        @Html.Partial("MiscPageElements/MainImage", (ICmp_Sp_Content) Model.CurrentPage)
         <!--// IMAGE -->
         @Umbraco.Field("bodyText")
     }
         
     if (!Model.SearchResults.BlogPostsList.Any())
     {
-        <p>@Umbraco.GetDictionaryValue("USN Blog Nothing Found")</p>
+        <p>@Umbraco.GetDictionaryValue(" Blog Nothing Found")</p>
     }
     else
     {
@@ -46,30 +44,30 @@
         string cropAlias = "Landscape";
         string circleClass = String.Empty;
 
-        switch (Model.BlogLandingPage.Value<USNOptions>("listingImageStyle"))
+        switch (Model.BlogLandingPage.Value<Options>("listingImageStyle"))
         {
-            case USNOptions.ImageStyle_Square:
+            case Options.ImageStyle_Square:
                 imageWidthSmall = 8;
                 imageHeightSmall = 8;
                 cropAlias = "Square/Circle";
                 break;
-            case USNOptions.ImageStyle_Landscape:
+            case Options.ImageStyle_Landscape:
                 imageWidthSmall = 8;
                 imageHeightSmall = 6;
                 cropAlias = "Landscape";
                 break;
-            case USNOptions.ImageStyle_Portrait:
+            case Options.ImageStyle_Portrait:
                 imageWidthSmall = 6;
                 imageHeightSmall = 8;
                 cropAlias = "Portrait";
                 break;
-            case USNOptions.ImageStyle_Circle:
+            case Options.ImageStyle_Circle:
                 imageWidthSmall = 8;
                 imageHeightSmall = 8;
                 cropAlias = "Square/Circle";
                 circleClass = "img-circle";
                 break;
-            case USNOptions.ImageStyle_Wide:
+            case Options.ImageStyle_Wide:
                 imageWidthSmall = 120;
                 imageHeightSmall = 63;
                 cropAlias = "Wide";
@@ -78,15 +76,15 @@
 
         string textAlignment;
 
-        switch (Model.BlogLandingPage.Value<USNOptions>("itemTextAlignment"))
+        switch (Model.BlogLandingPage.Value<Options>("itemTextAlignment"))
         {
-            case USNOptions.TextAlignment_Left:
+            case Options.TextAlignment_Left:
                 textAlignment = "text-left";
                 break;
-            case USNOptions.TextAlignment_Center:
+            case Options.TextAlignment_Center:
                 textAlignment = "text-center";
                 break;
-            case USNOptions.TextAlignment_Right:
+            case Options.TextAlignment_Right:
                 textAlignment = "text-right";
                 break;
             default:
@@ -131,7 +129,7 @@
 
                         string postName = item.HasValue("onPageTitle") ? item.Value<string>("onPageTitle") : item.Name;
 
-                        if (Model.BlogLandingPage.Value<USNOptions>("blogListingLayout") != USNOptions.ListingStyle_Grid)
+                        if (Model.BlogLandingPage.Value<Options>("blogListingLayout") != Options.ListingStyle_Grid)
                         {
                             string textClass = String.Empty;
 
@@ -156,7 +154,7 @@
                                             <div class="text">@Html.Raw(introText)</div>
                                         }
 
-                                        @Html.Partial("USNBlog/USN_BlogMeta", item, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettingsID } })
+                                        @Html.Partial("Blog/BlogMeta", item, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettingsID } })
 
                                     </div>
                                 </div>
@@ -180,7 +178,7 @@
                                     <div class="text">@Html.Raw(introText)</div>
                                 }
 
-                                @Html.Partial("USNBlog/USN_BlogMeta", item, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettingsID } })
+                                @Html.Partial("Blog/BlogMeta", item, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettingsID } })
                             </div>
                         }
 
@@ -193,7 +191,7 @@
         if (Model.SearchResults.Paging.TotalPageCount > 1)
         {
             <!-- PAGINATION -->
-            @Html.Partial("USNMiscPageElements/USN_Paging", new ViewDataDictionary { { "totalPageCount", Model.SearchResults.Paging.TotalPageCount } })
+            @Html.Partial("MiscPageElements/Paging", new ViewDataDictionary { { "totalPageCount", Model.SearchResults.Paging.TotalPageCount } })
             <!--// PAGINATION -->
         }
     }
