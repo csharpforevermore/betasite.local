@@ -3,9 +3,7 @@
 @{
     var navigation = (Navigation)Model.Navigation();
 
-    // Link ctaLink = (Link)Model.Value<IEnumerable<IPublishedContent>>("MultiTreePickerNodeName").First();
-
-    Link ctaLink = UrlHelper.GetLinkFromRelatedLinks(navigation.CtaLink);
+    ESOLink ctaLink = Umbraco.GetLinkFromRelatedLink(navigation.CtaLink);
     
     if (ctaLink != null)
     {

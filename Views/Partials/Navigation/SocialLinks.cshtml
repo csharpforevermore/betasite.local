@@ -32,7 +32,7 @@
             <ul>
                 @foreach (SocialLink socialLink in navigation.SocialLinks)
                 {
-                    ESO.Models.Link link = Umbraco.GetLinkFromRelatedLink(socialLink.Link);
+                    ESOLink link = Umbraco.GetLinkFromRelatedLink(socialLink.Link);
 
                     if (link != null)
                     {
