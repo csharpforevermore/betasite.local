@@ -20,85 +20,99 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedModels
 {
-	/// <summary>Blog Author</summary>
-	[PublishedModel("blogAuthor")]
-	public partial class BlogAuthor : PublishedContentModel, IDisableDeleteFunction
+	/// <summary>Window Image</summary>
+	[PublishedModel("AC_WindowSectionImage")]
+	public partial class Ac_WindowSectionImage : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public new const string ModelTypeAlias = "blogAuthor";
+		public new const string ModelTypeAlias = "AC_WindowSectionImage";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new static IPublishedContentType GetModelContentType()
 			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<BlogAuthor, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Ac_WindowSectionImage, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
 
 		// ctor
-		public BlogAuthor(IPublishedContent content)
+		public Ac_WindowSectionImage(IPublishedContent content)
 			: base(content)
 		{ }
 
 		// properties
 
 		///<summary>
-		/// Author Bio: The author bio will appear below every blog post associated with this author and should contain a short snippet about the author.
+		/// Add color overlay: If “Yes” is selected a semi transparent block of the background color is added over your image.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("authorBio")]
-		public IHtmlString AuthorBio => this.Value<IHtmlString>("authorBio");
+		[ImplementPropertyType("addColorOverlay")]
+		public object AddColorOverlay => this.Value("addColorOverlay");
 
 		///<summary>
-		/// Author image: Focal point is defined within your "Media" section.
+		/// Background color: Color selected will dictate the color to be used for any text. If a background image is used, select the color that works best for the text over the image.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("authorImage")]
-		public IPublishedContent AuthorImage => this.Value<IPublishedContent>("authorImage");
+		[ImplementPropertyType("backgroundColor")]
+		public string BackgroundColor => this.Value<string>("backgroundColor");
 
 		///<summary>
-		/// Image style
+		/// Background Image: Focal point is defined within your "Media" section.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("authorImageStyle")]
-		public string AuthorImageStyle => this.Value<string>("authorImageStyle");
+		[ImplementPropertyType("backgroundImage")]
+		public IPublishedContent BackgroundImage => this.Value<IPublishedContent>("backgroundImage");
 
 		///<summary>
-		/// Author page: Use this to link to the authors page which could be an external blog or a page on this website. If something is entered here the authors name on blog listings and blog post pages will link to this page.  The 'Caption' field will be ignored however you must enter something in order to save this link.
+		/// Button color
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("authorPage")]
-		public Umbraco.Web.Models.Link AuthorPage => this.Value<Umbraco.Web.Models.Link>("authorPage");
+		[ImplementPropertyType("buttonColor")]
+		public string ButtonColor => this.Value<string>("buttonColor");
 
 		///<summary>
-		/// Icon shape: Choose the style that will be applied to your social icon links.
+		/// Heading: Your heading hierarchy is important for SEO. This will not affect font size.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("iconShape")]
-		public object IconShape => this.Value("iconShape");
+		[ImplementPropertyType("heading")]
+		public string Heading => this.Value<string>("heading");
 
 		///<summary>
-		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Blog Author{i class="icon sprTree icon-user-glasses color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}The node name you enter above will be used for the "Author Name" displayed on the website.{/p}{/div}
+		/// Image alt text
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("instructions")]
-		public string Instructions => this.Value<string>("instructions");
+		[ImplementPropertyType("imageAltText")]
+		public string ImageAltText => this.Value<string>("imageAltText");
 
 		///<summary>
-		/// Social links
+		/// Name: The name you enter is for your reference only and will not appear on the website.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("socialLinks")]
-		public string SocialLinks => this.Value<string>("socialLinks");
+		[ImplementPropertyType("itemName")]
+		public string ItemName => this.Value<string>("itemName");
 
 		///<summary>
-		/// Disable delete: If "Yes" is selected, when a user attempts to delete this node they will be presented with a warning message indicating that this node cannot be deleted.
+		/// Link: The "Caption" field will be used for your link text.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("disableDelete")]
-		public object DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
+		[ImplementPropertyType("link")]
+		public Umbraco.Web.Models.Link Link => this.Value<Umbraco.Web.Models.Link>("link");
+
+		///<summary>
+		/// Secondary heading
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("secondaryHeading")]
+		public string SecondaryHeading => this.Value<string>("secondaryHeading");
+
+		///<summary>
+		/// Text
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("text")]
+		public IHtmlString Text => this.Value<IHtmlString>("text");
 	}
 }

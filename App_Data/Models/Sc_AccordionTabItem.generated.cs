@@ -20,43 +20,43 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedModels
 {
-	/// <summary>Blog Authors Folder</summary>
-	[PublishedModel("blogAuthors")]
-	public partial class BlogAuthors : PublishedContentModel, IDisableDeleteFunction
+	/// <summary>Accordion/Tab Item</summary>
+	[PublishedModel("SC_AccordionTabItem")]
+	public partial class Sc_AccordionTabItem : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public new const string ModelTypeAlias = "blogAuthors";
+		public new const string ModelTypeAlias = "SC_AccordionTabItem";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new static IPublishedContentType GetModelContentType()
 			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<BlogAuthors, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Sc_AccordionTabItem, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
 
 		// ctor
-		public BlogAuthors(IPublishedContent content)
+		public Sc_AccordionTabItem(IPublishedContent content)
 			: base(content)
 		{ }
 
 		// properties
 
 		///<summary>
-		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Blog Authors{i class="icon sprTree icon-folder-outline color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}Create items below this folder to add new "Blog Authors".{/p} {p}{strong}DO NOT{/strong} delete or rename this folder.{/p}{/div}
+		/// Heading
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("instructions")]
-		public string Instructions => this.Value<string>("instructions");
+		[ImplementPropertyType("itemHeading")]
+		public string ItemHeading => this.Value<string>("itemHeading");
 
 		///<summary>
-		/// Disable delete: If "Yes" is selected, when a user attempts to delete this node they will be presented with a warning message indicating that this node cannot be deleted.
+		/// Repeater Text
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("disableDelete")]
-		public object DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
+		[ImplementPropertyType("repeaterText")]
+		public IHtmlString RepeaterText => this.Value<IHtmlString>("repeaterText");
 	}
 }

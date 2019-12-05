@@ -20,85 +20,85 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedModels
 {
-	/// <summary>Blog Author</summary>
-	[PublishedModel("blogAuthor")]
-	public partial class BlogAuthor : PublishedContentModel, IDisableDeleteFunction
+	/// <summary>Video</summary>
+	[PublishedModel("SC_GalleryVideo")]
+	public partial class Sc_GalleryVideo : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public new const string ModelTypeAlias = "blogAuthor";
+		public new const string ModelTypeAlias = "SC_GalleryVideo";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new static IPublishedContentType GetModelContentType()
 			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<BlogAuthor, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Sc_GalleryVideo, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
 
 		// ctor
-		public BlogAuthor(IPublishedContent content)
+		public Sc_GalleryVideo(IPublishedContent content)
 			: base(content)
 		{ }
 
 		// properties
 
 		///<summary>
-		/// Author Bio: The author bio will appear below every blog post associated with this author and should contain a short snippet about the author.
+		/// Disable light window
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("authorBio")]
-		public IHtmlString AuthorBio => this.Value<IHtmlString>("authorBio");
+		[ImplementPropertyType("disableLightWindow")]
+		public object DisableLightWindow => this.Value("disableLightWindow");
 
 		///<summary>
-		/// Author image: Focal point is defined within your "Media" section.
+		/// Image: Focal point is defined within your "Media" section.  This image is optional. If you do not upload an image, a thumbnail image will be automatically generated for you from the associated video.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("authorImage")]
-		public IPublishedContent AuthorImage => this.Value<IPublishedContent>("authorImage");
+		[ImplementPropertyType("galleryThumbnailImage")]
+		public IPublishedContent GalleryThumbnailImage => this.Value<IPublishedContent>("galleryThumbnailImage");
 
 		///<summary>
-		/// Image style
+		/// Video: Copy the full URL for your video from the address bar. (YouTube or Vimeo only)
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("authorImageStyle")]
-		public string AuthorImageStyle => this.Value<string>("authorImageStyle");
+		[ImplementPropertyType("galleryVideo")]
+		public string GalleryVideo => this.Value<string>("galleryVideo");
 
 		///<summary>
-		/// Author page: Use this to link to the authors page which could be an external blog or a page on this website. If something is entered here the authors name on blog listings and blog post pages will link to this page.  The 'Caption' field will be ignored however you must enter something in order to save this link.
+		/// Name: The name you enter is for your reference only and will not appear on the website.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("authorPage")]
-		public Umbraco.Web.Models.Link AuthorPage => this.Value<Umbraco.Web.Models.Link>("authorPage");
+		[ImplementPropertyType("itemName")]
+		public string ItemName => this.Value<string>("itemName");
 
 		///<summary>
-		/// Icon shape: Choose the style that will be applied to your social icon links.
+		/// Light window footer: This text will be displayed below your image within the light window.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("iconShape")]
-		public object IconShape => this.Value("iconShape");
+		[ImplementPropertyType("lightWindowFooter")]
+		public string LightWindowFooter => this.Value<string>("lightWindowFooter");
 
 		///<summary>
-		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Blog Author{i class="icon sprTree icon-user-glasses color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}The node name you enter above will be used for the "Author Name" displayed on the website.{/p}{/div}
+		/// Light window title: This text will be displayed above your image within the light window.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("instructions")]
-		public string Instructions => this.Value<string>("instructions");
+		[ImplementPropertyType("lightWindowTitle")]
+		public string LightWindowTitle => this.Value<string>("lightWindowTitle");
 
 		///<summary>
-		/// Social links
+		/// Image alt text
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("socialLinks")]
-		public string SocialLinks => this.Value<string>("socialLinks");
+		[ImplementPropertyType("thumbnailImageAltText")]
+		public string ThumbnailImageAltText => this.Value<string>("thumbnailImageAltText");
 
 		///<summary>
-		/// Disable delete: If "Yes" is selected, when a user attempts to delete this node they will be presented with a warning message indicating that this node cannot be deleted.
+		/// Video caption
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("disableDelete")]
-		public object DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
+		[ImplementPropertyType("videoCaption")]
+		public string VideoCaption => this.Value<string>("videoCaption");
 	}
 }

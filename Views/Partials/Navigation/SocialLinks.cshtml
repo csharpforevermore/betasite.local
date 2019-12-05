@@ -31,9 +31,9 @@
             }
 
             <ul>
-                @foreach (Usn_SocialLink socialLink in navigation.SocialLinks)
+                @foreach (SocialLink socialLink in navigation.SocialLinks)
                 {
-                    USNLink link = USNUrlHelper.GetLinkFromRelatedLinks(socialLink.Link);
+                    Link link = USNUrlHelper.GetLinkFromRelatedLinks(socialLink.Link);
 
                     if (link != null)
                     {
