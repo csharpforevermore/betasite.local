@@ -20,6 +20,7 @@ public class TrueFalseValueConverter : Umbraco.Core.PropertyEditors.PropertyValu
 
             return null;
     }
+    public override Type GetPropertyValueType(IPublishedPropertyType propertyType) => typeof(bool);
 
     public virtual object ConvertSourceToXPath(
       PublishedPropertyType propertyType,

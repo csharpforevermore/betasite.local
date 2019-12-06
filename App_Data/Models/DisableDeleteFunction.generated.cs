@@ -26,7 +26,7 @@ namespace Umbraco.Web.PublishedModels
 	{
 		/// <summary>Disable delete</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object DisableDelete { get; }
+		bool DisableDelete { get; }
 	}
 
 	/// <summary>Delete Disable</summary>
@@ -59,10 +59,10 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("disableDelete")]
-		public object DisableDelete => GetDisableDelete(this);
+		public bool DisableDelete => GetDisableDelete(this);
 
 		/// <summary>Static getter for Disable delete</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetDisableDelete(IDisableDeleteFunction that) => that.Value("disableDelete");
+		public static bool GetDisableDelete(IDisableDeleteFunction that) => that.Value<bool>("disableDelete");
 	}
 }

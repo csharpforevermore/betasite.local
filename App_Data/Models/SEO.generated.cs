@@ -26,7 +26,7 @@ namespace Umbraco.Web.PublishedModels
 	{
 		/// <summary>Hide from search engines</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object HideFromSearchEngines { get; }
+		bool HideFromSearchEngines { get; }
 
 		/// <summary>Meta description</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
@@ -87,11 +87,11 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("hideFromSearchEngines")]
-		public object HideFromSearchEngines => GetHideFromSearchEngines(this);
+		public bool HideFromSearchEngines => GetHideFromSearchEngines(this);
 
 		/// <summary>Static getter for Hide from search engines</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetHideFromSearchEngines(ISEO that) => that.Value("hideFromSearchEngines");
+		public static bool GetHideFromSearchEngines(ISEO that) => that.Value<bool>("hideFromSearchEngines");
 
 		///<summary>
 		/// Meta description: This is shown in search engines, when the page is shared via social media and in your sites own search results. Try to keep this below 155 characters.

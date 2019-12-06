@@ -22,7 +22,7 @@
     }
 });
 
-angular.module("umbraco").controller("USN.TrueFalse.Controller", function ($scope, $timeout, angularHelper) {
+angular.module("umbraco").controller("ESO.TrueFalse.Controller", function ($scope, $timeout, angularHelper) {
 
     var alreadyDirty = false;
 

@@ -57,7 +57,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("disableDelete")]
-		public object DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
+		public bool DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
 
 		///<summary>
 		/// Custom body classes: Override the default styles of this page by adding page specific classes. Leave a space between each class e.g. custom-class another-class
@@ -71,14 +71,14 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("hideWebsiteFooterSection")]
-		public object HideWebsiteFooterSection => PageGenericProperties.GetHideWebsiteFooterSection(this);
+		public bool HideWebsiteFooterSection => PageGenericProperties.GetHideWebsiteFooterSection(this);
 
 		///<summary>
 		/// Hide website header section: Remove the global header content at the start of this page. For example, logo and navigation.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("hideWebsiteHeaderSection")]
-		public object HideWebsiteHeaderSection => PageGenericProperties.GetHideWebsiteHeaderSection(this);
+		public bool HideWebsiteHeaderSection => PageGenericProperties.GetHideWebsiteHeaderSection(this);
 
 		///<summary>
 		/// Breadcrumb link text: Node name will be used by default if nothing is entered.
@@ -92,14 +92,14 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("hideBreadcrumb")]
-		public object HideBreadcrumb => PageNavigationSettings.GetHideBreadcrumb(this);
+		public bool HideBreadcrumb => PageNavigationSettings.GetHideBreadcrumb(this);
 
 		///<summary>
 		/// Hide from all navigation: Prevents this page from being shown in most menus
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("umbracoNaviHide")]
-		public object UmbracoNaviHide => PageNavigationSettings.GetUmbracoNaviHide(this);
+		public bool UmbracoNaviHide => PageNavigationSettings.GetUmbracoNaviHide(this);
 
 		///<summary>
 		/// Bottom components: Select the components you would like to appear on this page. The components selected will only be displayed if "Yes" is selected above.
@@ -113,21 +113,21 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("overrideDefaultBottomComponents")]
-		public object OverrideDefaultBottomComponents => ReusableContent.GetOverrideDefaultBottomComponents(this);
+		public bool OverrideDefaultBottomComponents => ReusableContent.GetOverrideDefaultBottomComponents(this);
 
 		///<summary>
 		/// Override default pods: Select "Yes" to override the default pods selected within "Global Settings".
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("overrideDefaultPods")]
-		public object OverrideDefaultPods => ReusableContent.GetOverrideDefaultPods(this);
+		public bool OverrideDefaultPods => ReusableContent.GetOverrideDefaultPods(this);
 
 		///<summary>
 		/// Override default top components: Select "Yes" to override the default components selected within "Global Settings".
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("overrideDefaultTopComponents")]
-		public object OverrideDefaultTopComponents => ReusableContent.GetOverrideDefaultTopComponents(this);
+		public bool OverrideDefaultTopComponents => ReusableContent.GetOverrideDefaultTopComponents(this);
 
 		///<summary>
 		/// Pods: Select the pods you would like to appear on this page. The pods selected will only be displayed if "Yes" is selected above.
@@ -169,7 +169,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("hideFromSearchEngines")]
-		public object HideFromSearchEngines => SEO.GetHideFromSearchEngines(this);
+		public bool HideFromSearchEngines => SEO.GetHideFromSearchEngines(this);
 
 		///<summary>
 		/// Meta description: This is shown in search engines, when the page is shared via social media and in your sites own search results. Try to keep this below 155 characters.

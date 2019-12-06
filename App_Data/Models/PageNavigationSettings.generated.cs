@@ -30,11 +30,11 @@ namespace Umbraco.Web.PublishedModels
 
 		/// <summary>Hide breadcrumb</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object HideBreadcrumb { get; }
+		bool HideBreadcrumb { get; }
 
 		/// <summary>Hide from all navigation</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object UmbracoNaviHide { get; }
+		bool UmbracoNaviHide { get; }
 	}
 
 	/// <summary>Page Navigation Settings</summary>
@@ -78,21 +78,21 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("hideBreadcrumb")]
-		public object HideBreadcrumb => GetHideBreadcrumb(this);
+		public bool HideBreadcrumb => GetHideBreadcrumb(this);
 
 		/// <summary>Static getter for Hide breadcrumb</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetHideBreadcrumb(IPageNavigationSettings that) => that.Value("hideBreadcrumb");
+		public static bool GetHideBreadcrumb(IPageNavigationSettings that) => that.Value<bool>("hideBreadcrumb");
 
 		///<summary>
 		/// Hide from all navigation: Prevents this page from being shown in most menus
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("umbracoNaviHide")]
-		public object UmbracoNaviHide => GetUmbracoNaviHide(this);
+		public bool UmbracoNaviHide => GetUmbracoNaviHide(this);
 
 		/// <summary>Static getter for Hide from all navigation</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetUmbracoNaviHide(IPageNavigationSettings that) => that.Value("umbracoNaviHide");
+		public static bool GetUmbracoNaviHide(IPageNavigationSettings that) => that.Value<bool>("umbracoNaviHide");
 	}
 }

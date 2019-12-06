@@ -50,7 +50,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("addColorOverlay")]
-		public object AddColorOverlay => this.Value("addColorOverlay");
+		public bool AddColorOverlay => this.Value<bool>("addColorOverlay");
 
 		///<summary>
 		/// Background color

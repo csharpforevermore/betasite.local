@@ -50,7 +50,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("animate")]
-		public object Animate => this.Value("animate");
+		public bool Animate => this.Value<bool>("animate");
 
 		///<summary>
 		/// Image style
@@ -211,6 +211,6 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("disableDelete")]
-		public object DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
+		public bool DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
 	}
 }

@@ -30,15 +30,15 @@ namespace Umbraco.Web.PublishedModels
 
 		/// <summary>Override default bottom components</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object OverrideDefaultBottomComponents { get; }
+		bool OverrideDefaultBottomComponents { get; }
 
 		/// <summary>Override default pods</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object OverrideDefaultPods { get; }
+		bool OverrideDefaultPods { get; }
 
 		/// <summary>Override default top components</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object OverrideDefaultTopComponents { get; }
+		bool OverrideDefaultTopComponents { get; }
 
 		/// <summary>Pods</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
@@ -90,33 +90,33 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("overrideDefaultBottomComponents")]
-		public object OverrideDefaultBottomComponents => GetOverrideDefaultBottomComponents(this);
+		public bool OverrideDefaultBottomComponents => GetOverrideDefaultBottomComponents(this);
 
 		/// <summary>Static getter for Override default bottom components</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetOverrideDefaultBottomComponents(IReusableContent that) => that.Value("overrideDefaultBottomComponents");
+		public static bool GetOverrideDefaultBottomComponents(IReusableContent that) => that.Value<bool>("overrideDefaultBottomComponents");
 
 		///<summary>
 		/// Override default pods: Select "Yes" to override the default pods selected within "Global Settings".
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("overrideDefaultPods")]
-		public object OverrideDefaultPods => GetOverrideDefaultPods(this);
+		public bool OverrideDefaultPods => GetOverrideDefaultPods(this);
 
 		/// <summary>Static getter for Override default pods</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetOverrideDefaultPods(IReusableContent that) => that.Value("overrideDefaultPods");
+		public static bool GetOverrideDefaultPods(IReusableContent that) => that.Value<bool>("overrideDefaultPods");
 
 		///<summary>
 		/// Override default top components: Select "Yes" to override the default components selected within "Global Settings".
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("overrideDefaultTopComponents")]
-		public object OverrideDefaultTopComponents => GetOverrideDefaultTopComponents(this);
+		public bool OverrideDefaultTopComponents => GetOverrideDefaultTopComponents(this);
 
 		/// <summary>Static getter for Override default top components</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetOverrideDefaultTopComponents(IReusableContent that) => that.Value("overrideDefaultTopComponents");
+		public static bool GetOverrideDefaultTopComponents(IReusableContent that) => that.Value<bool>("overrideDefaultTopComponents");
 
 		///<summary>
 		/// Pods: Select the pods you would like to appear on this page. The pods selected will only be displayed if "Yes" is selected above.

@@ -30,11 +30,11 @@ namespace Umbraco.Web.PublishedModels
 
 		/// <summary>Hide website footer section</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object HideWebsiteFooterSection { get; }
+		bool HideWebsiteFooterSection { get; }
 
 		/// <summary>Hide website header section</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object HideWebsiteHeaderSection { get; }
+		bool HideWebsiteHeaderSection { get; }
 	}
 
 	/// <summary>Page Generic Properties</summary>
@@ -78,21 +78,21 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("hideWebsiteFooterSection")]
-		public object HideWebsiteFooterSection => GetHideWebsiteFooterSection(this);
+		public bool HideWebsiteFooterSection => GetHideWebsiteFooterSection(this);
 
 		/// <summary>Static getter for Hide website footer section</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetHideWebsiteFooterSection(IPageGenericProperties that) => that.Value("hideWebsiteFooterSection");
+		public static bool GetHideWebsiteFooterSection(IPageGenericProperties that) => that.Value<bool>("hideWebsiteFooterSection");
 
 		///<summary>
 		/// Hide website header section: Remove the global header content at the start of this page. For example, logo and navigation.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("hideWebsiteHeaderSection")]
-		public object HideWebsiteHeaderSection => GetHideWebsiteHeaderSection(this);
+		public bool HideWebsiteHeaderSection => GetHideWebsiteHeaderSection(this);
 
 		/// <summary>Static getter for Hide website header section</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetHideWebsiteHeaderSection(IPageGenericProperties that) => that.Value("hideWebsiteHeaderSection");
+		public static bool GetHideWebsiteHeaderSection(IPageGenericProperties that) => that.Value<bool>("hideWebsiteHeaderSection");
 	}
 }

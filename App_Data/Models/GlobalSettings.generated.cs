@@ -120,7 +120,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("disableDelete")]
-		public object DisableDelete => this.Value("disableDelete");
+		public bool DisableDelete => this.Value<bool>("disableDelete");
 
 		///<summary>
 		/// Disqus username: If nothing is entered, blog commenting will be disabled.
@@ -148,7 +148,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("enable")]
-		public object Enable => this.Value("enable");
+		public bool Enable => this.Value<bool>("enable");
 
 		///<summary>
 		/// Favicon and touch icons: This image will be used for your website favicon and device bookmarks. We suggest that you use an image of at least 310x310 pixels.
@@ -162,7 +162,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("fixedWidth")]
-		public object FixedWidth => this.Value("fixedWidth");
+		public bool FixedWidth => this.Value<bool>("fixedWidth");
 
 		///<summary>
 		/// Google reCAPTCHA V2 secret key

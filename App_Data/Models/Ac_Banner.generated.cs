@@ -50,14 +50,14 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("addColorOverlay")]
-		public object AddColorOverlay => this.Value("addColorOverlay");
+		public bool AddColorOverlay => this.Value<bool>("addColorOverlay");
 
 		///<summary>
 		/// Animate
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("animate")]
-		public object Animate => this.Value("animate");
+		public bool Animate => this.Value<bool>("animate");
 
 		///<summary>
 		/// Background color: Color selected will dictate the color to be used for any text.  If a background image is used, select the color that works best for the text over the image.
@@ -148,14 +148,14 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("parallax")]
-		public object Parallax => this.Value("parallax");
+		public bool Parallax => this.Value<bool>("parallax");
 
 		///<summary>
 		/// Scroll prompt
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("scrollPrompt")]
-		public object ScrollPrompt => this.Value("scrollPrompt");
+		public bool ScrollPrompt => this.Value<bool>("scrollPrompt");
 
 		///<summary>
 		/// Settings: {div class="panel-body"}{h3}Settings{/h3}{/div}

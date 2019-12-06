@@ -57,6 +57,6 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("disableDelete")]
-		public object DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
+		public bool DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
 	}
 }

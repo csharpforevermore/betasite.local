@@ -50,7 +50,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("disableLightWindow")]
-		public object DisableLightWindow => this.Value("disableLightWindow");
+		public bool DisableLightWindow => this.Value<bool>("disableLightWindow");
 
 		///<summary>
 		/// Image: Focal point is defined within your "Media" section.  This image is optional. If you do not upload an image, a thumbnail image will be automatically generated for you from the associated video.

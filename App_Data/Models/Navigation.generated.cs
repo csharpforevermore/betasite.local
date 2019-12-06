@@ -57,14 +57,14 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("disableDelete")]
-		public object DisableDelete => this.Value("disableDelete");
+		public bool DisableDelete => this.Value<bool>("disableDelete");
 
 		///<summary>
 		/// Display sub pages: If "Yes" is selected, sub pages will be included in the "Main Navigation".
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("displaySubPages")]
-		public object DisplaySubPages => this.Value("displaySubPages");
+		public bool DisplaySubPages => this.Value<bool>("displaySubPages");
 
 		///<summary>
 		/// Footer navigation: Select the links you would like to appear on the "Footer Navigation" of your website.  The "Caption" field is used for your link text.

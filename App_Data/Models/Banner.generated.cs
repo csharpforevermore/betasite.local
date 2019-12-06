@@ -71,14 +71,14 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("showArrows")]
-		public object ShowArrows => this.Value("showArrows");
+		public bool ShowArrows => this.Value<bool>("showArrows");
 
 		///<summary>
 		/// Show dots
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("showDots")]
-		public object ShowDots => this.Value("showDots");
+		public bool ShowDots => this.Value<bool>("showDots");
 
 		///<summary>
 		/// Custom component classes: Add your own touch with specific classes. Leave a space between each class e.g. custom-class another-class
@@ -92,6 +92,6 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("disableDelete")]
-		public object DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
+		public bool DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
 	}
 }
