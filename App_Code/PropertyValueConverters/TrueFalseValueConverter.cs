@@ -3,14 +3,12 @@ using Umbraco.Core.Models;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Core.PropertyEditors;
 using Umbraco.Web;
+using System;
 
 
-public class TrueFalseValueConverter : PropertyValueConverterBase
+public class TrueFalseValueConverter : Umbraco.Core.PropertyEditors.PropertyValueConverterBase
 {
-    public virtual bool IsConverter(PublishedPropertyType propertyType)
-    {
-        return propertyType.Alias.Equals("ESO.TrueFalse");
-    }
+    public override bool IsConverter(IPublishedPropertyType propertyType) => propertyType.EditorAlias.Equals("ESO.TrueFalse", StringComparison.InvariantCultureIgnoreCase);
 
     public virtual object ConvertDataToSource(PublishedPropertyType propertyType, object source, bool preview)
     {
