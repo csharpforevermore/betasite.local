@@ -106,7 +106,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("bannerStyle")]
-		public object BannerStyle => this.Value("bannerStyle");
+		public Options BannerStyle => this.Value<Options>("bannerStyle");
 
 		///<summary>
 		/// Text
@@ -120,7 +120,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("bannerTextAlignment")]
-		public object BannerTextAlignment => this.Value("bannerTextAlignment");
+		public Options BannerTextAlignment => this.Value<Options>("bannerTextAlignment");
 
 		///<summary>
 		/// Button color

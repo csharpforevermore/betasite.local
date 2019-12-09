@@ -78,7 +78,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("itemTextAlignment")]
-		public object ItemTextAlignment => this.Value("itemTextAlignment");
+		public Options ItemTextAlignment => this.Value<Options>("itemTextAlignment");
 
 		///<summary>
 		/// Link to listing: Link to internal pages that contain sub pages. Each page you select containing sub pages will be displayed along with a menu to switch between them.  If linking to a "Blog", either link to the "Blog Landing Page" or "Blog Category Page".  Links to external pages will be ignored.  The "Caption" field is used for the tab heading and link to each listing.
@@ -148,7 +148,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("width")]
-		public object Width => AdvancedPageSettings.GetWidth(this);
+		public Options Width => AdvancedPageSettings.GetWidth(this);
 
 		///<summary>
 		/// Heading: Your heading hierarchy is important for SEO. This will not affect font size.
@@ -183,7 +183,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("introductionTextAlignment")]
-		public object IntroductionTextAlignment => ComponentIntroOutro.GetIntroductionTextAlignment(this);
+		public Options IntroductionTextAlignment => ComponentIntroOutro.GetIntroductionTextAlignment(this);
 
 		///<summary>
 		/// Heading: Your heading hierarchy is important for SEO. This will not affect font size.
@@ -218,6 +218,6 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("outroTextAlignment")]
-		public object OutroTextAlignment => ComponentIntroOutro.GetOutroTextAlignment(this);
+		public Options OutroTextAlignment => ComponentIntroOutro.GetOutroTextAlignment(this);
 	}
 }

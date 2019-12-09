@@ -92,7 +92,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("imageOrder")]
-		public object ImageOrder => this.Value("imageOrder");
+		public Options ImageOrder => this.Value<Options>("imageOrder");
 
 		///<summary>
 		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Windows{i class="icon sprTree icon-windows color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}The node name you enter above is for your reference only and will not appear on the website.{/p}{/div}

@@ -127,7 +127,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("emailMarketingPlatform")]
-		public object EmailMarketingPlatform => this.Value("emailMarketingPlatform");
+		public Options EmailMarketingPlatform => this.Value<Options>("emailMarketingPlatform");
 
 		///<summary>
 		/// Enable

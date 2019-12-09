@@ -78,14 +78,14 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("podStyle")]
-		public object PodStyle => this.Value("podStyle");
+		public Options PodStyle => this.Value<Options>("podStyle");
 
 		///<summary>
 		/// Pod text alignment
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("podTextAlignment")]
-		public object PodTextAlignment => this.Value("podTextAlignment");
+		public Options PodTextAlignment => this.Value<Options>("podTextAlignment");
 
 		///<summary>
 		/// Instructions: {div class="panel-body"}{p}These settings only apply if this component has been added to the "Homepage" or an "Advanced Page / Advanced Page Blog Post".{/p}{/div}
@@ -127,7 +127,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("width")]
-		public object Width => AdvancedPageSettings.GetWidth(this);
+		public Options Width => AdvancedPageSettings.GetWidth(this);
 
 		///<summary>
 		/// Heading: Your heading hierarchy is important for SEO. This will not affect font size.
@@ -162,7 +162,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("introductionTextAlignment")]
-		public object IntroductionTextAlignment => ComponentIntroOutro.GetIntroductionTextAlignment(this);
+		public Options IntroductionTextAlignment => ComponentIntroOutro.GetIntroductionTextAlignment(this);
 
 		///<summary>
 		/// Heading: Your heading hierarchy is important for SEO. This will not affect font size.
@@ -197,7 +197,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("outroTextAlignment")]
-		public object OutroTextAlignment => ComponentIntroOutro.GetOutroTextAlignment(this);
+		public Options OutroTextAlignment => ComponentIntroOutro.GetOutroTextAlignment(this);
 
 		///<summary>
 		/// Custom component classes: Add your own touch with specific classes. Leave a space between each class e.g. custom-class another-class

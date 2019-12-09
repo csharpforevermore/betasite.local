@@ -106,7 +106,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("width")]
-		public object Width => AdvancedPageSettings.GetWidth(this);
+		public Options Width => AdvancedPageSettings.GetWidth(this);
 
 		///<summary>
 		/// Custom component classes: Add your own touch with specific classes. Leave a space between each class e.g. custom-class another-class

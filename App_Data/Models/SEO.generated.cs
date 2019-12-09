@@ -42,7 +42,7 @@ namespace Umbraco.Web.PublishedModels
 
 		/// <summary>Sitemap XML change frequency</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object SitemapXmlchangeFrequency { get; }
+		Options SitemapXmlchangeFrequency { get; }
 
 		/// <summary>Sitemap XML priority</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
@@ -131,11 +131,11 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("sitemapXMLChangeFrequency")]
-		public object SitemapXmlchangeFrequency => GetSitemapXmlchangeFrequency(this);
+		public Options SitemapXmlchangeFrequency => GetSitemapXmlchangeFrequency(this);
 
 		/// <summary>Static getter for Sitemap XML change frequency</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetSitemapXmlchangeFrequency(ISEO that) => that.Value("sitemapXMLChangeFrequency");
+		public static Options GetSitemapXmlchangeFrequency(ISEO that) => that.Value<Options>("sitemapXMLChangeFrequency");
 
 		///<summary>
 		/// Sitemap XML priority

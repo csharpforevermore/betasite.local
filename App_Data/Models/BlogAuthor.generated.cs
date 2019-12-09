@@ -78,7 +78,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("iconShape")]
-		public object IconShape => this.Value("iconShape");
+		public Options IconShape => this.Value<Options>("iconShape");
 
 		///<summary>
 		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Blog Author{i class="icon sprTree icon-user-glasses color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}The node name you enter above will be used for the "Author Name" displayed on the website.{/p}{/div}

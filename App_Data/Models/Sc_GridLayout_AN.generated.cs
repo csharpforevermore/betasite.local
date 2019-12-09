@@ -99,7 +99,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("width")]
-		public object Width => AdvancedPageSettings.GetWidth(this);
+		public Options Width => AdvancedPageSettings.GetWidth(this);
 
 		///<summary>
 		/// Heading: Your heading hierarchy is important for SEO. This will not affect font size.
@@ -134,7 +134,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("introductionTextAlignment")]
-		public object IntroductionTextAlignment => ComponentIntroOutro.GetIntroductionTextAlignment(this);
+		public Options IntroductionTextAlignment => ComponentIntroOutro.GetIntroductionTextAlignment(this);
 
 		///<summary>
 		/// Heading: Your heading hierarchy is important for SEO. This will not affect font size.
@@ -169,7 +169,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("outroTextAlignment")]
-		public object OutroTextAlignment => ComponentIntroOutro.GetOutroTextAlignment(this);
+		public Options OutroTextAlignment => ComponentIntroOutro.GetOutroTextAlignment(this);
 
 		///<summary>
 		/// Custom component classes: Add your own touch with specific classes. Leave a space between each class e.g. custom-class another-class

@@ -254,4 +254,16 @@ public class OptionsConverter : PropertyValueConverterBase
         //   }
         //return (object)Options.EMPTY;
     }
+
+     public override Type GetPropertyValueType(IPublishedPropertyType propertyType) => typeof(Options);
+
+    public virtual object ConvertSourceToXPath(
+      PublishedPropertyType propertyType,
+      object source,
+      bool preview)
+    {
+        if (!(bool)source)
+            return (object) source.ToString();
+        return (object) Options.EMPTY;
+    }
 }

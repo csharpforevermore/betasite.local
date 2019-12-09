@@ -92,7 +92,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("iconShape")]
-		public object IconShape => this.Value("iconShape");
+		public Options IconShape => this.Value<Options>("iconShape");
 
 		///<summary>
 		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Navigation{i class="icon sprTree icon-link color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}This item controls the navigation elements available on your website.{/p} {p}{strong}DO NOT{/strong} delete this item.{/p}{/div}

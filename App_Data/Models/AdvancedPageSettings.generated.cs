@@ -46,7 +46,7 @@ namespace Umbraco.Web.PublishedModels
 
 		/// <summary>Component width</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object Width { get; }
+		Options Width { get; }
 	}
 
 	/// <summary>Advanced Page Settings</summary>
@@ -134,10 +134,10 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("width")]
-		public object Width => GetWidth(this);
+		public Options Width => GetWidth(this);
 
 		/// <summary>Static getter for Component width</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetWidth(IAdvancedPageSettings that) => that.Value("width");
+		public static Options GetWidth(IAdvancedPageSettings that) => that.Value<Options>("width");
 	}
 }

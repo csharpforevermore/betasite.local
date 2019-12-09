@@ -197,7 +197,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("sitemapXMLChangeFrequency")]
-		public object SitemapXmlchangeFrequency => SEO.GetSitemapXmlchangeFrequency(this);
+		public Options SitemapXmlchangeFrequency => SEO.GetSitemapXmlchangeFrequency(this);
 
 		///<summary>
 		/// Sitemap XML priority

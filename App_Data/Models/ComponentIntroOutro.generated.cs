@@ -42,7 +42,7 @@ namespace Umbraco.Web.PublishedModels
 
 		/// <summary>Text alignment</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object IntroductionTextAlignment { get; }
+		Options IntroductionTextAlignment { get; }
 
 		/// <summary>Heading</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
@@ -62,7 +62,7 @@ namespace Umbraco.Web.PublishedModels
 
 		/// <summary>Text alignment</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		object OutroTextAlignment { get; }
+		Options OutroTextAlignment { get; }
 	}
 
 	/// <summary>Component Intro/Outro</summary>
@@ -139,11 +139,11 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("introductionTextAlignment")]
-		public object IntroductionTextAlignment => GetIntroductionTextAlignment(this);
+		public Options IntroductionTextAlignment => GetIntroductionTextAlignment(this);
 
 		/// <summary>Static getter for Text alignment</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetIntroductionTextAlignment(IComponentIntroOutro that) => that.Value("introductionTextAlignment");
+		public static Options GetIntroductionTextAlignment(IComponentIntroOutro that) => that.Value<Options>("introductionTextAlignment");
 
 		///<summary>
 		/// Heading: Your heading hierarchy is important for SEO. This will not affect font size.
@@ -194,10 +194,10 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("outroTextAlignment")]
-		public object OutroTextAlignment => GetOutroTextAlignment(this);
+		public Options OutroTextAlignment => GetOutroTextAlignment(this);
 
 		/// <summary>Static getter for Text alignment</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static object GetOutroTextAlignment(IComponentIntroOutro that) => that.Value("outroTextAlignment");
+		public static Options GetOutroTextAlignment(IComponentIntroOutro that) => that.Value<Options>("outroTextAlignment");
 	}
 }
