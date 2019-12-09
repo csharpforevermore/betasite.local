@@ -9,7 +9,7 @@
         string dotsAttribute = Model.ShowDots ? "\"dots\": true " : "\"dots\": false ";
         string arrowsAttribute = Model.ShowArrows ? "\"arrows\": true " : "\"arrows\": false ";
 
-        if (Model.AutoRotateSpeed.HasValue())
+        if (Model.AutoRotateSpeed > 0)
         {
             autoRotateSpeed = Model.AutoRotateSpeed;
             if (autoRotateSpeed > 0)

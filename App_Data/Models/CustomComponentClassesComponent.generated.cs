@@ -26,7 +26,7 @@ namespace Umbraco.Web.PublishedModels
 	{
 		/// <summary>Custom component classes</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		string CustomComponentClasses_ { get; }
+		string CustomComponentClasses { get; }
 	}
 
 	/// <summary>Custom Component Classes component</summary>
@@ -58,11 +58,11 @@ namespace Umbraco.Web.PublishedModels
 		/// Custom component classes: Add your own touch with specific classes. Leave a space between each class e.g. custom-class another-class
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("customComponentClasses_")]
-		public string CustomComponentClasses_ => GetCustomComponentClasses_(this);
+		[ImplementPropertyType("customComponentClasses")]
+		public string CustomComponentClasses => GetCustomComponentClasses(this);
 
 		/// <summary>Static getter for Custom component classes</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static string GetCustomComponentClasses_(ICustomComponentClassesComponent that) => that.Value<string>("customComponentClasses_");
+		public static string GetCustomComponentClasses(ICustomComponentClassesComponent that) => that.Value<string>("customComponentClasses");
 	}
 }

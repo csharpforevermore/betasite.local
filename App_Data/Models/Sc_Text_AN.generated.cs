@@ -112,7 +112,7 @@ namespace Umbraco.Web.PublishedModels
 		/// Custom component classes: Add your own touch with specific classes. Leave a space between each class e.g. custom-class another-class
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("customComponentClasses_")]
-		public string CustomComponentClasses_ => CustomComponentClassesComponent.GetCustomComponentClasses_(this);
+		[ImplementPropertyType("customComponentClasses")]
+		public string CustomComponentClasses => CustomComponentClassesComponent.GetCustomComponentClasses(this);
 	}
 }
