@@ -6,7 +6,7 @@ using Umbraco.Web;
 using System;
 
 
-public class TrueFalseValueConverter : Umbraco.Core.PropertyEditors.PropertyValueConverterBase
+public class TrueFalseValueConverter : PropertyValueConverterBase
 {
     public override bool IsConverter(IPublishedPropertyType propertyType) => propertyType.EditorAlias.Equals("ESO.TrueFalse", StringComparison.InvariantCultureIgnoreCase);
 
