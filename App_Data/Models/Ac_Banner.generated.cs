@@ -22,7 +22,7 @@ namespace Umbraco.Web.PublishedModels
 {
 	/// <summary>Banner</summary>
 	[PublishedModel("AC_Banner")]
-	public partial class Ac_Banner : PublishedContentModel
+	public partial class Ac_Banner : PublishedElementModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -39,7 +39,7 @@ namespace Umbraco.Web.PublishedModels
 #pragma warning restore 0109
 
 		// ctor
-		public Ac_Banner(IPublishedContent content)
+		public Ac_Banner(IPublishedElement content)
 			: base(content)
 		{ }
 

@@ -20,33 +20,33 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedModels
 {
-	/// <summary>Standard Page Components Folder</summary>
-	[PublishedModel("standardPageComponentsFolder")]
-	public partial class StandardPageComponentsFolder : PublishedContentModel
+	/// <summary>Reusable Components</summary>
+	[PublishedModel("AC_ReusableComponents_AN")]
+	public partial class Ac_ReusableComponents_AN : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public new const string ModelTypeAlias = "standardPageComponentsFolder";
+		public new const string ModelTypeAlias = "AC_ReusableComponents_AN";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new static IPublishedContentType GetModelContentType()
 			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<StandardPageComponentsFolder, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Ac_ReusableComponents_AN, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
 
 		// ctor
-		public StandardPageComponentsFolder(IPublishedContent content)
+		public Ac_ReusableComponents_AN(IPublishedContent content)
 			: base(content)
 		{ }
 
 		// properties
 
 		///<summary>
-		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Components{i class="icon sprTree icon-folder-outline color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}Add components below this folder to organise the layout and content of your page.{/p}{p}The order of your components within this folder directly relates to the order your components will be displayed on this page. Use {strong}Actions } Sort{/strong} to reorder your components.{p}{strong}DO NOT{/strong} delete this folder.{/p}{/div}
+		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Reusable Components{i class="icon sprTree icon-repeat color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}The node name you enter above is for your reference only and will not appear on the website.{/p}{/div}
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("instructions")]

@@ -81,13 +81,6 @@ namespace Umbraco.Web.PublishedModels
 		public string CompanyName => this.Value<string>("companyName");
 
 		///<summary>
-		/// Default bottom components: Select the default components you would like to appear before the footer of your website.
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("defaultBottomComponents")]
-		public IEnumerable<IPublishedContent> DefaultBottomComponents => this.Value<IEnumerable<IPublishedContent>>("defaultBottomComponents");
-
-		///<summary>
 		/// Default Subscriber list ID: Newsletter Signup will only be available if a Subscriber List ID is available. Individual signup forms can have their own Subscriber List ID however the one entered here will be used as the default.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
@@ -106,14 +99,7 @@ namespace Umbraco.Web.PublishedModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("defaultSitewidePods")]
-		public string DefaultSitewidePods => this.Value<string>("defaultSitewidePods");
-
-		///<summary>
-		/// Default top components: Select the default components you would like to appear at the top of your website.
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("defaultTopComponents")]
-		public IEnumerable<IPublishedContent> DefaultTopComponents => this.Value<IEnumerable<IPublishedContent>>("defaultTopComponents");
+		public IEnumerable<IPublishedContent> DefaultSitewidePods => this.Value<IEnumerable<IPublishedContent>>("defaultSitewidePods");
 
 		///<summary>
 		/// Disable delete: If "Yes" is selected, when a user attempts to delete this node they will be presented with a warning message indicating that this node cannot be deleted.

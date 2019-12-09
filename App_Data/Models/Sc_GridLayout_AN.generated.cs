@@ -20,26 +20,26 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedModels
 {
-	/// <summary>Pods</summary>
-	[PublishedModel("pods")]
-	public partial class Pods : PublishedContentModel, IAdvancedPageSettings, IComponentIntroOutro, ICustomComponentClassesComponent, IDisableDeleteFunction
+	/// <summary>Grid Layout</summary>
+	[PublishedModel("SC_GridLayout_AN")]
+	public partial class Sc_GridLayout_AN : PublishedContentModel, IAdvancedPageSettings, IComponentIntroOutro, ICustomComponentClassesComponent, IDisableDeleteFunction
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public new const string ModelTypeAlias = "pods";
+		public new const string ModelTypeAlias = "SC_GridLayout_AN";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new static IPublishedContentType GetModelContentType()
 			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Pods, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Sc_GridLayout_AN, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
 
 		// ctor
-		public Pods(IPublishedContent content)
+		public Sc_GridLayout_AN(IPublishedContent content)
 			: base(content)
 		{ }
 
@@ -53,39 +53,11 @@ namespace Umbraco.Web.PublishedModels
 		public bool Animate => this.Value<bool>("animate");
 
 		///<summary>
-		/// Image style
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("imageStyle")]
-		public string ImageStyle => this.Value<string>("imageStyle");
-
-		///<summary>
-		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Pods{i class="icon sprTree icon-disc color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}The node name you enter above is for your reference only and will not appear on the website.{/p}{/div}
+		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Grid Layout{i class="icon sprTree icon-thumbnails-small color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}The node name you enter above is for your reference only and will not appear on the website.{/p}{/div}
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("instructions")]
 		public string Instructions => this.Value<string>("instructions");
-
-		///<summary>
-		/// Items per row
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("itemsPerRow")]
-		public string ItemsPerRow => this.Value<string>("itemsPerRow");
-
-		///<summary>
-		/// Pod style
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("podStyle")]
-		public object PodStyle => this.Value("podStyle");
-
-		///<summary>
-		/// Pod text alignment
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("podTextAlignment")]
-		public object PodTextAlignment => this.Value("podTextAlignment");
 
 		///<summary>
 		/// Instructions: {div class="panel-body"}{p}These settings only apply if this component has been added to the "Homepage" or an "Advanced Page / Advanced Page Blog Post".{/p}{/div}

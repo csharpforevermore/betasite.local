@@ -3,9 +3,12 @@
 @{
     int globalSettingsId = Convert.ToInt32(ViewData["globalSettingsID"]);
 
-    TemplateStyleSettings settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.Value<string>("backgroundColor"), Model.Value<string>("buttonColor"));
+    /*TemplateStyleSettings settings = ViewTemplateHelper.GetTemplateStyleSettings(Model.Value<string>("backgroundColor"), Model.Value<string>("buttonColor"));
 
     string backgroundImageStyle = ViewTemplateHelper.GetBackgroundImageStyle(Model.Value<IPublishedContent>("backgroundImage"), Model.Value<BackgroundOption>("backgroundImageOptions"));
+    */
+
+    string backgroundImageStyle = "";
 
     string animateClass = String.Empty;
 
@@ -14,7 +17,7 @@
         animateClass = "os-animation";
     }
 
-    switch (Model.DocumentTypeAlias)
+    switch (Model.ContentType.Alias)
     {
         case Ac_Banner_AN.ModelTypeAlias:
             @Html.Partial("AdvancedPageComponents/AC_Banner", (Ac_Banner_AN)Model)
@@ -33,87 +36,87 @@
             break;
         case Ac_Window_AN.ModelTypeAlias:
             @Html.Partial("AdvancedPageComponents/AC_Window", (Ac_Window_AN)Model)
-            break;
+            break;;
         case Ac_ReusableComponents_AN.ModelTypeAlias:
             @Html.Partial("AdvancedPageComponents/AC_ReusableComponents", (Ac_ReusableComponents_AN)Model, new ViewDataDictionary { { "globalSettingsID", globalSettingsId } })
             break;
         case Sc_AccordionTab_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_AccordionTab", (Sc_AccordionTab_AN)Model, new ViewDataDictionary { { "pageType", "advanced" } })
             </section>
             break;
         case Sc_Resources_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_Resources", (Sc_Resources_AN)Model, new ViewDataDictionary { { "pageType", "advanced" } })
             </section>
             break;
         case Sc_Text_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) " @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_Text", (Sc_Text_AN)Model, new ViewDataDictionary { { "pageType", "advanced" } })
             </section>
             break;
         case Sc_Alert_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) " @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_Alert", (Sc_Alert_AN)Model, new ViewDataDictionary { { "pageType", "advanced" } })
             </section>
             break;
         case Sc_Links_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses"))  ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_Links", (Sc_Links_AN)Model, new ViewDataDictionary { { "pageType", "advanced" } })
             </section>
             break;
         case Sc_Gallery_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) " @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_Gallery", (Sc_Gallery_AN)Model, new ViewDataDictionary { { "pageType", "advanced" } })
             </section>
             break;
         case Sc_Quotes_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) " @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_Quotes", (Sc_Quotes_AN)Model, new ViewDataDictionary { { "pageType", "advanced" } })
             </section>
             break;
         case Sc_Code_AN.ModelTypeAlias:
-            <section class="content apc standard-components code-block @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components code-block @(Model.Value<string>("customComponentClasses")) " @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_Code", (Sc_Code_AN)Model, new ViewDataDictionary { { "pageType", "advanced" } })
             </section>
             break;
         case Sc_Form_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses"))  ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_Form", (Sc_Form_AN)Model, new ViewDataDictionary { { "globalSettingsID", globalSettingsId }, { "pageType", "advanced" } })
             </section>
             break;
         case Sc_PriceList_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses"))  ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_PriceList", (Sc_PriceList_AN)Model, new ViewDataDictionary { { "pageType", "advanced" } })
             </section>
             break;
         case Sc_GridLayout_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) " @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_GridLayout", (Sc_GridLayout_AN)Model, new ViewDataDictionary { { "pageType", "advanced" } })
             </section>
             break;
         case Sc_SubpageListing_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses"))  ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_SubpageListing", (Sc_SubpageListing_AN)Model, new ViewDataDictionary { { "pageType", "advanced" }, { "globalSettingsID", globalSettingsId } })
             </section>
             break;
         case Sc_Pods_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) " @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
             @Html.Partial("StandardPageComponents/SC_Pods", (Sc_Pods_AN)Model, new ViewDataDictionary { { "pageType", "advanced" } })
             </section>
             break;
         case Sc_ReusablePods_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses"))  ignore-bg" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_ReusablePods", (Sc_ReusablePods_AN)Model, new ViewDataDictionary { { "pageType", "advanced" }, { "globalSettingsID", globalSettingsId } })
             </section>
             break;
         case Sc_RelatedContent_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) " @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_RelatedContent", (Sc_RelatedContent_AN)Model, new ViewDataDictionary { { "pageType", "advanced" }, { "globalSettingsID", globalSettingsId } })
             </section>
             break;
         case Sc_Sitemap_AN.ModelTypeAlias:
-            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) @settings.BackGroundStyle" @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
+            <section class="content apc standard-components @(Model.Value<string>("customComponentClasses")) " @Html.Raw(backgroundImageStyle) id="@Html.Raw("pos_" + Model.Id)">
                 @Html.Partial("StandardPageComponents/SC_Sitemap", (Sc_Sitemap_AN)Model, new ViewDataDictionary { { "pageType", "advanced" } })
             </section>
             break;

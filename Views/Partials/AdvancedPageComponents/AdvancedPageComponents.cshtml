@@ -2,7 +2,7 @@
 
 @{
 
-    AdvancedPageComponents pageComponentsNode = Model.Children<AdvancedPageComponents>().FirstOrDefault();
+    var pageComponentsNode = Model.Children<AdvancedPageComponents>().FirstOrDefault();
 
     if (pageComponentsNode != null)
     {
@@ -10,9 +10,13 @@
         {
             if (component != null)
             {
+                /* TODO Find out TemplateStyleSettings 
+                
                 TemplateStyleSettings settings = ViewTemplateHelper.GetTemplateStyleSettings(component.Value<string>("backgroundColor"), component.Value<string>("buttonColor"));
 
                 string backgroundImageStyle = ViewTemplateHelper.GetBackgroundImageStyle(component.Value<IPublishedContent>("backgroundImage"), component.Value<BackgroundOption>("backgroundImageOptions"));
+
+                */
 
                 string animateClass = String.Empty;
 
@@ -21,7 +25,10 @@
                     animateClass = "os-animation";
                 }
 
-                @Html.Partial("AdvancedPageComponents/ComponentsSwitch", component, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettings.Id }, { "backgroundImageStyle", backgroundImageStyle }, { "animateClass", animateClass }, { "backgroundStyle", settings.BackGroundStyle } })
+               /* @Html.Partial("AdvancedPageComponents/ComponentsSwitch", component, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettings().Id }, { "backgroundImageStyle", backgroundImageStyle }, { "animateClass", animateClass }, { "backgroundStyle", settings.BackGroundStyle } }) */
+
+                
+                @Html.Partial("AdvancedPageComponents/ComponentsSwitch", component, new ViewDataDictionary { { "globalSettingsID", Model.GlobalSettings().Id }, { "backgroundImageStyle", "" }, { "animateClass", animateClass }, { "backgroundStyle", "" } })
             }
         }
     }

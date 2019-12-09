@@ -20,78 +20,71 @@ using Umbraco.ModelsBuilder.Umbraco;
 
 namespace Umbraco.Web.PublishedModels
 {
-	/// <summary>Banners</summary>
-	[PublishedModel("banner")]
-	public partial class Banner : PublishedContentModel, ICustomComponentClassesComponent, IDisableDeleteFunction
+	/// <summary>Text/Slideshow</summary>
+	[PublishedModel("AC_TextSlideshow_AN")]
+	public partial class Ac_TextSlideshow_AN : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public new const string ModelTypeAlias = "banner";
+		public new const string ModelTypeAlias = "AC_TextSlideshow_AN";
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new const PublishedItemType ModelItemType = PublishedItemType.Content;
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		public new static IPublishedContentType GetModelContentType()
 			=> PublishedModelUtility.GetModelContentType(ModelItemType, ModelTypeAlias);
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Banner, TValue>> selector)
+		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<Ac_TextSlideshow_AN, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
 
 		// ctor
-		public Banner(IPublishedContent content)
+		public Ac_TextSlideshow_AN(IPublishedContent content)
 			: base(content)
 		{ }
 
 		// properties
 
 		///<summary>
-		/// Auto rotate speed: A value of 0 will stop auto rotation.
+		/// Background color: Color selected will dictate the color to be used for any text.  If a background image is used, select the color that works best for the text over the image.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("autoRotateSpeed")]
-		public decimal AutoRotateSpeed => this.Value<decimal>("autoRotateSpeed");
+		[ImplementPropertyType("backgroundColor")]
+		public string BackgroundColor => this.Value<string>("backgroundColor");
 
 		///<summary>
-		/// Banners
+		/// Background image
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("banners")]
-		public string Banners => this.Value<string>("banners");
+		[ImplementPropertyType("backgroundImage")]
+		public IPublishedContent BackgroundImage => this.Value<IPublishedContent>("backgroundImage");
 
 		///<summary>
-		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Banners{i class="icon sprTree icon-pictures-alt-2 color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}The node name you enter above is for your reference only and will not appear on the website.{/p}{/div}
+		/// Background image options
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("backgroundImageOptions")]
+		public Newtonsoft.Json.Linq.JToken BackgroundImageOptions => this.Value<Newtonsoft.Json.Linq.JToken>("backgroundImageOptions");
+
+		///<summary>
+		/// Button color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
+		[ImplementPropertyType("buttonColor")]
+		public string ButtonColor => this.Value<string>("buttonColor");
+
+		///<summary>
+		/// Instructions: {div class="panel-heading"}{h3 class="panel-title"}Text/Slideshow{i class="icon sprTree icon-picture color-orange pull-right"}{/i}{/h3}{/div}{div class="panel-body"}{p}The node name you enter above is for your reference only and will not appear on the website.{/p}{/div}
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
 		[ImplementPropertyType("instructions")]
 		public string Instructions => this.Value<string>("instructions");
 
 		///<summary>
-		/// Show arrows
+		/// Text position
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("showArrows")]
-		public bool ShowArrows => this.Value<bool>("showArrows");
-
-		///<summary>
-		/// Show dots
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("showDots")]
-		public bool ShowDots => this.Value<bool>("showDots");
-
-		///<summary>
-		/// Custom component classes: Add your own touch with specific classes. Leave a space between each class e.g. custom-class another-class
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("customComponentClasses_")]
-		public string CustomComponentClasses_ => CustomComponentClassesComponent.GetCustomComponentClasses_(this);
-
-		///<summary>
-		/// Disable delete: If "Yes" is selected, when a user attempts to delete this node they will be presented with a warning message indicating that this node cannot be deleted.
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.0")]
-		[ImplementPropertyType("disableDelete")]
-		public bool DisableDelete => DisableDeleteFunction.GetDisableDelete(this);
+		[ImplementPropertyType("textPosition")]
+		public object TextPosition => this.Value("textPosition");
 	}
 }
