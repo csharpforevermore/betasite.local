@@ -82,11 +82,11 @@
                         bgImageSmall = "style=\"background-image:url('" + banner.BannerImage.GetCropUrl(cropAlias: cropAlias, width: 150, height: imageHeightSmall) + "')\"";
                     }
 
-                    TemplateStyleSettings settings = ViewTemplateHelper.GetTemplateStyleSettings(banner.BackgroundColor, banner.ButtonColor);
+                    /*TemplateStyleSettings settings = ViewTemplateHelper.GetTemplateStyleSettings(banner.BackgroundColor, banner.ButtonColor);
 
-                    Link bannerLink = UrlHelper.GetLinkFromRelatedLinks(banner.BannerLink, Umbraco);
+                    Link bannerLink = UrlHelper.GetLinkFromRelatedLinks(banner.BannerLink, Umbraco); */
 
-                    <div class="item @colorOverlayClass @bannerStyle @parallaxClass @settings.BackGroundStyle">
+                    <div class="item @colorOverlayClass @bannerStyle @parallaxClass">
 	                    
                         @if (banner.BannerImage != null)
                         {
