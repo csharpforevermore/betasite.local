@@ -15,7 +15,9 @@ public class OptionsConverter : PropertyValueConverterBase
       object source,
       bool preview)
     {
-        if (source == null) return (object)Options.EMPTY;
+        return (object)Options.EMPTY;
+
+        //if (source == null) return (object)Options.EMPTY;
         //   if (!ProductLicense.Instance.IsValid() && !HttpContext.Current.Request.IsLocal)
         //   return (object) USNEnums.Options.EMPTY;
         string str = source.ToString();
@@ -250,6 +252,6 @@ public class OptionsConverter : PropertyValueConverterBase
         //         return (object) USNEnums.Options.IconShape_Circle;
         //       break;
         //   }
-        return (object)Options.EMPTY;
+        //return (object)Options.EMPTY;
     }
 }
