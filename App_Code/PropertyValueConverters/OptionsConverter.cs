@@ -4,7 +4,6 @@ using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Core.PropertyEditors;
 using Umbraco.Web;
 using System;
-using ESO.Models;
 
 public class OptionsConverter : PropertyValueConverterBase
 {
